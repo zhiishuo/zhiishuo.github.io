@@ -3,8 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Dark Portfolio</title>
+  <title>Welcome to me</title>
   <style>
+    .profile-photo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #777;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.profile-photo img:hover {
+  transform: scale(1.05);
+}
     .news-list {
     list-style: none;
     padding-left: 20;
