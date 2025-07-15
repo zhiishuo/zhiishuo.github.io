@@ -7,65 +7,120 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: linear-gradient(to right, #eef2f3, #dfe9f3);
       margin: 0;
       padding: 0;
+      color: #333;
     }
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 50px auto;
       background: #fff;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      text-align: center;
+      padding: 40px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: 12px;
     }
     img.avatar {
-      width: 120px;
+      width: 130px;
       border-radius: 50%;
       margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+    img.avatar:hover {
+      transform: scale(1.05);
     }
     h1 {
+      font-size: 32px;
       margin: 10px 0;
-      font-size: 28px;
+    }
+    h2 {
+      font-size: 22px;
+      margin-top: 30px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+      text-align: left;
     }
     p {
       font-size: 16px;
       color: #555;
+      line-height: 1.6;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    ul li::before {
+      content: "• ";
+      color: #0077cc;
     }
     .links a {
       margin: 0 10px;
       color: #0077cc;
       text-decoration: none;
+      font-weight: bold;
     }
     .links a:hover {
       text-decoration: underline;
     }
     .button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
+      margin-top: 25px;
+      padding: 12px 24px;
       background: #0077cc;
       color: white;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
     }
     .button:hover {
       background: #005fa3;
+    }
+    .section {
+      text-align: left;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://avatars.githubusercontent.com/u/583231" alt="Avatar" class="avatar" />
-    <h1>Hi, I'm Alex</h1>
-    <p>Welcome to my personal website. I’m passionate about data, code, and design.</p>
-    <div class="links">
-      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-      <a href="mailto:your@email.com">Email</a>
+    <div style="text-align:center;">
+      <img src="https://avatars.githubusercontent.com/u/583231" alt="Avatar" class="avatar" />
+      <h1>Hi, I'm Alex</h1>
+      <p>Welcome to my personal website. I’m passionate about <strong>data</strong>, <strong>code</strong>, and <strong>design</strong>.</p>
+      <div class="links">
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+        <a href="mailto:your@email.com">Email</a>
+      </div>
+      <a href="resume.pdf" class="button" target="_blank">Download Resume</a>
     </div>
-    <a href="resume.pdf" class="button" target="_blank">Download Resume</a>
+
+    <div class="section">
+      <h2>About Me</h2>
+      <p>
+        I'm a software engineer with a background in data science and user experience design.
+        I enjoy building elegant solutions to complex problems and constantly exploring new technologies.
+        Currently focused on full-stack development and AI applications.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Skills</h2>
+      <ul>
+        <li>Languages: Python, JavaScript, C++</li>
+        <li>Frameworks: React, Node.js, Flask, TensorFlow</li>
+        <li>Tools: Git, Docker, AWS, Figma</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong><a href="https://github.com/yourusername/project1" target="_blank">AI Portfolio Generator</a></strong>: Auto-generates portfolio websites using GPT and HTML templates.</li>
+        <li><strong><a href="https://github.com/yourusername/project2" target="_blank">MediTrack</a></strong>: A cross-platform health record tracker built with React Native.</li>
+        <li><strong><a href="https://github.com/yourusername/project3" target="_blank">VisualizeML</a></strong>: An interactive machine learning visualizer in the browser.</li>
+      </ul>
+    </div>
   </div>
 </body>
 </html>
