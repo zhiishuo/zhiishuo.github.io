@@ -3,124 +3,313 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Personal Website</title>
+  <title>My Dark Portfolio</title>
   <style>
+
+    .link-item {
+    font-family: 'Roboto', sans-serif;   /* 字体 */
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 234px;
+    color: #cac4c4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    }
+
+    .link-item:hover {
+    color: #00c896;
+    }
+
+    .link-item svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    margin-right: 6px;
+    }
+    /* 全局重置 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #eef2f3, #dfe9f3);
-      margin: 0;
-      padding: 0;
-      color: #333;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #121417;
+      color: #e0e0e0;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
     }
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      background: #fff;
-      padding: 40px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      border-radius: 12px;
+    /* 侧边栏 */
+    .sidebar {
+      width: 320px;
+      background: #23242c;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    img.avatar {
-      width: 130px;
+    .sidebar img {
+      margin-top: 30px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 40px;
+    }
+    .sidebar h2 {
+      font-size: 30px;
+      margin-bottom: 30px;
+      color: #ffffff;
+    }
+    .sidebar .role {
+      font-size: 14px;
+      color: #888;
       margin-bottom: 20px;
-      transition: transform 0.3s ease;
     }
-    img.avatar:hover {
-      transform: scale(1.05);
+    .sidebar .info {
+      width: 100%;
+      list-style: none;
     }
-    h1 {
-      font-size: 32px;
-      margin: 10px 0;
+    .sidebar .info li {
+        display: flex;
+        align-items: center;       /* 保证 li 内垂直居中 */
+        gap: 8px;
+        margin: 16px 0;
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        color: #cac4c4;
     }
-    h2 {
-      font-size: 22px;
-      margin-top: 30px;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 5px;
-      text-align: left;
+
+    .sidebar .info li svg {
+        width: 24px;
+        height: 24px;
+        fill: #aaa;
+        flex-shrink: 0;
     }
-    p {
+
+        /* 对 a 链接也补上 align-items: center */
+    .sidebar .info li a.info-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: inherit;
+        text-decoration: none;
+        font-size: inherit;
+        }
+    .sidebar .info li a.info-link:hover {
+        color: #00c896;
+        }
+    .sidebar .info li a.info-link svg {
+        fill: #aaa;
+        transition: transform 0.3s ease, fill 0.3s ease;
+        }
+    .sidebar .info li a.info-link:hover svg {
+        fill: #00c896;
+        transform: scale(1.1) rotate(2deg);
+        }
+
+    .sidebar .socials {
+      margin-top: auto;
+      display: flex;
+      gap: 15px;
+    }
+    .sidebar .socials a svg {
+      width: 20px; height: 20px; fill: #aaa;
+      transition: fill .2s;
+    }
+    .sidebar .socials a:hover svg {
+      fill: #287180;
+    }
+
+    /* 主内容 */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    /* 顶部导航 */
+    .nav {
+      background: #1b1c22;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      height: 60px;
+    }
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    .nav li {
+      position: relative;
+      font-size: 15px;
+      cursor: pointer;
+      color: #b8b5b5;
+      padding: 20px 0;
+      transition: color .2s;
+    }
+    .nav li.active,
+    .nav li:hover {
+      color: #fff;
+    }
+    .nav li.active::after {
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      left: 0; right: 0;
+      height: 3px;
+      background: #66d9ef;
+      border-radius: 2px;
+    }
+
+    /* 内容区 */
+    .content {
+      padding: 40px;
+    }
+    .content h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .content p {
       font-size: 16px;
-      color: #555;
       line-height: 1.6;
+      margin-bottom: 30px;
+      color: #ccc;
     }
-    ul {
-      list-style-type: none;
-      padding: 0;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
     }
-    ul li::before {
-      content: "• ";
-      color: #0077cc;
+    .card {
+      background: #1e1f26;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform .2s, box-shadow .2s;
     }
-    .links a {
-      margin: 0 10px;
-      color: #0077cc;
-      text-decoration: none;
-      font-weight: bold;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
-    .links a:hover {
-      text-decoration: underline;
+    .card svg {
+      width: 28px; height: 28px; fill: #66d9ef;
     }
-    .button {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 12px 24px;
-      background: #0077cc;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background 0.3s ease;
+    .card h3 {
+      font-size: 18px;
+      color: #fff;
     }
-    .button:hover {
-      background: #005fa3;
-    }
-    .section {
-      text-align: left;
-      margin-top: 30px;
+    .card p {
+      font-size: 14px;
+      color: #bbb;
+      line-height: 1.4;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div style="text-align:center;">
-      <img src="https://avatars.githubusercontent.com/u/583231" alt="Avatar" class="avatar" />
-      <h1>Hi, I'm Alex</h1>
-      <p>Welcome to my personal website. I’m passionate about <strong>data</strong>, <strong>code</strong>, and <strong>design</strong>.</p>
-      <div class="links">
-        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-        <a href="mailto:your@email.com">Email</a>
-      </div>
-      <a href="resume.pdf" class="button" target="_blank">Download Resume</a>
-    </div>
 
-    <div class="section">
-      <h2>About Me</h2>
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <img src="https://avatars.githubusercontent.com/u/583231" alt="Avatar">
+    <h2>Zhishuo Zhao</h2>
+
+    <ul class="info">
+        <li class="school">
+            <!-- 学校图标 -->
+            <svg viewBox="0 0 24 24">
+            <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2z" />
+            </svg>
+            Sichuan University
+        </li>
+        <li>
+            <!-- 邮件图标 -->
+            <svg viewBox="0 0 24 24"><path d="M2 4h20v16H2z" fill="none"/><path d="M4 6l8 5 8-5v12H4z"/></svg>
+            Zhiishuo@163.com
+        </li>
+        <li>
+            <!-- 位置图标 -->
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zM7 9a5 5 0 1 1 10 0 5 5 0 0 1-10 0z"/></svg>
+            Chengdu
+        </li>
+        <li>
+            <a href="https://github.com/zhiishuo" target="_blank" class="info-link">
+              <!-- GitHub 图标 -->
+              <svg viewBox="0 0 24 24">
+                <path d="M12 0.5C5.73 0.5 0.5 5.73 0.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C17.5 5 18.5 5.3 18.5 5.3c.6 1.6.2 2.8.1 3.1.8.9 1.2 2 1.2 3.2 0 4.6-2.8 5.6-5.4 5.9.4.4.8 1 .8 2v3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
+              </svg>
+              GitHub
+            </a>
+          </li>
+          
+          <li>
+            <a href="https://scholar.google.com/citations?user=OtBjWy8AAAAJ" target="_blank" class="info-link">
+              <!-- Google Scholar 图标 -->
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2L1 7l11 5 11-5-11-5zm0 6.2L6.24 7 12 4.8 17.76 7 12 8.2zM3 9v6h3v-4.5L3 9zm18 0l-3 1.5V15h3V9zM8 11v5l4 2 4-2v-5l-4 2-4-2z"/>
+              </svg>
+              Google Scholar
+            </a>
+          </li>
+    </ul>
+    <div class="socials">
+      <a href="#"><!-- GitHub SVG --><svg viewBox="0 0 24 24"><path d="M12,.5A11.5,11.5,0,0,0,.5,12,11.5,11.5,0,0,0,12,23.5,11.5,11.5,0,0,0,23.5,12,11.5,11.5,0,0,0,12,.5Zm0,21A9.5,9.5,0,0,1,2.5,12,9.5,9.5,0,0,1,12,2.5,9.5,9.5,0,0,1,21.5,12,9.5,9.5,0,0,1,12,21.5Z"/><path d="M8.7,17.3c0-.2,0-.4,0-.6,0-.3,0-.5,0-.7l-.6.1c-1.1.2-1.2-.5-1.2-.5-.2-.6-.6-.8-.6-.8-.5-.4,0-.4,0-.4.5.1.8.5.8.5.5.8,1.2.6,1.5.5.1-.4.2-.6.4-.8C9,14.3,7.6,13.9,7.6,10.9c0-.8.3-1.4.8-1.9-.1-.2-.4-1,.1-2.1,0,0,.7-.2,2.3.8a7.7,7.7,0,0,1,4.2,0c1.6-1,2.3-.8,2.3-.8.5,1.1.2,1.9.1,2.1.5.5.8,1.1.8,1.9,0,3-.9,3.4-1.8,3.6.3.2.5.5.5,1,0,.8,0,1.4,0,1.6,0,.1.1.3.4.3A5.7,5.7,0,0,0,18,16a5.7,5.7,0,0,0,1.6-4.3C19.6,8.1,16,6,12,6s-7.6,2.1-7.6,5.7A5.7,5.7,0,0,0,6,16a5.7,5.7,0,0,0,1.6,1.3c.3,0,.4-.1.4-.3Z"/></svg></a>
+      <a href="#"><!-- LinkedIn SVG --><svg viewBox="0 0 24 24"><path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.48c0 1.64 1.34 2.98 2.98 2.98s2.98-1.34 2.98-2.98C7.96 4.84 6.62 3.5 4.98 3.5zM2 21.5h6v-13h-6v13zM13.5 8.5c-1.66 0-3 1.34-3 3v10.5h6v-10.5c0-1.66-1.34-3-3-3z"/></svg></a>
+    </div>
+  </aside>
+
+  <!-- 主区域 -->
+  <div class="main">
+    <!-- 导航 -->
+    <nav class="nav">
+      <ul>
+        <li class="active">About</li>
+        <li>Resume</li>
+        <li>Portfolio</li>
+        <li>Blog</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+
+    <!-- 主要内容 -->
+    <section class="content">
+      <h1>About Me</h1>
       <p>
-        I'm a software engineer with a background in data science and user experience design.
-        I enjoy building elegant solutions to complex problems and constantly exploring new technologies.
-        Currently focused on full-stack development and AI applications.
+        I'm <strong>Zhishuo Zhao</strong>, a Ph.D. candidate in the School of Computer Science at Sichuan University. My research focuses on multimodal learning, affective computing, and robust speech understanding under real-world conditions.  
+      
+        Specifically, I work on <strong>multimodal sentiment analysis</strong>, <strong>cross-modal contrastive optimization</strong>, and <strong>noise-resilient speech recognition</strong>.  
+        I aim to build interpretable and generalizable models that bridge language, vision, and audio for emotionally-aware AI systems.
+      
+        In practice, I integrate algorithm design with system implementation, and have experience in full-stack research — from model prototyping to academic writing and real-world deployment.
       </p>
-    </div>
 
-    <div class="section">
-      <h2>Skills</h2>
-      <ul>
-        <li>Languages: Python, JavaScript, C++</li>
-        <li>Frameworks: React, Node.js, Flask, TensorFlow</li>
-        <li>Tools: Git, Docker, AWS, Figma</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong><a href="https://github.com/yourusername/project1" target="_blank">AI Portfolio Generator</a></strong>: Auto-generates portfolio websites using GPT and HTML templates.</li>
-        <li><strong><a href="https://github.com/yourusername/project2" target="_blank">MediTrack</a></strong>: A cross-platform health record tracker built with React Native.</li>
-        <li><strong><a href="https://github.com/yourusername/project3" target="_blank">VisualizeML</a></strong>: An interactive machine learning visualizer in the browser.</li>
-      </ul>
-    </div>
+      <h2 style="margin-bottom:16px; color:#fff;">What I’m Doing</h2>
+      <div class="cards">
+        <!-- 卡片示例 -->
+        <div class="card">
+          <svg viewBox="0 0 24 24"><path d="M..." /></svg>
+          <h3>Web Development</h3>
+          <p>Building responsive front-end applications with React and Vue.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24"><path d="M..." /></svg>
+          <h3>Mobile Apps</h3>
+          <p>Crafting cross-platform apps using Flutter and React Native.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24"><path d="M..." /></svg>
+          <h3>Data Science</h3>
+          <p>Analyzing data and training ML models in Python.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24"><path d="M..." /></svg>
+          <h3>Music</h3>
+          <p>Playing the cello and composing ambient pieces.</p>
+        </div>
+      </div>
+    </section>
   </div>
+
 </body>
 </html>
