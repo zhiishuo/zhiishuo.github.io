@@ -5,7 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Dark Portfolio</title>
   <style>
+    .news-list {
+    list-style: none;
+    padding-left: 20;
+    margin-top: 0;
+    }
 
+    .news-list li {
+    color: #ccc;
+    font-size: 15px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    }
+
+    .news-list li strong {
+    color: #e67e3e;
+    }
+
+    .news-list em {
+    font-style: italic;
+    color: #f0f0f0;
+    }
     .link-item {
     font-family: 'Roboto', sans-serif;   /* 字体 */
     display: flex;
@@ -212,7 +232,9 @@
 
   <!-- 侧边栏 -->
   <aside class="sidebar">
-    <img src="https://avatars.githubusercontent.com/u/583231" alt="Avatar">
+    <div class="profile-photo">
+        <img src="IMG_7747.JPG" alt="Zhishuo Zhao" />
+      </div>
     <h2>Zhishuo Zhao</h2>
 
     <ul class="info">
@@ -259,6 +281,10 @@
     </div>
   </aside>
 
+  <div class="profile-photo">
+    <img src="IMG_7747.JPG" alt="Zhishuo Zhao" />
+  </div>
+
   <!-- 主区域 -->
   <div class="main">
     <!-- 导航 -->
@@ -284,7 +310,7 @@
         In practice, I integrate algorithm design with system implementation, and have experience in full-stack research — from model prototyping to academic writing and real-world deployment.
       </p>
 
-      <h2 style="margin-bottom:16px; color:#fff;">What I’m Doing</h2>
+      <h2 style="margin-top:30px; margin-bottom:15px; color:#fff; font-size: 20px;">🚀 What I’m Doing</h2>
       <div class="cards">
         <!-- 卡片示例 -->
         <div class="card">
@@ -308,8 +334,22 @@
           <p>Playing the cello and composing ambient pieces.</p>
         </div>
       </div>
+
+      <h2 style="margin-top:30px; margin-bottom:15px; color:#fff; font-size: 20px;">🔥 News</h2>
+    <ul class="news-list">
+      <li>
+        <strong>[2025]</strong> Our paper <em>"AV-RISE: Hierarchical Cross-Modal Denoising for Learning Robust Audio-Visual Speech Representation"</em> is accepted at <strong>ACM MM 2025</strong>.
+      </li>
+      <li>
+        <strong>[2024]</strong> Published <em>"WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting"</em> in <strong>ICASSP 2025</strong>.
+      </li>
+      <li>
+        <strong>[2024]</strong> Our paper <em>"AMG-AVSR: Adaptive Modality Guidance for Audio-Visual Speech Recognition via Progressive Feature Enhancement"</em> is accepted at <strong>ACML 2024</strong>.
+      </li>
+    </ul>
     </section>
-  </div>
+    
+</div>
 
 </body>
 </html>
