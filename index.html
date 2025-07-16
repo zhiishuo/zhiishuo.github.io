@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome to me</title>
   <style>
+    /* 移动端下隐藏侧边栏 */
+    
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -320px;
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    background: #23242c;
+    z-index: 999;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: #66d9ef;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #121417;
+    cursor: pointer;
+  }
+}
     .profile-photo img {
     width: 200px;
     height: 200px;
@@ -242,11 +274,11 @@
   </style>
 </head>
 <body>
-
+<button class="toggle-btn" onclick="toggleSidebar()">☰</button>
   <!-- 侧边栏 -->
   <aside class="sidebar">
     <div class="profile-photo">
-        <img src="IMG_7063.JPG" alt="Zhishuo Zhao" />
+        <img src="IMG_7063.jpg" alt="Zhishuo Zhao" />
       </div>
     <h2>Zhishuo Zhao</h2>
 
@@ -350,7 +382,7 @@
         <strong>[2025]</strong> Our paper <em>"AV-RISE: Hierarchical Cross-Modal Denoising for Learning Robust Audio-Visual Speech Representation"</em> is accepted at <strong>ACM MM 2025</strong>.
       </li>
       <li>
-        <strong>[2024]</strong> Published <em>"WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting"</em> in <strong>ICASSP 2025</strong>.
+        <strong>[2024]</strong> Published <em>"WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting"</em> in <strong>ICIC 2025</strong>.
       </li>
       <li>
         <strong>[2024]</strong> Our paper <em>"AMG-AVSR: Adaptive Modality Guidance for Audio-Visual Speech Recognition via Progressive Feature Enhancement"</em> is accepted at <strong>ACML 2024</strong>.
@@ -362,3 +394,8 @@
 
 </body>
 </html>
+<script>
+    function toggleSidebar() {
+      document.querySelector('.sidebar').classList.toggle('open');
+    }
+  </script>
