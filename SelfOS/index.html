@@ -3,52 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SelfOS V2 · 今日系统</title>
+    <title>SelfOS V3 · 今日系统</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="app">
       <header class="topbar">
         <div>
-          <p class="eyebrow">SelfOS · V2</p>
+          <p class="eyebrow">SelfOS · V3</p>
           <h1>Today</h1>
-          <p class="subtitle" id="todayFocus">正在加载今日重点...</p>
+          <p class="subtitle" id="todayFocus">正在分析今天的活动...</p>
         </div>
         <button id="refreshBtn" class="btn">刷新</button>
       </header>
 
-      <section class="metrics" id="metrics"></section>
-
-      <section class="layout">
-        <article class="card card-main">
-          <div class="card-head">
-            <h2>今日时间线</h2>
-            <div class="chip-row" id="timelineFilters"></div>
-          </div>
-          <ul id="timeline" class="timeline"></ul>
+      <section class="top-grid">
+        <article class="card summary-card">
+          <div class="card-head"><h2>真实活动总结</h2></div>
+          <ul id="activitySummary" class="bullet-list"></ul>
         </article>
 
-        <aside class="stack">
-          <article class="card">
-            <h2>快速记录</h2>
-            <form id="quickNoteForm" class="quick-form">
-              <input id="quickNoteInput" type="text" maxlength="180" placeholder="现在想到什么？按 Enter 添加" />
-              <button class="btn" type="submit">添加</button>
-            </form>
-            <ul id="quickNotes" class="list compact"></ul>
-            <p class="hint">仅保存到本机浏览器（localStorage）。</p>
-          </article>
+        <article class="card metrics-card">
+          <div class="card-head"><h2>关键指标</h2></div>
+          <div id="metrics" class="metrics"></div>
+          <div class="completion-wrap">
+            <div class="ring-wrap">
+              <div id="completionRing" class="ring"><span id="completionPercent">0%</span></div>
+            </div>
+            <div class="completion-info">
+              <p class="completion-title">今日目标完成率</p>
+              <p class="completion-count" id="completionCount">0 / 0 已完成</p>
+              <div class="progress-track">
+                <div id="completionBar" class="progress-fill"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
 
-          <article class="card">
-            <h2>目标（含优先级）</h2>
-            <ul id="goals" class="list goals"></ul>
-          </article>
+      <section class="middle-grid">
+        <article class="card goals-card">
+          <div class="card-head"><h2>今日目标（自动生成）</h2></div>
+          <ul id="goals" class="goals-list"></ul>
+        </article>
 
-          <article class="card">
-            <h2>本周摘要</h2>
-            <div id="weeklySummary" class="summary"></div>
-          </article>
-        </aside>
+        <article class="card detail-card">
+          <div class="card-head"><h2>进展详情</h2></div>
+          <div id="progressDetails" class="detail-list"></div>
+          <div class="divider"></div>
+          <h3>快速记录</h3>
+          <form id="quickNoteForm" class="quick-form">
+            <input id="quickNoteInput" type="text" maxlength="180" placeholder="现在想到什么？按 Enter 添加" />
+            <button class="btn" type="submit">添加</button>
+          </form>
+          <ul id="quickNotes" class="note-list"></ul>
+          <p class="hint">仅保存在本机浏览器（localStorage）</p>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="card timeline-card">
+          <details id="timelineDetails">
+            <summary>
+              <span>时间线（精简）</span>
+              <span class="summary-meta" id="timelineMeta">0 条</span>
+            </summary>
+            <div class="timeline-tools">
+              <div class="chip-row" id="timelineFilters"></div>
+            </div>
+            <ul id="timeline" class="timeline"></ul>
+          </details>
+        </article>
       </section>
 
       <footer class="foot" id="genInfo"></footer>
