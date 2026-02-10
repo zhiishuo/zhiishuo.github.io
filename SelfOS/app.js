@@ -1,94 +1,80 @@
-const $ = (id) => document.getElementById(id);
-const today = new Date();
-$("todayLabel").textContent = today.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
+const REFLECTION_KEY = 'selfos.reflection';
+const GOAL_STATE_KEY = 'selfos.goalState';
 
-$("refreshHintBtn").addEventListener("click", () => {
-  alert("Refresh is done from terminal: npm run refresh (or python3 scripts/ingest_sessions.py)");
-});
-
-async function load() {
-  const [stateRes, extractedRes] = await Promise.all([
-    fetch("./data/state.json", { cache: "no-store" }),
-    fetch("./data/extracted_today.json", { cache: "no-store" }),
-  ]);
-  const state = await stateRes.json();
-  const extracted = await extractedRes.json();
-
-  const learningItems = [...(state.learningLog || []), ...(extracted.learning || [])]
-    .sort((a, b) => (b.ts || "").localeCompare(a.ts || ""));
-  const timelineItems = [...(state.timeline || []), ...(extracted.timeline || [])]
-    .sort((a, b) => (b.ts || "").localeCompare(a.ts || ""));
-
-  renderGoals(state.goals || []);
-  renderLearning(learningItems);
-  renderTimeline(timelineItems);
-  renderStreaks(state.streaks || {});
-
-  $("activityCount").textContent = (state.activities || []).length + (extracted.activities || []).length;
-  $("learningCount").textContent = learningItems.length;
-  $("goalCount").textContent = (state.goals || []).filter(g => g.status !== "done").length;
-  $("bestStreak").textContent = `${Math.max(state.streaks?.learningStreak || 0, state.streaks?.activityStreak || 0)} days`;
-  $("lastSync").textContent = `Last sync: ${state.lastUpdated || extracted.generatedAt || "Never"}`;
+function fmtTime(iso) {
+  if (!iso) return '--:--';
+  const d = new Date(iso);
+  return d.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
 }
 
-function renderGoals(goals) {
-  const list = $("goalList");
-  list.innerHTML = "";
-  if (!goals.length) return empty(list);
-  goals.forEach(g => {
-    const li = document.createElement("li");
-    const chipClass = g.status === "blocked" ? "goal-chip blocked" : "goal-chip";
-    li.innerHTML = `<strong>${escape(g.title)}</strong> <span class="${chipClass}">${escape(g.status || "active")}</span><div class="muted">${escape(g.note || "")}</div>`;
-    list.appendChild(li);
-  });
-}
-
-function renderLearning(items) {
-  const list = $("learningList");
-  list.innerHTML = "";
-  if (!items.length) return empty(list);
-  items.slice(0, 30).forEach(it => {
-    const li = document.createElement("li");
-    li.innerHTML = `<div><strong>${escape(it.title || "Learning")}</strong></div><div class="muted">${escape(it.note || it.text || "")}</div>`;
-    list.appendChild(li);
-  });
-}
-
-function renderTimeline(items) {
-  const list = $("timelineList");
-  list.innerHTML = "";
-  if (!items.length) return empty(list);
-  items.slice(0, 50).forEach(it => {
-    const li = document.createElement("li");
-    const time = new Date(it.ts || Date.now()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    li.innerHTML = `<div class="time">${time}</div><div>${escape(it.text || it.title || "")}</div>`;
-    list.appendChild(li);
-  });
-}
-
-function renderStreaks(streaks) {
-  const list = $("streakList");
-  list.innerHTML = "";
-  const entries = [
-    ["Learning", streaks.learningStreak || 0],
-    ["Activity", streaks.activityStreak || 0],
+function renderStats(data) {
+  const stats = document.getElementById('stats');
+  const goals = data.goals || [];
+  const done = goals.filter(g => g.done).length;
+  const cards = [
+    ['今日活动', data.activities?.length || 0],
+    ['学习条目', data.learning?.length || 0],
+    ['完成目标', `${done}/${goals.length}`],
+    ['专注方向', data.summary?.topFocus || '综合推进']
   ];
-  entries.forEach(([k, v]) => {
-    const li = document.createElement("li");
-    li.innerHTML = `<strong>${k}</strong>: ${v} day${v === 1 ? "" : "s"}`;
-    list.appendChild(li);
+  stats.innerHTML = cards.map(([k,v]) => `<div class="stat"><div class="label">${k}</div><div class="value">${v}</div></div>`).join('');
+}
+
+function renderTimeline(data) {
+  const el = document.getElementById('timeline');
+  const items = (data.activities || []).slice(0, 30);
+  if (!items.length) {
+    el.innerHTML = '<li>今天还没有抓取到活动数据，先运行一次 ingest 脚本。</li>';
+    return;
+  }
+  el.innerHTML = items.map(i => `<li><span class="time">${fmtTime(i.timestamp)}</span>${i.text}<span class="tag">${i.category}</span></li>`).join('');
+}
+
+function renderLearning(data) {
+  const el = document.getElementById('learning');
+  const items = data.learning || [];
+  el.innerHTML = items.length ? items.map(i => `<li>${i}</li>`).join('') : '<li>暂无学习提炼</li>';
+}
+
+function renderGoals(data) {
+  const saved = JSON.parse(localStorage.getItem(GOAL_STATE_KEY) || '{}');
+  const goals = (data.goals || []).map((g, idx) => ({ ...g, done: saved[idx] ?? g.done ?? false }));
+  data.goals = goals;
+  const el = document.getElementById('goals');
+  el.innerHTML = goals.map((g, idx) => `
+    <li>
+      <label>
+        <input type="checkbox" data-idx="${idx}" ${g.done ? 'checked' : ''} />
+        <span>${g.text}</span>
+      </label>
+    </li>
+  `).join('');
+
+  el.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', (e) => {
+      const i = e.target.dataset.idx;
+      saved[i] = e.target.checked;
+      localStorage.setItem(GOAL_STATE_KEY, JSON.stringify(saved));
+    });
   });
 }
 
-function empty(parent) {
-  parent.appendChild(document.getElementById("emptyTemplate").content.cloneNode(true));
+async function main() {
+  const res = await fetch('./data/journal.json?_=' + Date.now());
+  const data = await res.json();
+  renderStats(data);
+  renderTimeline(data);
+  renderLearning(data);
+  renderGoals(data);
+
+  const ta = document.getElementById('reflection');
+  ta.value = localStorage.getItem(REFLECTION_KEY) || '';
+  ta.addEventListener('input', () => localStorage.setItem(REFLECTION_KEY, ta.value));
+
+  document.getElementById('genInfo').textContent = `数据更新于：${new Date(data.generatedAt).toLocaleString('zh-CN')}`;
 }
 
-function escape(str) {
-  return String(str).replace(/[&<>"]/g, s => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[s]));
-}
-
-load().catch((err) => {
-  console.error(err);
-  $("lastSync").textContent = `Failed loading data: ${err.message}`;
+document.getElementById('refreshBtn').addEventListener('click', () => location.reload());
+main().catch(err => {
+  document.getElementById('timeline').innerHTML = `<li>加载失败：${err.message}</li>`;
 });

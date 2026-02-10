@@ -1,76 +1,52 @@
-# SelfOS
+# SelfOS（个人成长 App）
 
-SelfOS is a local-first personal productivity app with a modern web UI and JSON-backed data.
+SelfOS 是一个本地优先的个人成长应用：
+- 自动从 OpenClaw/iMessage 对话提取你“今天做了什么”
+- 自动汇总学习线索
+- 提供美观仪表盘查看活动、学习、目标与复盘
 
-## Features
+## 功能
 
-- Dashboard with daily metrics
-- Daily learning log
-- Activity timeline
-- Goals and streak tracking
-- Local JSON persistence (`./data/*.json`)
-- Session transcript ingestion from OpenClaw/iMessage JSONL logs
+- 今日活动时间线
+- 学习提炼
+- 本周目标（可勾选）
+- 今日复盘（浏览器本地保存）
+- JSON 本地数据持久化
 
-## Project Structure
+## 目录
 
-- `index.html`, `styles.css`, `app.js` — frontend app
-- `data/state.json` — persistent goals/streak/meta
-- `data/extracted_today.json` — generated daily extract
-- `scripts/ingest_sessions.py` — transcript ingestion + extraction
-- `server.js` — optional simple Node static server
+- `index.html`, `styles.css`, `app.js`：前端 UI
+- `scripts/ingest_conversations.py`：对话抽取脚本
+- `data/journal.json`：每日提取结果
 
-## Run
-
-### Option A: Python static server
+## 刷新数据
 
 ```bash
-cd SelfOS
-python3 -m http.server 8080
-# open http://localhost:8080
+cd /Users/zzs/.openclaw/workspace/SelfOS
+python3 scripts/ingest_conversations.py
 ```
 
-### Option B: Node server
+## 启动 App
 
 ```bash
-cd SelfOS
-npm run serve
-# open http://localhost:8080
+cd /Users/zzs/.openclaw/workspace
+python3 -m http.server 8787
+# 打开 http://127.0.0.1:8787/SelfOS/
 ```
 
-## Refresh extracted data
+## 每日自动更新（cron）
 
 ```bash
-cd SelfOS
-npm run refresh
-# or: python3 scripts/ingest_sessions.py
+crontab -e
 ```
 
-This script reads from:
+加入：
 
-`~/.openclaw/agents/main/sessions/*.jsonl`
-
-and writes:
-
-- `data/extracted_today.json`
-- updates `data/state.json` (`lastUpdated` + streak counters)
-
-Optional flags:
-
-```bash
-python3 scripts/ingest_sessions.py --date 2026-02-10 --tz Asia/Shanghai
+```cron
+30 22 * * * /usr/bin/python3 /Users/zzs/.openclaw/workspace/SelfOS/scripts/ingest_conversations.py >> /Users/zzs/.openclaw/workspace/SelfOS/data/ingest.log 2>&1
 ```
 
-## Automate daily refresh
+## 说明
 
-Add a cron entry (example: every day at 21:00):
-
-```bash
-0 21 * * * cd /Users/zzs/.openclaw/workspace/SelfOS && /usr/bin/python3 scripts/ingest_sessions.py >> /tmp/selfos-refresh.log 2>&1
-```
-
-(Or trigger this command from OpenClaw heartbeat/task automation.)
-
-## Notes
-
-- All data stays local.
-- No heavy frontend frameworks or build step required.
+- 数据均保存在本机。
+- 无需重依赖，无需构建。
