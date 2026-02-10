@@ -6,9 +6,9 @@
     <title>Zhishuo | Personal Homepage</title>
     <meta
       name="description"
-      content="Personal homepage of Zhishuo — multimodal AI research, selected projects, and collaboration contact."
+      content="Personal homepage of Zhishuo — research, projects, and contact."
     />
-    <meta name="theme-color" content="#0d111a" />
+    <meta name="theme-color" content="#0b0d12" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,7 +21,7 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header" id="top">
-      <div class="container nav-wrap">
+      <div class="nav-wrap container">
         <a class="brand" href="#top" aria-label="Zhishuo home">Zhishuo</a>
 
         <button
@@ -46,47 +46,20 @@
     </header>
 
     <main id="main-content" class="container">
-      <section class="hero reveal" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow" data-i18n="hero_tag">Hi, I'm</p>
-          <h1 id="hero-title">Zhishuo</h1>
-          <p class="subtitle" data-i18n="hero_subtitle">
-            Multimodal AI researcher focused on emotion understanding, LLM systems, and practical intelligent products.
-          </p>
-          <div class="hero-meta">
-            <span data-i18n="hero_meta_1">Multimodal Affective Computing</span>
-            <span data-i18n="hero_meta_2">LLM + MoE Systems</span>
-            <span data-i18n="hero_meta_3">Applied AI Productization</span>
-          </div>
-          <div class="actions">
-            <a class="btn primary" href="#contact" data-i18n="hero_btn_contact">Work with me</a>
-            <a class="btn" href="#projects" data-i18n="hero_btn_projects">View projects</a>
-          </div>
+      <section class="hero reveal">
+        <p class="tag" data-i18n="hero_tag">Hi, I'm</p>
+        <h1>Zhishuo</h1>
+        <p class="subtitle" data-i18n="hero_subtitle">
+          Multimodal AI researcher focused on emotion understanding, LLM systems, and practical intelligent products.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#contact" data-i18n="hero_btn_contact">Work with me</a>
+          <a class="btn" href="#projects" data-i18n="hero_btn_projects">View projects</a>
         </div>
-
-        <aside class="hero-card" aria-label="Profile summary card">
-          <img
-            class="profile-photo"
-            src="https://github.com/zhishuo.png"
-            alt="Profile photo of Zhishuo"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="profile-body">
-            <p class="profile-role" data-i18n="hero_role">AI Researcher & Builder</p>
-            <ul class="profile-points">
-              <li data-i18n="hero_point_1">Research-to-product execution mindset</li>
-              <li data-i18n="hero_point_2">Strong in language-vision-audio systems</li>
-              <li data-i18n="hero_point_3">Open to research and product collaborations</li>
-            </ul>
-          </div>
-        </aside>
       </section>
 
       <section id="about" class="section card reveal">
-        <div class="section-head">
-          <h2 data-i18n="about_title">About</h2>
-        </div>
+        <h2 data-i18n="about_title">About</h2>
         <p data-i18n="about_body">
           I build intelligent systems that connect language, vision, and audio. My interests include multimodal affective computing, robust routing for experts, and turning research prototypes into products that people can actually use.
         </p>
@@ -113,9 +86,8 @@
       </section>
 
       <section id="projects" class="section reveal">
-        <div class="section-head section-inline">
+        <div class="section-head">
           <h2 data-i18n="projects_title">Selected Projects</h2>
-          <p class="section-note" data-i18n="projects_note">Representative directions across research and productization.</p>
         </div>
         <div class="grid two">
           <article class="card interactive">
@@ -146,26 +118,12 @@
       </section>
 
       <section id="contact" class="section card reveal">
-        <div class="section-head section-inline">
-          <h2 data-i18n="contact_title">Contact</h2>
-          <span class="contact-chip" data-i18n="contact_chip">Available for collaboration</span>
-        </div>
+        <h2 data-i18n="contact_title">Contact</h2>
         <p data-i18n="contact_body">Open to collaboration, research exchange, and product building.</p>
-
-        <div class="contact-grid">
-          <div class="contact-item">
-            <p class="label" data-i18n="contact_email_label">Email</p>
-            <a href="mailto:zhiishuo@163.com">zhiishuo@163.com</a>
-          </div>
-          <div class="contact-item">
-            <p class="label">GitHub</p>
-            <a href="https://github.com/zhishuo" target="_blank" rel="noreferrer">github.com/zhishuo</a>
-          </div>
-          <div class="contact-item">
-            <p class="label" data-i18n="contact_response_label">Typical response</p>
-            <p data-i18n="contact_response_value">Usually within 24–48 hours.</p>
-          </div>
-        </div>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> <a href="mailto:zhiishuo@163.com">zhiishuo@163.com</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/zhishuo" target="_blank" rel="noreferrer">github.com/zhishuo</a></li>
+        </ul>
       </section>
     </main>
 
