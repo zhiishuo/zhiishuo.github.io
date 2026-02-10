@@ -341,11 +341,11 @@ h2 {
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: color-mix(in oklab, var(--surface) 82%, transparent);
+  background: var(--surface);
 }
 .contact-item.featured {
-  border-color: #c8d5f8;
-  background: var(--brand-soft);
+  border-color: var(--line-strong);
+  background: color-mix(in oklab, var(--surface) 94%, var(--brand-soft));
 }
 .contact-item .label {
   margin: 0 0 4px;
@@ -355,7 +355,12 @@ h2 {
   letter-spacing: 0.06em;
 }
 
-a { color: var(--brand); }
+.contact-item a,
+.contact-item p {
+  color: #2a2f39;
+}
+
+a { color: #2a3f74; }
 .footer {
   color: #7d818c;
   font-size: 0.92rem;
