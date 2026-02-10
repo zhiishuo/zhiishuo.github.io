@@ -1,57 +1,74 @@
-# SelfOS V3（本地个人成长系统）
+# SelfOS V4 (Tri-goal Dashboard)
 
-SelfOS V3 是一个 **local-only** 的个人成长仪表盘，重点解决 V2 用户反馈：
-- 信息层级更清晰：顶部总览，中部目标与进展，底部时间线
-- 时间线不再占主屏，改为可折叠的精简卡片
-- UI 更干净、留白更合理、移动端更易读
+SelfOS V4 is a **local-only** personal tracker centered on 3 long-term goals:
 
-## V3 主要更新
+- **Research**: papers read, experiments, writing
+- **English**: vocab, listening, speaking, writing
+- **Fitness**: workouts, steps/duration
 
-1. **新增「真实活动总结」**
-   - 基于 `data/journal.json` 本地活动数据
-   - 自动生成 3-6 条中文要点（分类 + 时段 + 活动密度）
-   - 不调用任何外部 API
+## What's new in V4
 
-2. **重构信息结构**
-   - **顶部**：真实活动总结 + 关键指标 + 完成率环形图/进度条
-   - **中部**：自动目标面板 + 进展详情 + 快速记录
-   - **底部**：可折叠时间线（支持分类筛选，默认不抢占注意力）
+1. **Top-level tri-goal cards**
+   - Dedicated Research / English / Fitness cards
+   - Each card shows **daily** + **weekly** progress
 
-3. **升级目标模型（自动生成）**
-   - 从当日活动分类自动推断目标
-   - 带优先级（高/中/低）和现实完成标准
-   - 展示目标数量、完成率、每项目标进度（x/y）
+2. **Dedicated goal sections with editable checklists**
+   - Each track has a simple checklist that can be edited inline
+   - Checkbox state and custom items are saved in browser `localStorage`
 
-4. **视觉与可用性优化**
-   - 更高文字对比、卡片弱阴影、简化边框
-   - 更稳定的响应式布局，手机端控件尺寸与排版优化
+3. **Conversation auto-ingestion kept and improved**
+   - `scripts/ingest_conversations.py` + `scripts/ingest_sessions.py`
+   - Auto maps user activities into the 3 tracks (when possible)
 
-## 目录
+4. **Clean light UI with clearer hierarchy**
+   - Top: tri-goal overview
+   - Middle: 3 focused track sections
+   - Bottom: filtered auto-ingestion timeline
 
-- `index.html`, `styles.css`, `app.js`：V3 前端
-- `scripts/ingest_conversations.py`：主 ingestion（生成 `journal.json`）
-- `scripts/ingest_sessions.py`：兼容脚本
-- `data/journal.json`：前端优先读取
-- `data/extracted_today.json`：回退读取（兼容旧流程）
+5. **Responsive desktop/mobile**
+   - 3-column layout on desktop
+   - stacked cards on mobile
 
-## 快速开始
+6. **Local only**
+   - JSON files in `./data`
+   - Browser `localStorage`
+   - No external APIs
+
+## Files
+
+- `index.html`, `styles.css`, `app.js`: V4 frontend
+- `scripts/ingest_conversations.py`: weekly/today ingestion + track/facet mapping
+- `scripts/ingest_sessions.py`: fallback daily extraction + track mapping
+- `data/journal.json`: primary data source
+- `data/extracted_today.json`: fallback source
+
+## Usage
+
+### 1) Ingest local conversations
 
 ```bash
 cd /Users/zzs/.openclaw/workspace/SelfOS
 python3 scripts/ingest_conversations.py
 ```
 
+(Optionally run fallback extractor)
+
 ```bash
-cd /Users/zzs/.openclaw/workspace
-python3 -m http.server 8787
+python3 scripts/ingest_sessions.py
 ```
 
-打开：
+### 2) Run app locally
 
-`http://127.0.0.1:8787/SelfOS/`
+```bash
+cd /Users/zzs/.openclaw/workspace/SelfOS
+npm run serve
+```
 
-## 数据与隐私
+Open:
 
-- **local-only**：仅使用本地 JSON + 浏览器 localStorage
-- 不调用外部服务、不上传日志
-- 目标勾选和快速记录仅保存在当前浏览器
+- `http://127.0.0.1:8080/`
+
+## Privacy
+
+- Everything stays on this machine.
+- No cloud sync and no third-party API calls.

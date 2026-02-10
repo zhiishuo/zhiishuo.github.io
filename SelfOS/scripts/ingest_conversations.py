@@ -14,14 +14,32 @@ ROOT = Path(__file__).resolve().parents[1]
 SESSIONS = Path.home() / ".openclaw/agents/main/sessions"
 OUT = ROOT / "data/journal.json"
 
-CATEGORY_KEYWORDS = {
-    "研究": ["论文", "paper", "emotion", "情感", "模型", "benchmark", "sota", "检索"],
-    "开发": ["代码", "debug", "bug", "python", "脚本", "app", "部署", "github", "前端"],
-    "运维": ["gateway", "配置", "权限", "终端", "restart", "status", "日志", "服务"],
-    "沟通": ["imessage", "消息", "聊天", "手机", "email", "邮件"],
+TRACK_RULES = {
+    "research": {
+        "keywords": ["论文", "paper", "research", "arxiv", "实验", "experiment", "benchmark", "写作", "review"],
+        "facets": {
+            "papers read": ["paper", "论文", "arxiv", "read"],
+            "experiments": ["experiment", "实验", "benchmark", "ablation", "run"],
+            "writing": ["write", "writing", "draft", "笔记", "总结"],
+        },
+    },
+    "english": {
+        "keywords": ["english", "英语", "vocab", "word", "listening", "speak", "speaking", "shadowing", "ielts", "toefl"],
+        "facets": {
+            "vocab": ["vocab", "word", "单词"],
+            "listening": ["listening", "听力"],
+            "speaking": ["speaking", "口语", "shadowing", "跟读"],
+            "writing": ["writing", "作文", "essay", "paragraph"],
+        },
+    },
+    "fitness": {
+        "keywords": ["fitness", "workout", "gym", "run", "walk", "steps", "健身", "训练", "步数", "拉伸", "exercise"],
+        "facets": {
+            "workouts": ["workout", "gym", "训练", "exercise", "cardio", "run"],
+            "steps/duration": ["steps", "步数", "分钟", "duration", "walk", "走"],
+        },
+    },
 }
-LEARNING_TRIGGERS = ["如何", "怎么", "能不能", "为什么", "what", "how", "对比", "区别", "总结", "learn"]
-DEEP_WORK_HINTS = ["深度", "专注", "45", "阅读", "写作", "设计", "编码", "coding", "research"]
 
 
 def extract_text(content: Any) -> str:
@@ -37,25 +55,17 @@ def extract_text(content: Any) -> str:
         for item in content:
             if isinstance(item, str):
                 parts.append(item)
-                continue
-            if not isinstance(item, dict):
-                continue
-            if item.get("type") in {"text", "input_text", "output_text"}:
-                t = item.get("text")
+            elif isinstance(item, dict):
+                t = item.get("text") or item.get("content")
                 if t:
                     parts.append(str(t))
-            elif isinstance(item.get("content"), str):
-                parts.append(item["content"])
-        return "\n".join(p.strip() for p in parts if p and p.strip()).strip()
+        return "\n".join(parts).strip()
 
     return ""
 
 
 def parse_timestamp(obj: dict) -> datetime | None:
-    candidates = [
-        obj.get("timestamp"),
-        obj.get("message", {}).get("timestamp"),
-    ]
+    candidates = [obj.get("timestamp"), obj.get("message", {}).get("timestamp")]
     for ts in candidates:
         if ts is None:
             continue
@@ -73,52 +83,62 @@ def parse_timestamp(obj: dict) -> datetime | None:
 
 
 def clean_text(text: str) -> str:
-    t = re.sub(r"\[\[\s*reply_to_current\s*\]\]", "", text, flags=re.I)
-    t = re.sub(r"\[message_id:[^\]]+\]", "", t, flags=re.I)
-    t = re.sub(r"\s+", " ", t).strip()
-    return t
+    text = re.sub(r"\[\[\s*reply_to_current\s*\]\]", "", text, flags=re.I)
+    text = re.sub(r"\[message_id:[^\]]+\]", "", text, flags=re.I)
+    return re.sub(r"\s+", " ", text).strip()
 
 
-def classify(text: str) -> str:
+def map_track_and_facet(text: str) -> tuple[str | None, str | None]:
     low = text.lower()
-    for c, kws in CATEGORY_KEYWORDS.items():
-        if any(kw.lower() in low for kw in kws):
-            return c
-    return "其他"
+    for track, cfg in TRACK_RULES.items():
+        if any(k.lower() in low for k in cfg["keywords"]):
+            for facet, kws in cfg["facets"].items():
+                if any(k.lower() in low for k in kws):
+                    return track, facet
+            return track, None
+    return None, None
 
 
 def infer_priority(text: str) -> str:
     low = text.lower()
     if any(k in low for k in ["紧急", "关键", "高优", "urgent", "important", "p0"]):
         return "high"
-    if any(k in low for k in ["低优", "次要", "later", "p2"]):
+    if any(k in low for k in ["低优", "later", "p2"]):
         return "low"
     return "medium"
 
 
-def build_weekly_summary(weekly_activities: list[dict], goals: list[dict], today_activities: list[dict]) -> dict:
-    active_days = len({a["timestamp"][:10] for a in weekly_activities if a.get("timestamp")})
+def dedupe(items: list[dict]) -> list[dict]:
+    seen = set()
+    out = []
+    for a in sorted(items, key=lambda x: x["timestamp"]):
+        key = (a["text"], a["timestamp"][:16])
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(a)
+    return out
 
-    cat_counter = Counter(a.get("category", "其他") for a in weekly_activities)
-    top_category = cat_counter.most_common(1)[0][0] if cat_counter else "综合推进"
 
-    deep_work_sessions = 0
-    for a in weekly_activities:
-        low = a.get("text", "").lower()
-        if any(k in low for k in DEEP_WORK_HINTS):
-            deep_work_sessions += 1
+def progress_pct(count: int, target: int) -> int:
+    if target <= 0:
+        return 0
+    return min(100, int(round((count / target) * 100)))
 
-    done = sum(1 for g in goals if g.get("done"))
-    completion_rate = round((done / len(goals)) * 100) if goals else 0
 
-    return {
-        "activeDays": active_days,
-        "totalActivities": len(weekly_activities),
-        "topCategory": top_category,
-        "deepWorkSessions": deep_work_sessions,
-        "completionRate": completion_rate,
-        "todayCount": len(today_activities),
-    }
+def build_weekly_tracks(weekly_activities: list[dict]) -> dict:
+    track_targets = {"research": 10, "english": 12, "fitness": 10}
+    output: dict[str, dict] = {}
+
+    for track in ["research", "english", "fitness"]:
+        acts = [a for a in weekly_activities if a.get("track") == track]
+        facet_count = Counter(a.get("facet") for a in acts if a.get("facet"))
+        output[track] = {
+            "count": len(acts),
+            "progress": progress_pct(len(acts), track_targets[track]),
+            "facets": dict(facet_count),
+        }
+    return output
 
 
 def main() -> None:
@@ -128,7 +148,6 @@ def main() -> None:
 
     today_activities: list[dict] = []
     weekly_activities: list[dict] = []
-    user_msgs: list[str] = []
 
     if not SESSIONS.exists():
         raise SystemExit(f"Sessions dir not found: {SESSIONS}")
@@ -150,75 +169,47 @@ def main() -> None:
                     continue
 
                 msg = obj.get("message", {})
-                role = msg.get("role", "")
-                if role != "user":
+                if msg.get("role") != "user":
                     continue
 
                 text = clean_text(extract_text(msg.get("content")))
                 if len(text) < 2:
                     continue
 
+                track, facet = map_track_and_facet(text)
                 act = {
                     "timestamp": dt.isoformat(),
                     "text": text[:220],
-                    "category": classify(text),
+                    "category": track or "其他",
+                    "track": track,
+                    "facet": facet,
                     "priority": infer_priority(text),
                     "source": p.name,
                 }
                 weekly_activities.append(act)
-                user_msgs.append(text)
-
                 if dt.date() == today:
                     today_activities.append(act)
         except Exception:
             continue
 
-    # dedupe by minute+text
-    def dedupe(items: list[dict]) -> list[dict]:
-        seen = set()
-        out = []
-        for a in sorted(items, key=lambda x: x["timestamp"]):
-            key = (a["text"], a["timestamp"][:16])
-            if key in seen:
-                continue
-            seen.add(key)
-            out.append(a)
-        return out
-
     today_clean = dedupe(today_activities)
     weekly_clean = dedupe(weekly_activities)
 
-    learning = []
-    for t in user_msgs:
-        if any(k.lower() in t.lower() for k in LEARNING_TRIGGERS):
-            t = re.sub(r"\s+", " ", t).strip()
-            if t and t not in learning:
-                learning.append(t[:180])
-
-    category_count = Counter(a["category"] for a in today_clean)
-    top_focus = category_count.most_common(1)[0][0] if category_count else "综合推进"
-
-    goals = [
-        {"text": "完成 1 次深度学习（>=45 分钟）", "done": False, "priority": "high"},
-        {"text": "沉淀 3 条可复用知识点", "done": False, "priority": "medium"},
-        {"text": "推进 1 个长期项目的关键一步", "done": False, "priority": "high"},
-        {"text": "睡前 5 分钟复盘", "done": False, "priority": "low"},
-    ]
+    top_track = Counter(a["track"] for a in today_clean if a.get("track")).most_common(1)
+    focus = top_track[0][0] if top_track else "balanced"
 
     payload = {
         "generatedAt": now.isoformat(),
         "date": str(today),
         "summary": {
             "activityCount": len(today_clean),
-            "topFocus": top_focus,
+            "topFocus": focus,
         },
-        "activities": today_clean[-120:],
-        "learning": learning[:12],
-        "goals": goals,
-        "weeklySummary": build_weekly_summary(weekly_clean, goals, today_clean),
+        "activities": today_clean[-140:],
+        "weeklyTracks": build_weekly_tracks(weekly_clean),
         "meta": {
             "localOnly": True,
-            "version": "v2",
+            "version": "v4",
             "source": str(SESSIONS),
         },
     }

@@ -3,69 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SelfOS V3 · 今日系统</title>
+    <title>SelfOS V4 · Tri-goal Dashboard</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="app">
       <header class="topbar">
         <div>
-          <p class="eyebrow">SelfOS · V3</p>
-          <h1>Today</h1>
-          <p class="subtitle" id="todayFocus">正在分析今天的活动...</p>
+          <p class="eyebrow">SelfOS · V4</p>
+          <h1>Research · English · Fitness</h1>
+          <p class="subtitle" id="todayFocus">正在加载今日三目标进展...</p>
         </div>
-        <button id="refreshBtn" class="btn">刷新</button>
+        <button id="refreshBtn" class="btn">刷新数据</button>
       </header>
 
-      <section class="top-grid">
-        <article class="card summary-card">
-          <div class="card-head"><h2>真实活动总结</h2></div>
-          <ul id="activitySummary" class="bullet-list"></ul>
-        </article>
+      <section class="goal-grid" id="goalCards"></section>
 
-        <article class="card metrics-card">
-          <div class="card-head"><h2>关键指标</h2></div>
-          <div id="metrics" class="metrics"></div>
-          <div class="completion-wrap">
-            <div class="ring-wrap">
-              <div id="completionRing" class="ring"><span id="completionPercent">0%</span></div>
-            </div>
-            <div class="completion-info">
-              <p class="completion-title">今日目标完成率</p>
-              <p class="completion-count" id="completionCount">0 / 0 已完成</p>
-              <div class="progress-track">
-                <div id="completionBar" class="progress-fill"></div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section class="middle-grid">
-        <article class="card goals-card">
-          <div class="card-head"><h2>今日目标（自动生成）</h2></div>
-          <ul id="goals" class="goals-list"></ul>
-        </article>
-
-        <article class="card detail-card">
-          <div class="card-head"><h2>进展详情</h2></div>
-          <div id="progressDetails" class="detail-list"></div>
-          <div class="divider"></div>
-          <h3>快速记录</h3>
-          <form id="quickNoteForm" class="quick-form">
-            <input id="quickNoteInput" type="text" maxlength="180" placeholder="现在想到什么？按 Enter 添加" />
-            <button class="btn" type="submit">添加</button>
-          </form>
-          <ul id="quickNotes" class="note-list"></ul>
-          <p class="hint">仅保存在本机浏览器（localStorage）</p>
-        </article>
-      </section>
+      <section class="track-grid" id="trackSections"></section>
 
       <section class="bottom-grid">
         <article class="card timeline-card">
-          <details id="timelineDetails">
+          <details id="timelineDetails" open>
             <summary>
-              <span>时间线（精简）</span>
+              <span>自动摄取活动（本地会话）</span>
               <span class="summary-meta" id="timelineMeta">0 条</span>
             </summary>
             <div class="timeline-tools">
