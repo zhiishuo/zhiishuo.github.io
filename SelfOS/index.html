@@ -3,52 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SelfOS · 个人成长仪表盘</title>
+    <title>SelfOS V2 · 今日系统</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="bg"></div>
-    <main class="container">
-      <header class="top">
+    <main class="app">
+      <header class="topbar">
         <div>
-          <h1>SelfOS</h1>
-          <p>你的每日学习与行动系统</p>
+          <p class="eyebrow">SelfOS · V2</p>
+          <h1>Today</h1>
+          <p class="subtitle" id="todayFocus">正在加载今日重点...</p>
         </div>
-        <div class="top-actions">
-          <button id="refreshBtn">刷新页面</button>
-        </div>
+        <button id="refreshBtn" class="btn">刷新</button>
       </header>
 
-      <section class="stats" id="stats"></section>
+      <section class="metrics" id="metrics"></section>
 
-      <section class="grid">
-        <article class="card">
-          <h2>今日活动时间线</h2>
+      <section class="layout">
+        <article class="card card-main">
+          <div class="card-head">
+            <h2>今日时间线</h2>
+            <div class="chip-row" id="timelineFilters"></div>
+          </div>
           <ul id="timeline" class="timeline"></ul>
         </article>
 
-        <article class="card">
-          <h2>学习提炼</h2>
-          <ul id="learning" class="list"></ul>
-        </article>
+        <aside class="stack">
+          <article class="card">
+            <h2>快速记录</h2>
+            <form id="quickNoteForm" class="quick-form">
+              <input id="quickNoteInput" type="text" maxlength="180" placeholder="现在想到什么？按 Enter 添加" />
+              <button class="btn" type="submit">添加</button>
+            </form>
+            <ul id="quickNotes" class="list compact"></ul>
+            <p class="hint">仅保存到本机浏览器（localStorage）。</p>
+          </article>
+
+          <article class="card">
+            <h2>目标（含优先级）</h2>
+            <ul id="goals" class="list goals"></ul>
+          </article>
+
+          <article class="card">
+            <h2>本周摘要</h2>
+            <div id="weeklySummary" class="summary"></div>
+          </article>
+        </aside>
       </section>
 
-      <section class="grid">
-        <article class="card">
-          <h2>本周目标</h2>
-          <ul id="goals" class="goals"></ul>
-        </article>
-
-        <article class="card">
-          <h2>今日复盘</h2>
-          <textarea id="reflection" placeholder="写下今天做得好的地方、可优化点、明日计划..."></textarea>
-          <p class="hint">复盘会保存到浏览器本地（仅你可见）。</p>
-        </article>
-      </section>
-
-      <footer class="foot">
-        <span id="genInfo"></span>
-      </footer>
+      <footer class="foot" id="genInfo"></footer>
     </main>
 
     <script src="./app.js"></script>
