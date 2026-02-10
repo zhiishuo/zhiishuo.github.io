@@ -8,7 +8,7 @@
       name="description"
       content="Personal homepage of Zhishuo — multimodal AI research, selected projects, and collaboration contact."
     />
-    <meta name="theme-color" content="#0d111a" />
+    <meta name="theme-color" content="#f8f8f6" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -71,7 +71,7 @@
           </div>
         </div>
 
-        <aside class="hero-card reveal" aria-label="Profile summary card" style="--delay: 100ms">
+        <aside class="hero-aside reveal" aria-label="Profile summary" style="--delay: 100ms">
           <img
             class="profile-photo"
             src="https://github.com/zhishuo.png"
@@ -90,7 +90,7 @@
         </aside>
       </section>
 
-      <section id="about" class="section card reveal" style="--delay: 20ms">
+      <section id="about" class="section reveal" style="--delay: 20ms">
         <div class="section-head">
           <h2 data-i18n="about_title">About</h2>
         </div>
@@ -103,19 +103,19 @@
         <div class="section-head">
           <h2 data-i18n="research_title">Research Focus</h2>
         </div>
-        <div class="grid three research-grid">
-          <article class="card interactive research-card" style="--delay: 0ms">
-            <p class="card-kicker">Core Research</p>
+        <div class="list-grid three research-grid">
+          <article class="list-item interactive" style="--delay: 0ms">
+            <p class="item-kicker">Core Research</p>
             <h3 data-i18n="r1_title">Multimodal Emotion Understanding</h3>
             <p data-i18n="r1_body">Modeling emotion from speech, vision, and text with depth-aware representations.</p>
           </article>
-          <article class="card interactive research-card" style="--delay: 60ms">
-            <p class="card-kicker">Systems</p>
+          <article class="list-item interactive" style="--delay: 60ms">
+            <p class="item-kicker">Systems</p>
             <h3 data-i18n="r2_title">LLM + MoE Systems</h3>
             <p data-i18n="r2_body">Task-adaptive routing and efficient expert collaboration for better generalization.</p>
           </article>
-          <article class="card interactive research-card" style="--delay: 120ms">
-            <p class="card-kicker">Impact</p>
+          <article class="list-item interactive" style="--delay: 120ms">
+            <p class="item-kicker">Impact</p>
             <h3 data-i18n="r3_title">Applied AI Products</h3>
             <p data-i18n="r3_body">Bridging research and deployment through reliable workflows and automation.</p>
           </article>
@@ -127,30 +127,26 @@
           <h2 data-i18n="projects_title">Selected Projects</h2>
           <p class="section-note" data-i18n="projects_note">Representative directions across research and productization.</p>
         </div>
-        <div class="grid two projects-grid">
-          <article class="card interactive project-card" style="--delay: 0ms">
-            <div class="project-head"><p class="card-kicker">Research</p><h3>HEME</h3></div>
-            <p data-i18n="p1_body">
-              Hierarchical emotion modeling with adaptive multi-level mixture-of-experts.
-            </p>
+        <div class="list-grid two projects-grid">
+          <article class="list-item interactive" style="--delay: 0ms">
+            <p class="item-kicker">Research</p>
+            <h3>HEME</h3>
+            <p data-i18n="p1_body">Hierarchical emotion modeling with adaptive multi-level mixture-of-experts.</p>
           </article>
-          <article class="card interactive project-card" style="--delay: 60ms">
-            <div class="project-head"><p class="card-kicker">Platform</p><h3>Emotion Agent Stack</h3></div>
-            <p data-i18n="p2_body">
-              End-to-end pipeline for multimodal emotion analysis and conversational AI.
-            </p>
+          <article class="list-item interactive" style="--delay: 60ms">
+            <p class="item-kicker">Platform</p>
+            <h3>Emotion Agent Stack</h3>
+            <p data-i18n="p2_body">End-to-end pipeline for multimodal emotion analysis and conversational AI.</p>
           </article>
-          <article class="card interactive project-card" style="--delay: 120ms">
-            <div class="project-head"><p class="card-kicker">Workflow</p><h3>OpenClaw Workflow Lab</h3></div>
-            <p data-i18n="p3_body">
-              Personal automation workflows for research, coding, and assistant orchestration.
-            </p>
+          <article class="list-item interactive" style="--delay: 120ms">
+            <p class="item-kicker">Workflow</p>
+            <h3>OpenClaw Workflow Lab</h3>
+            <p data-i18n="p3_body">Personal automation workflows for research, coding, and assistant orchestration.</p>
           </article>
-          <article class="card interactive project-card" style="--delay: 180ms">
-            <div class="project-head"><p class="card-kicker">Tooling</p><h3>Paper-to-Product Toolkit</h3></div>
-            <p data-i18n="p4_body">
-              Templates and scripts to accelerate turning academic ideas into usable demos.
-            </p>
+          <article class="list-item interactive" style="--delay: 180ms">
+            <p class="item-kicker">Tooling</p>
+            <h3>Paper-to-Product Toolkit</h3>
+            <p data-i18n="p4_body">Templates and scripts to accelerate turning academic ideas into usable demos.</p>
           </article>
         </div>
       </section>
@@ -160,16 +156,14 @@
           <h2 data-i18n="news_title">News</h2>
           <p class="section-note" data-i18n="news_note">Latest paper and research updates.</p>
         </div>
-        <div class="card">
-          <ul class="news-list">
-            <li><span class="news-year">2025</span><span data-i18n="news_1">🎉 Our paper "AV-RISE: Hierarchical Cross-Modal Denoising for Learning Robust Audio-Visual Speech Representation" is accepted at ACM MM 2025.</span></li>
-            <li><span class="news-year">2024</span><span data-i18n="news_2">📖 Published "WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting" in ICIC 2025.</span></li>
-            <li><span class="news-year">2024</span><span data-i18n="news_3">🎉 Our paper "AMG-AVSR: Adaptive Modality Guidance for Audio-Visual Speech Recognition via Progressive Feature Enhancement" is accepted at ACML 2024.</span></li>
-          </ul>
-        </div>
+        <ul class="news-list">
+          <li><span class="news-year">2025</span><span data-i18n="news_1">🎉 Our paper "AV-RISE: Hierarchical Cross-Modal Denoising for Learning Robust Audio-Visual Speech Representation" is accepted at ACM MM 2025.</span></li>
+          <li><span class="news-year">2024</span><span data-i18n="news_2">📖 Published "WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting" in ICIC 2025.</span></li>
+          <li><span class="news-year">2024</span><span data-i18n="news_3">🎉 Our paper "AMG-AVSR: Adaptive Modality Guidance for Audio-Visual Speech Recognition via Progressive Feature Enhancement" is accepted at ACML 2024.</span></li>
+        </ul>
       </section>
 
-      <section id="resume" class="section card reveal" style="--delay: 46ms">
+      <section id="resume" class="section reveal" style="--delay: 46ms">
         <div class="section-head section-inline">
           <h2 data-i18n="resume_title">Resume</h2>
           <a class="btn" href="https://github.com/zhiishuo/zhiishuo.github.io" target="_blank" rel="noreferrer" data-i18n="resume_btn">View source</a>
@@ -177,21 +171,21 @@
         <p data-i18n="resume_body">For full CV details, publication list, and timeline, please contact me by email or GitHub. (You can replace this block with your PDF CV link anytime.)</p>
       </section>
 
-      <section id="portfolio" class="section card reveal" style="--delay: 47ms">
+      <section id="portfolio" class="section reveal" style="--delay: 47ms">
         <div class="section-head section-inline">
           <h2 data-i18n="portfolio_title">Portfolio</h2>
         </div>
         <p data-i18n="portfolio_body">Selected works are shown above in Projects. This section is reserved for future demos, figures, and interactive showcases.</p>
       </section>
 
-      <section id="blog" class="section card reveal" style="--delay: 48ms">
+      <section id="blog" class="section reveal" style="--delay: 48ms">
         <div class="section-head section-inline">
           <h2 data-i18n="blog_title">Blog</h2>
         </div>
         <p data-i18n="blog_body">Blog posts are coming soon. You can use this section for research notes, engineering logs, and project retrospectives.</p>
       </section>
 
-      <section id="contact" class="section card reveal" style="--delay: 50ms">
+      <section id="contact" class="section reveal" style="--delay: 50ms">
         <div class="section-head section-inline">
           <h2 data-i18n="contact_title">Contact</h2>
           <span class="contact-chip" data-i18n="contact_chip">Available for collaboration</span>
