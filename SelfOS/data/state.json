@@ -1,0 +1,30 @@
+{
+  "lastUpdated": "2026-02-10T20:36:56.171826+08:00",
+  "goals": [
+    {
+      "id": "g1",
+      "title": "Ship one meaningful project this week",
+      "status": "active",
+      "note": "Focus on tiny daily progress"
+    },
+    {
+      "id": "g2",
+      "title": "Read 30 min technical material daily",
+      "status": "active",
+      "note": "Capture 1 learning note after reading"
+    },
+    {
+      "id": "g3",
+      "title": "Reduce context-switching",
+      "status": "blocked",
+      "note": "Need clearer daily planning"
+    }
+  ],
+  "activities": [],
+  "learningLog": [],
+  "timeline": [],
+  "streaks": {
+    "learningStreak": 1,
+    "activityStreak": 1
+  }
+}

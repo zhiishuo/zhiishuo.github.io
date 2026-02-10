@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SelfOS · 个人成长仪表盘</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+    <main class="container">
+      <header class="top">
+        <div>
+          <h1>SelfOS</h1>
+          <p>你的每日学习与行动系统</p>
+        </div>
+        <div class="top-actions">
+          <button id="refreshBtn">刷新页面</button>
+        </div>
+      </header>
+
+      <section class="stats" id="stats"></section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>今日活动时间线</h2>
+          <ul id="timeline" class="timeline"></ul>
+        </article>
+
+        <article class="card">
+          <h2>学习提炼</h2>
+          <ul id="learning" class="list"></ul>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>本周目标</h2>
+          <ul id="goals" class="goals"></ul>
+        </article>
+
+        <article class="card">
+          <h2>今日复盘</h2>
+          <textarea id="reflection" placeholder="写下今天做得好的地方、可优化点、明日计划..."></textarea>
+          <p class="hint">复盘会保存到浏览器本地（仅你可见）。</p>
+        </article>
+      </section>
+
+      <footer class="foot">
+        <span id="genInfo"></span>
+      </footer>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
