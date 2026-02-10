@@ -22,7 +22,10 @@
 
     <header class="site-header" id="top">
       <div class="container nav-wrap">
-        <a class="brand" href="#top" aria-label="Zhishuo home">Zhishuo</a>
+        <a class="brand" href="#top" aria-label="Zhishuo home">
+          <span class="brand-mark">Z</span>
+          <span>Zhishuo</span>
+        </a>
 
         <button
           id="menuToggle"
@@ -47,7 +50,7 @@
 
     <main id="main-content" class="container">
       <section class="hero reveal" aria-labelledby="hero-title">
-        <div class="hero-copy">
+        <div class="hero-copy reveal" style="--delay: 0ms">
           <p class="eyebrow" data-i18n="hero_tag">Hi, I'm</p>
           <h1 id="hero-title">Zhishuo</h1>
           <p class="subtitle" data-i18n="hero_subtitle">
@@ -64,7 +67,7 @@
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Profile summary card">
+        <aside class="hero-card reveal" aria-label="Profile summary card" style="--delay: 100ms">
           <img
             class="profile-photo"
             src="https://github.com/zhishuo.png"
@@ -83,7 +86,7 @@
         </aside>
       </section>
 
-      <section id="about" class="section card reveal">
+      <section id="about" class="section card reveal" style="--delay: 20ms">
         <div class="section-head">
           <h2 data-i18n="about_title">About</h2>
         </div>
@@ -92,52 +95,55 @@
         </p>
       </section>
 
-      <section id="research" class="section reveal">
+      <section id="research" class="section reveal" style="--delay: 30ms">
         <div class="section-head">
           <h2 data-i18n="research_title">Research Focus</h2>
         </div>
-        <div class="grid three">
-          <article class="card interactive">
+        <div class="grid three research-grid">
+          <article class="card interactive research-card" style="--delay: 0ms">
+            <p class="card-kicker">Core Research</p>
             <h3 data-i18n="r1_title">Multimodal Emotion Understanding</h3>
             <p data-i18n="r1_body">Modeling emotion from speech, vision, and text with depth-aware representations.</p>
           </article>
-          <article class="card interactive">
+          <article class="card interactive research-card" style="--delay: 60ms">
+            <p class="card-kicker">Systems</p>
             <h3 data-i18n="r2_title">LLM + MoE Systems</h3>
             <p data-i18n="r2_body">Task-adaptive routing and efficient expert collaboration for better generalization.</p>
           </article>
-          <article class="card interactive">
+          <article class="card interactive research-card" style="--delay: 120ms">
+            <p class="card-kicker">Impact</p>
             <h3 data-i18n="r3_title">Applied AI Products</h3>
             <p data-i18n="r3_body">Bridging research and deployment through reliable workflows and automation.</p>
           </article>
         </div>
       </section>
 
-      <section id="projects" class="section reveal">
+      <section id="projects" class="section reveal" style="--delay: 40ms">
         <div class="section-head section-inline">
           <h2 data-i18n="projects_title">Selected Projects</h2>
           <p class="section-note" data-i18n="projects_note">Representative directions across research and productization.</p>
         </div>
-        <div class="grid two">
-          <article class="card interactive">
-            <h3>HEME</h3>
+        <div class="grid two projects-grid">
+          <article class="card interactive project-card" style="--delay: 0ms">
+            <div class="project-head"><p class="card-kicker">Research</p><h3>HEME</h3></div>
             <p data-i18n="p1_body">
               Hierarchical emotion modeling with adaptive multi-level mixture-of-experts.
             </p>
           </article>
-          <article class="card interactive">
-            <h3>Emotion Agent Stack</h3>
+          <article class="card interactive project-card" style="--delay: 60ms">
+            <div class="project-head"><p class="card-kicker">Platform</p><h3>Emotion Agent Stack</h3></div>
             <p data-i18n="p2_body">
               End-to-end pipeline for multimodal emotion analysis and conversational AI.
             </p>
           </article>
-          <article class="card interactive">
-            <h3>OpenClaw Workflow Lab</h3>
+          <article class="card interactive project-card" style="--delay: 120ms">
+            <div class="project-head"><p class="card-kicker">Workflow</p><h3>OpenClaw Workflow Lab</h3></div>
             <p data-i18n="p3_body">
               Personal automation workflows for research, coding, and assistant orchestration.
             </p>
           </article>
-          <article class="card interactive">
-            <h3>Paper-to-Product Toolkit</h3>
+          <article class="card interactive project-card" style="--delay: 180ms">
+            <div class="project-head"><p class="card-kicker">Tooling</p><h3>Paper-to-Product Toolkit</h3></div>
             <p data-i18n="p4_body">
               Templates and scripts to accelerate turning academic ideas into usable demos.
             </p>
@@ -145,7 +151,7 @@
         </div>
       </section>
 
-      <section id="contact" class="section card reveal">
+      <section id="contact" class="section card reveal" style="--delay: 50ms">
         <div class="section-head section-inline">
           <h2 data-i18n="contact_title">Contact</h2>
           <span class="contact-chip" data-i18n="contact_chip">Available for collaboration</span>
@@ -153,7 +159,7 @@
         <p data-i18n="contact_body">Open to collaboration, research exchange, and product building.</p>
 
         <div class="contact-grid">
-          <div class="contact-item">
+          <div class="contact-item featured">
             <p class="label" data-i18n="contact_email_label">Email</p>
             <a href="mailto:zhiishuo@163.com">zhiishuo@163.com</a>
           </div>

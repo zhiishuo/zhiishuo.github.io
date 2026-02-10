@@ -61,8 +61,10 @@ const primaryNav = document.getElementById('primaryNav');
 const navLinks = [...document.querySelectorAll('.primary-nav a')];
 const toTop = document.getElementById('toTop');
 const revealItems = [...document.querySelectorAll('.reveal')];
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let lang = localStorage.getItem('lang') || 'en';
+let ticking = false;
 
 function renderLanguage() {
   html.lang = lang;
@@ -120,26 +122,38 @@ const sectionObserver = new IntersectionObserver(
 );
 sections.forEach((s) => sectionObserver.observe(s));
 
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
-revealItems.forEach((item) => revealObserver.observe(item));
+if (reduceMotion) {
+  revealItems.forEach((item) => item.classList.add('in'));
+} else {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  revealItems.forEach((item) => revealObserver.observe(item));
+}
 
-window.addEventListener('scroll', () => {
+function handleScroll() {
   const show = window.scrollY > 420;
   toTop.classList.toggle('show', show);
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(handleScroll);
+    ticking = true;
+  }
 });
 
 toTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
 });
 
 year.textContent = String(new Date().getFullYear());
