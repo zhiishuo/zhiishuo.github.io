@@ -37,23 +37,94 @@ const i18n = {
   }
 };
 
-let lang = localStorage.getItem('lang') || 'en';
-const toggle = document.getElementById('langToggle');
+const html = document.documentElement;
+const langToggle = document.getElementById('langToggle');
+const year = document.getElementById('year');
+const menuToggle = document.getElementById('menuToggle');
+const primaryNav = document.getElementById('primaryNav');
+const navLinks = [...document.querySelectorAll('.primary-nav a')];
+const toTop = document.getElementById('toTop');
+const revealItems = [...document.querySelectorAll('.reveal')];
 
-function render() {
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const k = el.getAttribute('data-i18n');
-    if (i18n[lang][k]) el.textContent = i18n[lang][k];
+let lang = localStorage.getItem('lang') || 'en';
+
+function renderLanguage() {
+  html.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang] && i18n[lang][key]) {
+      el.textContent = i18n[lang][key];
+    }
   });
-  toggle.textContent = lang === 'en' ? '中文' : 'EN';
+  langToggle.textContent = lang === 'en' ? '中文' : 'EN';
   localStorage.setItem('lang', lang);
 }
 
-toggle.addEventListener('click', () => {
+function closeMenu() {
+  primaryNav.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+}
+
+langToggle.addEventListener('click', () => {
   lang = lang === 'en' ? 'zh' : 'en';
-  render();
+  renderLanguage();
 });
 
-document.getElementById('year').textContent = new Date().getFullYear();
-render();
+menuToggle.addEventListener('click', () => {
+  const willOpen = !primaryNav.classList.contains('open');
+  primaryNav.classList.toggle('open', willOpen);
+  menuToggle.setAttribute('aria-expanded', String(willOpen));
+});
+
+navLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    if (window.matchMedia('(max-width: 860px)').matches) closeMenu();
+  });
+});
+
+window.addEventListener('resize', () => {
+  if (!window.matchMedia('(max-width: 860px)').matches) closeMenu();
+});
+
+const sections = navLinks
+  .map((link) => document.querySelector(link.getAttribute('href')))
+  .filter(Boolean);
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach((link) => {
+        const active = link.getAttribute('href') === `#${entry.target.id}`;
+        link.classList.toggle('active', active);
+      });
+    });
+  },
+  { threshold: 0.35, rootMargin: '-20% 0px -45% 0px' }
+);
+sections.forEach((s) => sectionObserver.observe(s));
+
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+revealItems.forEach((item) => revealObserver.observe(item));
+
+window.addEventListener('scroll', () => {
+  const show = window.scrollY > 420;
+  toTop.classList.toggle('show', show);
+});
+
+toTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+year.textContent = String(new Date().getFullYear());
+renderLanguage();
