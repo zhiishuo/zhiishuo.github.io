@@ -408,17 +408,40 @@ a { color: #2a3f74; }
 @media (max-width: 930px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 14px;
   }
+
+  /* Move identity photo into a compact top block on mobile/tablet */
   .hero-aside {
-    border-left: none;
-    border-top: 1px solid var(--line);
-    padding-left: 0;
-    padding-top: 14px;
+    order: -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    padding: 0;
+    margin-bottom: 4px;
   }
+
   .profile-photo {
-    width: min(210px, 55vw);
+    width: 104px;
+    height: 104px;
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
   }
+
+  .profile-body {
+    margin-top: 0;
+  }
+
+  .profile-role {
+    font-size: 0.95rem;
+  }
+
+  .profile-points {
+    margin-top: 6px;
+    font-size: 0.86rem;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
   }
@@ -460,6 +483,22 @@ a { color: #2a3f74; }
 
   main { padding-top: 34px; }
   .section { margin-top: 42px; }
+}
+
+@media (max-width: 560px) {
+  .hero-aside {
+    align-items: flex-start;
+  }
+
+  .profile-photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 12px;
+  }
+
+  .profile-points {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
