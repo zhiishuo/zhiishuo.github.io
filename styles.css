@@ -308,6 +308,20 @@ h2 {
   font-weight: 600;
 }
 
+.photo-row {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.photo-row img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
 .contact-chip {
   border: 1px solid var(--line-strong);
   background: var(--surface);
@@ -434,7 +448,8 @@ a { color: var(--brand); }
   }
 
   .list-grid.two,
-  .list-grid.three {
+  .list-grid.three,
+  .photo-row {
     grid-template-columns: 1fr;
   }
 
