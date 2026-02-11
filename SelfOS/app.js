@@ -141,8 +141,18 @@ function renderGoalCards(activities, checklistState, weeklyTracks) {
       <article class="card goal-card">
         <h2>${TRACKS[id].name} · ${TRACKS[id].zh}</h2>
         <p class="goal-meta">今日 ${stat.doneItems}/${stat.totalItems} checklist · 自动摄取 ${stat.count} 条活动</p>
-        <div class="meter"><div class="meter-fill" style="width:${stat.daily}%"></div></div>
-        <div class="goal-stats"><span>Daily ${stat.daily}%</span><span>Weekly ${stat.weekly}%</span></div>
+
+        <div class="progress-row">
+          <div class="progress-head"><span>Checklist 进度</span><strong>${stat.doneItems}/${stat.totalItems}</strong></div>
+          <div class="meter"><div class="meter-fill" style="width:${Math.round((stat.doneItems / Math.max(stat.totalItems, 1)) * 100)}%"></div></div>
+        </div>
+
+        <div class="progress-row">
+          <div class="progress-head"><span>Daily 总进度</span><strong>${stat.daily}%</strong></div>
+          <div class="meter"><div class="meter-fill" style="width:${stat.daily}%"></div></div>
+        </div>
+
+        <div class="goal-stats"><span>Weekly ${stat.weekly}%</span><span>活动 ${stat.count} 条</span></div>
         <span class="badge">${FACETS[id].join(' · ')}</span>
       </article>
     `;
@@ -170,11 +180,13 @@ function renderTrackSections(activities, checklistState, weeklyTracks) {
     const track = TRACKS[trackId];
     const items = checklistState[day][trackId] || [];
     const stat = getTrackStats(trackId, activities, checklistState, weeklyTracks);
+    const checklistPercent = Math.round((stat.doneItems / Math.max(stat.totalItems, 1)) * 100);
     return `
       <article class="card track-card" data-track="${trackId}">
         <h3>${track.name} · ${track.zh}</h3>
         <p class="track-sub">${track.subtitle}</p>
-        <div class="meter"><div class="meter-fill" style="width:${stat.daily}%"></div></div>
+        <div class="track-progress-label">已完成 <strong>${stat.doneItems}/${stat.totalItems}</strong> · ${checklistPercent}%</div>
+        <div class="meter"><div class="meter-fill" style="width:${checklistPercent}%"></div></div>
         <ul class="checklist">
           ${items.map((it, idx) => `
             <li class="item">
