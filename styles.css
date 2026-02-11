@@ -137,77 +137,104 @@ main { padding-block: 54px 30px; }
 
 .hero {
   display: grid;
-  grid-template-columns: 1.25fr minmax(250px, 330px);
-  gap: 38px;
-  align-items: start;
-  margin-bottom: 24px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 320px);
+  gap: clamp(1.2rem, 3vw, 3rem);
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+.hero-copy {
+  max-width: 700px;
 }
 .eyebrow {
   margin: 0;
   color: var(--brand);
-  font-size: 0.86rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 h1 {
-  margin: 8px 0 0;
-  font-size: clamp(2.4rem, 8vw, 5rem);
-  line-height: 0.99;
-  letter-spacing: -0.04em;
+  margin: 10px 0 0;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
 }
 .subtitle {
   margin: 20px 0 0;
-  max-width: 740px;
+  max-width: 62ch;
   color: var(--muted);
-  font-size: clamp(1rem, 1.28vw, 1.18rem);
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
 }
 .hero-meta {
-  margin-top: 18px;
+  margin-top: 16px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
 }
 .hero-meta span {
-  border: 1px solid var(--line);
-  background: color-mix(in oklab, var(--surface) 80%, transparent);
+  border: 1px solid color-mix(in oklab, var(--line) 82%, transparent);
+  background: color-mix(in oklab, var(--surface) 86%, transparent);
   border-radius: 999px;
   padding: 5px 10px;
-  font-size: 0.8rem;
-  color: #3f4653;
+  font-size: 0.78rem;
+  color: #404757;
 }
 .actions {
-  margin-top: 28px;
+  margin-top: 24px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
 .hero-aside {
-  border-left: 1px solid var(--line);
-  padding-left: 22px;
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 300px;
+}
+.photo-frame {
+  position: relative;
+  padding: 10px;
+  border-radius: 32px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(241,245,255,0.9));
+  box-shadow: 0 14px 40px rgba(31, 54, 107, 0.08);
+}
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: -16px 12% auto;
+  height: 34%;
+  border-radius: 999px;
+  background: radial-gradient(circle at center, rgba(31, 79, 209, 0.15), transparent 70%);
+  z-index: -1;
 }
 .profile-photo {
-  width: min(220px, 100%);
+  width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 14px;
+  border-radius: 24px;
   object-fit: cover;
   object-position: center;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  display: block;
 }
-.profile-body { margin-top: 12px; }
+.profile-body {
+  margin-top: 14px;
+  padding-inline: 2px;
+}
 .profile-role {
   margin: 0;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
 }
 .profile-points {
-  margin: 9px 0 0;
-  padding-left: 17px;
+  margin: 8px 0 0;
+  padding-left: 16px;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
 }
-.profile-points li { margin-bottom: 6px; }
+.profile-points li { margin-bottom: 5px; }
 
 .btn {
   text-decoration: none;
@@ -408,38 +435,32 @@ a { color: #2a3f74; }
 @media (max-width: 930px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 16px;
   }
 
-  /* Move identity photo into a compact top block on mobile/tablet */
   .hero-aside {
     order: -1;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: none;
-    padding: 0;
-    margin-bottom: 4px;
+    justify-self: center;
+    max-width: 220px;
+    text-align: center;
+  }
+
+  .photo-frame {
+    padding: 8px;
+    border-radius: 26px;
   }
 
   .profile-photo {
-    width: 104px;
-    height: 104px;
-    aspect-ratio: 1 / 1;
-    border-radius: 14px;
+    border-radius: 20px;
   }
 
   .profile-body {
-    margin-top: 0;
-  }
-
-  .profile-role {
-    font-size: 0.95rem;
+    margin-top: 10px;
   }
 
   .profile-points {
     margin-top: 6px;
-    font-size: 0.86rem;
+    text-align: left;
   }
 
   .contact-grid {
@@ -486,18 +507,48 @@ a { color: #2a3f74; }
 }
 
 @media (max-width: 560px) {
-  .hero-aside {
-    align-items: flex-start;
+  .container {
+    width: min(1060px, 100% - 1.5rem);
   }
 
-  .profile-photo {
-    width: 88px;
-    height: 88px;
-    border-radius: 12px;
+  h1 {
+    font-size: clamp(2.25rem, 15vw, 3rem);
+  }
+
+  .subtitle {
+    margin-top: 16px;
+    font-size: 0.98rem;
+  }
+
+  .hero-meta {
+    margin-top: 14px;
+    gap: 6px;
+  }
+
+  .hero-meta span {
+    font-size: 0.74rem;
+    padding: 4px 9px;
+  }
+
+  .hero-aside {
+    max-width: 180px;
+  }
+
+  .profile-role {
+    font-size: 0.9rem;
   }
 
   .profile-points {
     display: none;
+  }
+
+  .actions {
+    margin-top: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
   }
 }
 
