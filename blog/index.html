@@ -21,9 +21,6 @@
       <a class="back-link" href="../">← Back to homepage</a>
       <p class="eyebrow">Zhishuo Blog</p>
       <h1>笔记与备忘</h1>
-      <p class="agenda">
-        我这几篇文章其实都在追同一个问题：当多模态系统面对证据退化、模态冲突和高不确定性时，怎样还能做出可靠判断。
-      </p>
     </header>
 
     <main class="shell layout">
@@ -36,7 +33,7 @@
       </aside>
 
       <div class="posts">
-        <article class="post post-workflow" id="workflow">
+        <article class="post" id="workflow">
           <div class="post-meta">
             <span>2026-04</span>
             <span>Workflow</span>
@@ -45,54 +42,66 @@
           <p class="lede">
             我真正开始认真对待流程，不是因为想把研究做得更规范，而是因为几个项目都在同一个地方出过问题：问题定义、失败样本和执行计划散在不同地方，最后方法越做越漂亮，研究问题却越做越偏。
           </p>
-          <div class="insight-grid">
-            <section class="insight">
-              <p class="insight-kicker">问题场景</p>
-              <p>像 AV-RISE、HEME 这样的项目，一旦没有把复杂样本、预期主张和执行顺序固定下来，很容易从“我要解释什么失败”滑向“我还能再加什么模块”。</p>
-            </section>
-            <section class="insight">
-              <p class="insight-kicker">我的判断</p>
-              <p>我后来只保留四个外化对象：source of truth、review note、claim/evidence matrix、execution plan。它们的作用不是做文档，而是防止研究在中途换题。</p>
-            </section>
-            <section class="insight">
-              <p class="insight-kicker">我怎么验证</p>
-              <p>如果这套流程是有效的，我应该随时能回答三件事：我要解释哪类失败、我准备用什么证据支撑、下一步实验为什么值得做。</p>
-            </section>
-          </div>
-          <p class="takeaway">
-            我现在更相信这一点：没有外化对象的研究，最后通常会被方法形式带偏；有了清晰的外部骨架，判断才有机会被持续修正。
+
+          <h3>我为什么越来越在意流程</h3>
+          <p>
+            这些年我逐渐不再相信“多读论文，灵感总会自己出现”这种科研叙事。对我更有效的方式，是把研究当成一个被持续维护的系统：问题定义、文献地图、实验执行、写作结构和失败复盘，最好都能落到稳定的外部对象上，而不是只存在脑子里。
           </p>
+          <p>
+            先从<strong>现象</strong>而不是方法出发，确认哪一种失败模式值得研究；再做一张克制的文献地图，说明已有方法为什么不够；接着把要证明的内容写成主张与证据矩阵；最后再进入实现和实验。这样做的好处是，研究不容易在中途漂移成另一个问题。
+          </p>
+
+          <h3>它怎么真正改变项目</h3>
+          <p>
+            在我的习惯里，source of truth 文档负责定义当前版本的工作内容，review note 记录哪些假设已经被推翻，execution plan 把任务拆成可执行步骤。像 SelfOS 这种本地工具，对我来说不是“生产力玩具”，而是给研究流程增加外部记忆和可见反馈。
+          </p>
+          <p>
+            这套流程会直接改变项目走向。像 AV-RISE、HEME 这类线索，如果没有把失败样本、论文主张和执行拆分写清楚，很容易在“方法很好看”和“问题其实没定义准”之间来回摇摆。没有外化对象的研究，最后往往会被方法形式带偏；有了清晰的外部骨架，判断才有机会被持续修正。
+          </p>
+
+          <h3>我现在保留的几条原则</h3>
+          <ul>
+            <li>问题先行，不被方法名词牵着走。</li>
+            <li>文献服务于论证，不服务于堆砌。</li>
+            <li>实验服务于主张，不服务于表格数量。</li>
+            <li>写作尽早开始，让结构反过来约束实现。</li>
+            <li>所有关键决定都尽量留下可回看的痕迹。</li>
+          </ul>
         </article>
 
-        <article class="post post-avrise" id="av-rise">
+        <article class="post" id="av-rise">
           <div class="post-meta">
             <span>2025-09</span>
             <span>Paper</span>
           </div>
-          <h2>AV-RISE 让我把重点从融合转向证据可靠性</h2>
+          <h2>AV-RISE：我为什么重新理解鲁棒音视频语音表征</h2>
           <p class="lede">
-            这条工作最打动我的地方，不是它证明“多模态有用”，而是它逼我承认：在真实音视频语音里，先要解决的根本不是融合，而是证据到底还靠不靠谱。
+            在鲁棒音视频语音识别这条线上，AV-RISE 对我最重要的启发不是“又做了一个多模态模型”，而是把跨模态去噪提升成了表征学习本身的问题。模型难的不是接入两个模态，而是在它们不一致时仍然知道该如何组织证据。
           </p>
-          <div class="insight-grid">
-            <section class="insight">
-              <p class="insight-kicker">失败场景</p>
-              <p>真正难的样本通常不是模态缺一个，而是复杂噪声、轻微不同步、视觉遮挡、口型模糊和弱信号同时出现。模型错的原因，经常不是“信息太少”，而是把不可靠信息也当成了证据。</p>
-            </section>
-            <section class="insight">
-              <p class="insight-kicker">核心判断</p>
-              <p>AV-RISE 让我更相信，跨模态去噪应该被看成表征学习本身的一部分。重点不是再加一层更强融合，而是把 multi-level evidence 重新组织起来，做 weak-signal repair 和 progressive enhancement。</p>
-            </section>
-            <section class="insight">
-              <p class="insight-kicker">迁移价值</p>
-              <p>后来我转回多模态情感理解时，先问的就不是“这几个模态怎么融合”，而是“这条样本里每个模态到底提供了什么证据”。这不是领域类比，而是同一种 evidence reorganization 问题的迁移。</p>
-            </section>
-          </div>
-          <p class="takeaway">
-            所以对我来说，AV-RISE 不只是一个鲁棒 AVSR 工作，更像一个判断起点：当证据退化时，系统要先学会分辨哪些信号还能信，再谈后面的融合和决策。
+
+          <h3>真正棘手的样本长什么样</h3>
+          <p>
+            这条线对我很重要，因为它把一个常被低估的问题摆到了台面上：真实场景里的音视频语音理解，难点并不只是把两个模态拼接起来，而是在它们不可靠、不同步、受污染甚至彼此误导时，模型究竟该相信什么。
+          </p>
+          <p>
+            很多系统把多模态融合理解成天然增益，好像只要视觉和音频都接进来，结果就会更稳。但在真实环境里，复杂噪声、轻微不同步、视觉遮挡、口型模糊和弱信号同时出现时，模型错的原因经常不是“信息太少”，而是把不可靠信息也当成了证据。
+          </p>
+
+          <h3>AV-RISE 真正改变我的地方</h3>
+          <p>
+            对我而言，AV-RISE 的价值不只是一个方法结果，而是一种看问题的方式：去噪不该被看成简单前处理，而应被视为表征学习本身的一部分。所谓层级式跨模态去噪，本质上是在不同层级重新组织音视频之间的互补关系，让模型不仅看到共同信息，还能从不一致中分辨哪些是噪声，哪些反而是补充线索。
+          </p>
+          <p>
+            真正让我在意的，是复杂噪声、模态不一致和弱信号修复场景，因为系统一旦在这里判断失真，后面再强的融合也补不回来。对 AVSR 来说，问题从来不只是模态够不够多，而是跨模态证据会不会互相污染。
+          </p>
+
+          <h3>它怎样迁移到我后面的工作</h3>
+          <p>
+            后来我做多模态情感任务时，先问的就不再是“能不能融合”，而是这条样本里每个模态到底提供了什么证据。因为情感场景同样存在模态冲突、信号退化和细粒度证据缺失的问题。鲁棒语音表征和鲁棒情感理解，在我这里并不是完全独立的两条线，而是同一类证据重组问题在不同任务上的展开。
           </p>
         </article>
 
-        <article class="post post-agent" id="emotion-agent">
+        <article class="post" id="emotion-agent">
           <div class="post-meta">
             <span>2026-03</span>
             <span>Agent</span>
@@ -101,26 +110,33 @@
           <p class="lede">
             我不太想把情感 Agent 写成一个“很会共情”的人格壳子。真正值得研究的，是系统在信息不完整的时候，怎么判断该不该说、该先问什么、以及该不该停。
           </p>
-          <div class="insight-grid">
-            <section class="insight">
-              <p class="insight-kicker">典型失误</p>
-              <p>很多系统的问题不是不会安慰，而是太快理解、太快安慰、太快给建议。用户状态本来就模糊，它却直接给出确定性的介入，这一步一错，后面很容易越聊越偏。</p>
-            </section>
-            <section class="insight">
-              <p class="insight-kicker">研究对象</p>
-              <p>按 CARES 这条线去看，情感支持更像一个 intervention policy：先用 belief tracker 估计 emotion、need、preference、memory、risk、conflict 和 uncertainty，再由 clarification gate 和 stance planner 决定 reflect、clarify、suggest，还是 boundary / abstain。</p>
-            </section>
-            <section class="insight">
-              <p class="insight-kicker">怎么评估</p>
-              <p>这件事不该只看“回复像不像人”，而要看 clarification precision / recall、wrong-direct-answer rate、boundary failure、dependence risk，以及版本升级后有没有 destructive forgetting。</p>
-            </section>
-          </div>
-          <p class="takeaway">
+
+          <h3>我为什么对这个问题保持克制</h3>
+          <p>
+            我对“情感 Agent”一直比较警惕，因为它很容易被理解成一个会说安慰话、会模仿共情语气的对话系统。如果只是这样，它并不值得单独成为研究对象。对我来说，更值得研究的是：当系统面对不确定、模糊和长期互动时，它能否形成稳定的情感判断与介入策略。
+          </p>
+          <p>
+            很多系统的问题不是不会安慰，而是太快理解、太快安慰、太快给建议。用户状态本来就模糊，它却直接给出确定性的介入，这一步一错，后面很容易越聊越偏。
+          </p>
+
+          <h3>我现在更在意的结构</h3>
+          <p>
+            像 CARES 这类方法框架给我的最大启发是：情感支持的核心不是把回复表面写得更像人，而是把它建模成一个长期的 intervention policy，也就是在部分观测状态下决定“下一步该如何介入”。
+          </p>
+          <p>
+            如果只说最重要的几件事，我更在意它能不能先看出状态变化，能不能知道自己不确定，以及能不能在开口之前先确认。换成更具体的研究结构，我现在会把它拆成 belief tracker、clarification gate、multi-act stance planner，以及 versioned skill evolution。前者负责估计 emotion、need、preference、memory、risk、conflict 和 uncertainty，后者决定是 reflect、clarify、suggest，还是 boundary / abstain。
+          </p>
+
+          <h3>这类系统该怎么被判断</h3>
+          <p>
+            这件事不该只看“回复像不像人”，而要看 clarification precision / recall、wrong-direct-answer rate、boundary failure、dependence risk，以及版本升级后有没有 destructive forgetting。比如当用户表达模糊情绪时，先问一句确认问题，往往比直接安慰更有价值。
+          </p>
+          <p>
             所以我现在想做的情感 Agent，不是开放式陪伴人格，而是一个 bounded intervention system：它知道自己什么时候理解得不够，也知道什么时候应该先问、先停，或者干脆不往前走。
           </p>
         </article>
 
-        <article class="post post-models" id="emotion-llm">
+        <article class="post" id="emotion-llm">
           <div class="post-meta">
             <span>2026-04</span>
             <span>Models</span>
@@ -129,22 +145,21 @@
           <p class="lede">
             近两年这条线已经有了强 generalist baseline，也有了更完整的 benchmark。对我来说，真正值得继续挖的，不是统一模型还能不能更大，而是默认答案在 hard case 上什么时候该被怀疑。
           </p>
-          <div class="insight-grid">
-            <section class="insight">
-              <p class="insight-kicker">失败样本</p>
-              <p>最值得看的不是平均样本，而是高冲突样本：文本平静，语气紧张，视觉线索又往另一个方向拉。系统常常不是完全没看到证据，而是太快形成了一个顺手的默认答案。</p>
-            </section>
-            <section class="insight">
-              <p class="insight-kicker">我的判断</p>
-              <p>AffectGPT、Emotion-LLaMAv2 / MMEVerse 把强 baseline 往前推了很多，但 EMOE、CA-MER / MoSEAR 也已经说明，冲突与不确定不是边角现象。真正的瓶颈更像 selective repair：什么时候该相信默认答案，什么时候该重新组织证据。</p>
-            </section>
-            <section class="insight">
-              <p class="insight-kicker">我要验证什么</p>
-              <p>我关心的不是平均分会不会涨，而是 default answer 何时不可靠、只在 hard cases 干预会不会更稳，以及 late corrective re-entry 是否真的优于只改 output head。</p>
-            </section>
-          </div>
-          <p class="takeaway">
-            所以这篇的中心判断很简单：情感模型下一步的重点，不只是把 unified path 再做大，而是让系统学会识别默认答案的失效边界，并在必要时有节制地修复自己。
+
+          <h3>高冲突样本怎么暴露问题</h3>
+          <p>
+            最值得看的不是平均样本，而是高冲突样本：文本平静，语气紧张，视觉线索又往另一个方向拉。系统常常不是完全没看到证据，而是太快形成了一个顺手的默认答案。
+          </p>
+          <p>
+            AffectGPT、Emotion-LLaMAv2 / MMEVerse 把强 baseline 往前推了很多，但 EMOE、CA-MER / MoSEAR 也已经说明，冲突与不确定不是边角现象。真正的瓶颈更像 selective repair：什么时候该相信默认答案，什么时候该重新组织证据。
+          </p>
+
+          <h3>我真正关心的研究命题</h3>
+          <p>
+            我关心的不是平均分会不会涨，而是 default answer 何时不可靠、只在 hard cases 干预会不会更稳，以及 late corrective re-entry 是否真的优于只改 output head。
+          </p>
+          <p>
+            对我来说，HEME / selective repair 这条思路有吸引力，正是因为它把“什么时候不该继续相信默认答案”抬成了一等问题。情感模型下一步的重点，不只是把 unified path 再做大，而是让系统学会识别默认答案的失效边界，并在必要时有节制地修复自己。
           </p>
         </article>
       </div>
