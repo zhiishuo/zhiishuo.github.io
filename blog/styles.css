@@ -109,7 +109,24 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.72);
+  position: relative;
 }
+
+.post::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 20px 20px 0 0;
+  background: rgba(31, 79, 209, 0.18);
+}
+
+.post-workflow::before { background: rgba(31, 79, 209, 0.22); }
+.post-avrise::before { background: rgba(193, 116, 62, 0.24); }
+.post-agent::before { background: rgba(58, 128, 122, 0.24); }
+.post-models::before { background: rgba(95, 88, 162, 0.24); }
 
 .post-meta {
   display: flex;
@@ -149,6 +166,41 @@ h2 {
   text-wrap: pretty;
   border-left: 3px solid rgba(31, 79, 209, 0.28);
   background: rgba(244, 246, 251, 0.9);
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 22px 0 10px;
+}
+
+.insight {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.insight-kicker {
+  margin: 0 0 8px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.insight p:last-child {
+  margin: 0;
+}
+
+.takeaway {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  color: #233149;
+  font-weight: 600;
 }
 
 .post h3 {
@@ -195,6 +247,10 @@ h2 {
   .toc a {
     padding: 4px 0;
     border-top: 0 !important;
+  }
+
+  .insight-grid {
+    grid-template-columns: 1fr;
   }
 }
 
