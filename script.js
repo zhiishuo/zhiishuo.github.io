@@ -9,7 +9,7 @@ const i18n = {
     hero_point_2: 'Methods: cross-modal alignment, robust representation learning',
     hero_point_3: 'Open to academic collaboration and applied research transfer',
     about_title: 'About',
-    about_body: 'I am a Ph.D. candidate at the School of Computer Science, Sichuan University. My research centers on multimodal learning, affective computing, and robust speech understanding under real-world conditions. I work on multimodal sentiment analysis, cross-modal contrastive optimization, and noise-resilient speech recognition, with an emphasis on interpretability and generalization.',
+    about_body: 'I am a Ph.D. candidate at the School of Computer Science, Sichuan University. My research centers on <strong>multimodal learning</strong>, <strong>affective computing</strong>, <strong>agent systems</strong>, <strong>large models</strong>, and <strong>robust speech understanding</strong> under real-world conditions. I work on multimodal sentiment analysis, cross-modal contrastive optimization, noise-resilient speech recognition, and emotion-aware agent workflows, with an emphasis on <strong>interpretability</strong> and <strong>generalization</strong>.',
     research_title: 'Research Focus',
     r1_title: 'Multimodal Emotion Understanding', r1_body: 'Modeling emotion from speech, vision, and text with depth-aware representations.',
     r2_title: 'LLM + MoE Systems', r2_body: 'Task-adaptive routing and efficient expert collaboration for better generalization.',
@@ -57,7 +57,7 @@ const i18n = {
     hero_point_2: '方法方向：跨模态对齐与鲁棒表示学习',
     hero_point_3: '欢迎学术合作与研究成果转化交流',
     about_title: '关于我',
-    about_body: '我目前在四川大学计算机学院攻读博士学位。研究聚焦于真实场景下的多模态学习、情感计算与鲁棒语音理解，具体包括多模态情感分析、跨模态对比优化以及抗噪语音识别，关注模型的可解释性与泛化能力。',
+    about_body: '我目前在四川大学计算机学院攻读博士学位。研究聚焦于真实场景下的<strong>多模态学习</strong>、<strong>情感计算</strong>、<strong>Agent 系统</strong>、<strong>大模型</strong>与<strong>鲁棒语音理解</strong>，具体包括多模态情感分析、跨模态对比优化、抗噪语音识别以及情感感知 Agent 工作流，关注模型的<strong>可解释性</strong>与<strong>泛化能力</strong>。',
     research_title: '研究重点',
     r1_title: '多模态情感理解', r1_body: '用深度分层表示建模语音、视觉与文本中的情感信息。',
     r2_title: 'LLM + MoE 系统', r2_body: '通过任务自适应路由和专家协同提升模型泛化能力。',
@@ -111,11 +111,16 @@ let lang = localStorage.getItem('lang') || 'en';
 let ticking = false;
 
 function renderLanguage() {
+  const htmlKeys = new Set(['about_body']);
   html.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
     if (i18n[lang] && i18n[lang][key]) {
-      el.textContent = i18n[lang][key];
+      if (htmlKeys.has(key)) {
+        el.innerHTML = i18n[lang][key];
+      } else {
+        el.textContent = i18n[lang][key];
+      }
     }
   });
   langToggle.textContent = lang === 'en' ? '中文' : 'EN';
