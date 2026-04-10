@@ -137,20 +137,20 @@ main { padding-block: 54px 30px; }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 320px);
-  gap: clamp(1.2rem, 3vw, 3rem);
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 260px);
+  gap: clamp(1rem, 2.6vw, 2.1rem);
   align-items: center;
   margin-bottom: 1.8rem;
 }
 .hero-copy {
-  max-width: 700px;
+  max-width: 640px;
 }
 .eyebrow {
   margin: 0;
   color: var(--brand);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 h1 {
@@ -190,12 +190,12 @@ h1 {
   position: relative;
   justify-self: end;
   width: 100%;
-  max-width: 300px;
+  max-width: 248px;
 }
 .photo-frame {
   position: relative;
-  padding: 10px;
-  border-radius: 32px;
+  padding: 9px;
+  border-radius: 26px;
   background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(241,245,255,0.9));
   box-shadow: 0 14px 40px rgba(31, 54, 107, 0.08);
 }
@@ -211,7 +211,7 @@ h1 {
 .profile-photo {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 24px;
+  border-radius: 18px;
   object-fit: cover;
   object-position: center;
   border: 1px solid rgba(255, 255, 255, 0.75);
@@ -358,33 +358,32 @@ h2 {
   color: #4c5260;
   font-weight: 600;
 }
-.contact-grid {
+.contact-panel {
   margin-top: 14px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-.contact-item {
-  padding: 12px;
+  max-width: 520px;
+  padding: 18px 20px;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--surface);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(244,246,251,0.9));
 }
-.contact-item.featured {
-  border-color: var(--line-strong);
-  background: color-mix(in oklab, var(--surface) 94%, var(--brand-soft));
-}
-.contact-item .label {
+.contact-panel .label {
   margin: 0 0 4px;
   font-size: 0.78rem;
   color: #727888;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
-
-.contact-item a,
-.contact-item p {
-  color: #2a2f39;
+.contact-email {
+  display: inline-block;
+  text-decoration: none;
+  color: #1e2f58;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+}
+.contact-note {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 a { color: #2a3f74; }
@@ -441,7 +440,7 @@ a { color: #2a3f74; }
   .hero-aside {
     order: -1;
     justify-self: center;
-    max-width: 220px;
+    max-width: 210px;
     text-align: center;
   }
 
@@ -461,10 +460,6 @@ a { color: #2a3f74; }
   .profile-points {
     margin-top: 6px;
     text-align: left;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
   }
 }
 
