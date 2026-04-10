@@ -197,16 +197,6 @@ h1 {
   padding: 9px;
   border-radius: 26px;
   background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(241,245,255,0.9));
-  box-shadow: 0 14px 40px rgba(31, 54, 107, 0.08);
-}
-.photo-frame::before {
-  content: "";
-  position: absolute;
-  inset: -16px 12% auto;
-  height: 34%;
-  border-radius: 999px;
-  background: radial-gradient(circle at center, rgba(31, 79, 209, 0.15), transparent 70%);
-  z-index: -1;
 }
 .profile-photo {
   width: 100%;
