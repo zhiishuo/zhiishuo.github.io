@@ -32,6 +32,7 @@ body {
 
 header.shell {
   padding: 44px 0 24px;
+  text-align: center;
 }
 
 .back-link {
@@ -61,7 +62,7 @@ h1 {
 }
 
 .intro {
-  margin: 22px 0 0;
+  margin: 22px auto 0;
   max-width: none;
   color: var(--muted);
   font-size: 1rem;
@@ -69,7 +70,7 @@ h1 {
 }
 
 .page-note {
-  margin: 14px 0 0;
+  margin: 14px auto 0;
   max-width: none;
   color: #546074;
   line-height: 1.75;
