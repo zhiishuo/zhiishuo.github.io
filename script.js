@@ -1,6 +1,6 @@
 const i18n = {
   en: {
-    nav_about: 'About', nav_research: 'Research', nav_news: 'News', nav_projects: 'Projects', nav_resume: 'Resume', nav_portfolio: 'Portfolio', nav_album: 'Album', nav_blog: 'Blog', nav_contact: 'Contact',
+    nav_about: 'About', nav_research: 'Research', nav_news: 'News', nav_projects: 'Projects', nav_resume: 'Resume', nav_portfolio: 'Portfolio', nav_blog: 'Blog', nav_contact: 'Contact',
     hero_tag: "Hi, I'm", hero_subtitle: 'Ph.D. candidate in Computer Science, focusing on multimodal learning, affective computing, and robust speech understanding.',
     hero_meta_1: 'Multimodal Affective Computing', hero_meta_2: 'Audio-Visual Language Modeling', hero_meta_3: 'Robust Speech Intelligence',
     hero_btn_contact: 'Contact', hero_btn_projects: 'View Research',
@@ -26,7 +26,6 @@ const i18n = {
     resume_title: 'Resume', resume_btn: 'Open CV',
     portfolio_title: 'Portfolio',
     portfolio_body: 'Selected representative work is listed in the Projects section, including research systems and implementation artifacts.',
-    album_title: 'Album', album_open: 'Open album',
     blog_title: 'Blog', blog_open: 'Open blog',
     blog_1_kicker: 'Workflow',
     blog_1_title: 'A workflow for research, writing, and review',
@@ -46,7 +45,7 @@ const i18n = {
     footer: 'Built with clarity and curiosity.'
   },
   zh: {
-    nav_about: '关于', nav_research: '研究方向', nav_news: '新闻', nav_projects: '项目', nav_resume: '简历', nav_portfolio: '作品集', nav_album: '相册', nav_blog: '博客', nav_contact: '联系',
+    nav_about: '关于', nav_research: '研究方向', nav_news: '新闻', nav_projects: '项目', nav_resume: '简历', nav_portfolio: '作品集', nav_blog: '博客', nav_contact: '联系',
     hero_tag: '你好，我是', hero_subtitle: '四川大学计算机学院博士研究生，研究方向为多模态学习、情感计算与鲁棒语音理解。',
     hero_meta_1: '多模态情感计算', hero_meta_2: '音视频语言建模', hero_meta_3: '鲁棒语音智能',
     hero_btn_contact: '联系我', hero_btn_projects: '查看研究',
@@ -72,7 +71,6 @@ const i18n = {
     resume_title: '简历', resume_btn: '打开简历',
     portfolio_title: '作品集',
     portfolio_body: '代表性工作已在 Projects 展示，涵盖研究系统与工程实现。',
-    album_title: '相册', album_open: '进入相册',
     blog_title: '博客', blog_open: '进入博客',
     blog_1_kicker: '流程',
     blog_1_title: '一个可执行的科研流程范式',
