@@ -105,10 +105,8 @@ h1 {
 }
 
 .post {
-  padding: 26px 30px 30px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.72);
+  padding: 18px 0 0;
+  border-top: 1px solid var(--line);
   max-width: 78ch;
 }
 
@@ -139,14 +137,11 @@ h2 {
 .post p { margin: 0 0 14px; }
 
 .lede {
-  margin: 0 0 22px;
-  padding: 12px 14px;
+  margin: 0 0 18px;
   color: #2f3a50;
   font-weight: 600;
   max-width: 72ch;
   text-wrap: pretty;
-  border-left: 3px solid rgba(31, 79, 209, 0.28);
-  background: rgba(244, 246, 251, 0.9);
 }
 
 .post h3 {
