@@ -341,7 +341,8 @@ h2 {
 .blog-card .item-kicker {
   grid-column: 1;
   grid-row: 1 / span 2;
-  margin: 4px 0 0;
+  margin: 0;
+  align-self: center;
 }
 
 .blog-card h3 {
