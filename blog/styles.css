@@ -32,7 +32,9 @@ body {
 
 header.shell {
   padding: 44px 0 24px;
-  text-align: center;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 28px;
 }
 
 .back-link {
@@ -54,26 +56,11 @@ header.shell {
 
 h1 {
   margin: 14px 0 0;
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
   line-height: 1.02;
   letter-spacing: -0.03em;
   max-width: none;
   font-weight: 700;
-}
-
-.intro {
-  margin: 22px auto 0;
-  max-width: none;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.75;
-}
-
-.page-note {
-  margin: 14px auto 0;
-  max-width: none;
-  color: #546074;
-  line-height: 1.75;
 }
 
 .layout {
