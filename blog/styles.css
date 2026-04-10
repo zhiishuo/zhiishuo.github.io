@@ -26,7 +26,7 @@ body {
 }
 
 .shell {
-  width: min(1120px, calc(100% - 2.6rem));
+  width: min(1180px, calc(100% - 2.6rem));
   margin-inline: auto;
 }
 
@@ -63,7 +63,7 @@ h1 {
 
 .intro {
   margin: 22px 0 0;
-  max-width: 82ch;
+  max-width: none;
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.75;
@@ -71,7 +71,7 @@ h1 {
 
 .page-note {
   margin: 14px 0 0;
-  max-width: 76ch;
+  max-width: none;
   color: #546074;
   line-height: 1.75;
 }
@@ -200,7 +200,7 @@ h2 {
 
 @media (max-width: 560px) {
   .shell {
-    width: min(1120px, calc(100% - 1.4rem));
+    width: min(1180px, calc(100% - 1.4rem));
   }
 
   header.shell {
