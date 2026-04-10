@@ -109,6 +109,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.72);
+  max-width: 78ch;
 }
 
 .post-meta {
@@ -135,10 +136,7 @@ h2 {
   font-weight: 700;
 }
 
-.post p {
-  margin: 0 0 14px;
-  max-width: 72ch;
-}
+.post p { margin: 0 0 14px; }
 
 .lede {
   margin: 0 0 22px;
@@ -164,7 +162,6 @@ h2 {
   margin: 0;
   padding-left: 20px;
   color: #2d3440;
-  max-width: 72ch;
 }
 
 .post li {
