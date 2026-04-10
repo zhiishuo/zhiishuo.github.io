@@ -320,6 +320,21 @@ h2 {
   gap: 0;
 }
 
+.album-preview {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.album-preview img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
 .blog-link {
   color: var(--text);
   text-decoration: none;
@@ -506,7 +521,8 @@ a { color: #2a3f74; }
 
   .list-grid.two,
   .list-grid.three,
-  .photo-row {
+  .photo-row,
+  .album-preview {
     grid-template-columns: 1fr;
   }
 
