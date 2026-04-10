@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zhishuo Blog | Research Notes</title>
+    <meta
+      name="description"
+      content="Zhishuo Zhao's blog: research workflow paradigm, AV-RISE, emotion agents, and emotion large models."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="shell">
+      <a class="back-link" href="../">← Back to homepage</a>
+      <p class="eyebrow">Zhishuo Blog</p>
+      <h1>研究笔记与方法备忘</h1>
+      <p class="intro">
+        这里先放 4 篇真正和我当前工作主线相关的文章：科研流程范式、AV-RISE、情感 agent，以及情感大模型之后我真正关心的问题。
+      </p>
+    </header>
+
+    <main class="shell layout">
+      <aside class="toc">
+        <p class="toc-title">目录</p>
+        <a href="#workflow">科研流程范式</a>
+        <a href="#av-rise">AV-RISE</a>
+        <a href="#emotion-agent">情感 Agent</a>
+        <a href="#emotion-llm">情感大模型</a>
+      </aside>
+
+      <div class="posts">
+        <article class="post" id="workflow">
+          <div class="post-meta">
+            <span>2026-04</span>
+            <span>Workflow</span>
+          </div>
+          <h2>一个可执行的科研流程范式</h2>
+          <p>
+            这些年我越来越不相信那种“读很多论文，然后突然有一天灵感来了”的科研叙事。对我来说，真正有效的研究推进方式更像一个被持续维护的系统：问题定义、文献地图、实验执行、写作结构、失败复盘，最好都能落到稳定的外部对象上，而不是只存在脑子里。
+          </p>
+          <p>
+            我现在比较认可的范式大概是这样：先从<strong>现象</strong>而不是方法出发，明确到底是什么失败模式值得研究；然后做一个足够克制的 literature map，把已有方法为什么不够讲清楚；再把“要证明什么”写成 claims 和 evidence matrix；最后才进入实现与实验阶段。这样做的核心好处是，研究不会在中途不断漂移成另一个问题。
+          </p>
+          <p>
+            在这个过程中，我会把不同层面的材料拆开维护。比如 source of truth 文档负责定义当前版本到底在做什么，review note 负责记录哪些假设已经被推翻，execution plan 负责把任务拆成可以被人或 agent 执行的步骤，dashboard 类工具则负责把长期目标和短期动作连接起来。像 SelfOS 这种本地工具，本质上不是“生产力玩具”，而是给研究流程增加外部记忆和可见反馈。
+          </p>
+          <p>
+            我也越来越倾向于把 agent 视为流程中的一层，而不是“自动替我做研究”的主体。agent 擅长帮我做文献整理、结构梳理、材料汇总、失败分析和多轮 review，但真正决定方向的，仍然是问题感和判断力。好的流程不是把判断外包出去，而是让判断更稳定、更有证据。
+          </p>
+          <p>
+            如果要把这个范式压缩成几条可执行原则，我现在会选这几条：问题先行，不被方法绑架；文献服务于论证，不服务于堆砌；实验为 claim 服务，不为表格服务；写作尽早开始，不等“全部做完”；所有关键决定都要留下可回看的痕迹。科研不是一次性冲刺，而是一个持续维护的认知系统。
+          </p>
+        </article>
+
+        <article class="post" id="av-rise">
+          <div class="post-meta">
+            <span>2025-09</span>
+            <span>Paper</span>
+          </div>
+          <h2>AV-RISE：为什么我会从跨模态噪声重新理解鲁棒音视频语音表征</h2>
+          <p>
+            AV-RISE 这条线对我来说很重要，因为它把一个很具体但常被低估的问题摆到了台面上：真实场景里的音视频语音理解，真正难的并不是“把两个模态拼起来”，而是当它们彼此不可靠、不同步、被污染甚至互相误导的时候，模型到底该相信什么。
+          </p>
+          <p>
+            过去很多系统把多模态融合看成一种天然增益，好像只要视觉和音频都接进来，结果就会更稳。但实际场景不是这样。噪声、遮挡、说话人姿态变化、口型模糊、环境声干扰、模态间微小但关键的不一致，都可能让“融合”这件事变成额外负担。于是问题就变成：模型如何学会在跨模态证据退化时进行选择性修复，而不是盲目平均。
+          </p>
+          <p>
+            我喜欢 AV-RISE 这个工作的一点，在于它不是把去噪理解成一个简单的前处理步骤，而是把它看成表征学习本身的一部分。所谓 hierarchical cross-modal denoising，本质上是在不同层级上重新组织音视频之间的互补关系，让模型不只看到“两个模态的共同信息”，还要学会在不一致里识别出哪些是噪声，哪些反而是有用的补充线索。
+          </p>
+          <p>
+            这条思路也影响了我后来对多模态情感理解的判断。因为情感场景里同样存在模态冲突、信号退化和细粒度证据缺失的问题。换句话说，鲁棒语音表征和鲁棒情感理解，并不是两条完全独立的线；它们都在逼着我们认真回答一个问题：当证据不完整时，模型如何不被表面强信号牵着走。
+          </p>
+          <p>
+            所以如果让我用一句话概括 AV-RISE 对我的意义，那就是：它让我更坚定地认为，多模态系统的核心不只是融合，而是面对冲突、退化和噪声时的证据重组能力。后面我做的很多事情，不管是情感理解还是 agent 设计，实际上都在延续这个判断。
+          </p>
+        </article>
+
+        <article class="post" id="emotion-agent">
+          <div class="post-meta">
+            <span>2026-03</span>
+            <span>Agent</span>
+          </div>
+          <h2>一个好的情感 Agent，应该具备什么能力</h2>
+          <p>
+            我对“情感 agent”这个词一直比较警惕，因为它很容易被理解成一个会说安慰话、会模仿共情语气的聊天系统。但如果只是这样，它并不值得单独成为一个研究对象。真正好的情感 agent，不应该只是“听起来温柔”，而应该在感知、判断、澄清、干预和边界控制上都有明确结构。
+          </p>
+          <p>
+            我现在更倾向于把它看成一种 affective skill，而不是一个单独的大模型人格。所谓 affective skill，首先要能感知用户状态，但不是粗暴地把人分成几类情绪；其次要能校准自己的不确定性，知道什么时候其实并不懂；再往后，它应该在必要时主动澄清，而不是带着误解持续输出“看似共情”的回答。
+          </p>
+          <p>
+            这就意味着，一个好的情感 agent 至少需要四层能力：一是对语言、语气、上下文和长期互动历史的状态感知；二是对自己判断可靠性的校准；三是对不同 intervention stance 的选择能力，比如共情、追问、建议、留白；四是安全边界与长期影响意识，知道什么情况应该谨慎，什么情况不能过度承诺。
+          </p>
+          <p>
+            我尤其在意“主动澄清”这一点。很多系统的问题不是没有情感表达，而是太快进入错误的理解路径，然后在错误前提上越聊越深。相比之下，一个更成熟的 agent 应该在不确定时先确认，再决定是否介入、介入到什么程度。这种能力比“说得像人”更重要。
+          </p>
+          <p>
+            所以我现在想做的情感 agent，不是一个泛化得很宽的陪伴壳子，而是一个能感知、能校准、会澄清、会控制介入力度的系统。它既要有情感敏感性，也要有工程上的可验证性。否则，所谓“情感智能”很容易只剩下表演层。
+          </p>
+        </article>
+
+        <article class="post" id="emotion-llm">
+          <div class="post-meta">
+            <span>2026-04</span>
+            <span>MLLM</span>
+          </div>
+          <h2>情感大模型之后，真正的瓶颈是什么</h2>
+          <p>
+            在多模态情感理解里，随着 AffectGPT 这类工作出现，一个很明显的变化是：我们已经拥有了相当强的 generalist baseline。也就是说，问题不再只是“怎么把模型做大、把融合做强、把训练数据做多”。平均性能继续提升当然有价值，但它已经不能解释那些最关键、最顽固的失败样本。
+          </p>
+          <p>
+            我现在越来越认同一个判断：情感大模型之后，真正的瓶颈在于<strong>冲突、不确定和修复</strong>。很多重要错误不是因为模型完全看不见证据，而是它太早形成了一个看似合理的默认答案，之后就没有足够强的机制去发现：这个样本其实还存在未解决的冲突、模糊或缺失信息。
+          </p>
+          <p>
+            这也是为什么我对“继续做一个更大的统一模型”没有那么兴奋。统一大模型确实可以吸收更多知识，但如果它仍然只是在一个主路径上完成推理，那么在 conflict-heavy cases 上，它依然可能做出很流畅但并不可靠的判断。真正缺失的，不只是能力上限，而是一个显式的 arbitration-and-repair 机制。
+          </p>
+          <p>
+            从这个角度看，下一阶段更值得研究的问题可能是：如何判断一个强 generalist 什么时候已经足够，什么时候需要额外修复；修复单元应该围绕 modality、task，还是围绕更细粒度的 evidence utility 来组织；以及如何在不破坏 easy cases 的前提下，只对 hard cases 做选择性干预。
+          </p>
+          <p>
+            所以如果问我对“情感大模型”真正感兴趣的地方在哪里，我会说，不在于把情感理解做成另一个 parameter race，而在于把它从平均性能竞争，推进到对结构化失败模式的显式处理。更大的模型当然重要，但更重要的是：它能不能知道自己什么时候不够好，以及如何在那一刻正确地修复自己。
+          </p>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>
