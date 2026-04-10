@@ -397,10 +397,7 @@ h2 {
 .contact-panel {
   margin-top: 14px;
   max-width: 520px;
-  padding: 18px 20px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(244,246,251,0.9));
+  padding: 0;
 }
 .contact-panel .label {
   margin: 0 0 4px;
