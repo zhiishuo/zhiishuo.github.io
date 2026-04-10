@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zhishuo | Personal Homepage</title>
+    <title>Zhishuo | Multimodal AI Researcher</title>
     <meta
       name="description"
-      content="Personal homepage of Zhishuo — multimodal AI research, selected projects, and collaboration contact."
+      content="Zhishuo Zhao's personal homepage: multimodal emotion intelligence, robust audio-visual systems, agent demos, papers, and CV."
     />
-    <meta name="theme-color" content="#f8f8f6" />
+    <meta name="theme-color" content="#f3efe6" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -40,10 +40,10 @@
         <nav id="primaryNav" class="primary-nav" aria-label="Primary navigation">
           <a href="#about" data-i18n="nav_about">About</a>
           <a href="#research" data-i18n="nav_research">Research</a>
-          <a href="#news" data-i18n="nav_news">News</a>
+          <a href="#demos" data-i18n="nav_demos">Demos</a>
           <a href="#projects" data-i18n="nav_projects">Projects</a>
-          <a href="#resume" data-i18n="nav_resume">Resume</a>
-          <a href="#blog" data-i18n="nav_blog">Blog</a>
+          <a href="#news" data-i18n="nav_news">News</a>
+          <a href="#resume" data-i18n="nav_resume">CV</a>
           <a href="#contact" data-i18n="nav_contact">Contact</a>
         </nav>
 
@@ -54,129 +54,205 @@
     <main id="main-content" class="container">
       <section class="hero reveal" aria-labelledby="hero-title">
         <div class="hero-copy reveal" style="--delay: 0ms">
-          <p class="eyebrow" data-i18n="hero_tag">Hi, I'm</p>
-          <h1 id="hero-title">Zhishuo</h1>
+          <p class="eyebrow" data-i18n="hero_tag">Multimodal AI · Emotion · Agents</p>
+          <h1 id="hero-title" data-i18n="hero_title">Building emotion-aware AI that survives real-world noise.</h1>
           <p class="subtitle" data-i18n="hero_subtitle">
-            Multimodal AI researcher focused on emotion understanding, LLM systems, and practical intelligent products.
+            I am a Ph.D. candidate focused on multimodal emotion intelligence, robust audio-visual speech systems, and research demos that make complex models feel tangible.
           </p>
+
           <div class="hero-meta">
-            <span data-i18n="hero_meta_1">Multimodal Affective Computing</span>
-            <span data-i18n="hero_meta_2">LLM + MoE Systems</span>
-            <span data-i18n="hero_meta_3">Applied AI Productization</span>
+            <span data-i18n="hero_meta_1">Affective Computing</span>
+            <span data-i18n="hero_meta_2">Speech + Vision Systems</span>
+            <span data-i18n="hero_meta_3">Agentic Research Workflows</span>
           </div>
+
           <div class="actions">
-            <a class="btn primary" href="#contact" data-i18n="hero_btn_contact">Work with me</a>
-            <a class="btn" href="#projects" data-i18n="hero_btn_projects">View projects</a>
+            <a class="btn primary" href="#demos" data-i18n="hero_btn_demos">View demos</a>
+            <a class="btn" href="assets/zzscv10.pdf" target="_blank" rel="noreferrer" data-i18n="hero_btn_cv">Download CV</a>
+            <a class="btn ghost" href="#contact" data-i18n="hero_btn_contact">Work with me</a>
+          </div>
+
+          <div class="signal-grid reveal" style="--delay: 120ms">
+            <article class="signal-card">
+              <p class="signal-label" data-i18n="signal_1_label">Latest venue</p>
+              <p class="signal-value" data-i18n="signal_1_value">ACM MM 2025</p>
+            </article>
+            <article class="signal-card">
+              <p class="signal-label" data-i18n="signal_2_label">Research base</p>
+              <p class="signal-value" data-i18n="signal_2_value">Sichuan University</p>
+            </article>
+            <article class="signal-card">
+              <p class="signal-label" data-i18n="signal_3_label">Current mode</p>
+              <p class="signal-value" data-i18n="signal_3_value">Research-to-demo</p>
+            </article>
           </div>
         </div>
 
-        <aside class="hero-aside reveal" aria-label="Profile summary" style="--delay: 100ms">
-          <div class="photo-frame">
-            <img
-              class="profile-photo"
-              src="https://zhiishuo.github.io/IMG_7063.jpg"
-              alt="Profile photo of Zhishuo"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div class="profile-body">
-            <p class="profile-role" data-i18n="hero_role">AI Researcher & Builder</p>
-            <ul class="profile-points">
-              <li data-i18n="hero_point_1">Research-to-product execution mindset</li>
-              <li data-i18n="hero_point_2">Strong in language-vision-audio systems</li>
-              <li data-i18n="hero_point_3">Open to research and product collaborations</li>
-            </ul>
+        <aside class="hero-aside reveal" aria-label="Profile summary" style="--delay: 80ms">
+          <div class="portrait-shell">
+            <div class="photo-frame">
+              <img
+                class="profile-photo"
+                src="IMG_7063.jpg"
+                alt="Profile photo of Zhishuo"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="portrait-note">
+              <p class="portrait-kicker" data-i18n="portrait_kicker">Current focus</p>
+              <h2 class="portrait-title" data-i18n="portrait_title">Multimodal emotion intelligence with usable interfaces.</h2>
+              <ul class="profile-points">
+                <li data-i18n="hero_point_1">Research on multimodal affect, robust speech, and agent systems</li>
+                <li data-i18n="hero_point_2">Building demos, tooling, and reproducible workflows around papers</li>
+                <li data-i18n="hero_point_3">Open to academic, product, and applied research collaboration</li>
+              </ul>
+            </div>
           </div>
         </aside>
       </section>
 
-      <section id="about" class="section reveal" style="--delay: 20ms">
+      <section id="about" class="section about-grid reveal" style="--delay: 20ms">
         <div class="section-head">
           <h2 data-i18n="about_title">About</h2>
         </div>
-        <p data-i18n="about_body">
-          I build intelligent systems that connect language, vision, and audio. My interests include multimodal affective computing, robust routing for experts, and turning research prototypes into products that people can actually use.
-        </p>
+        <div class="about-copy">
+          <p class="lead" data-i18n="about_body_1">
+            I work at the intersection of multimodal learning, affective intelligence, and reliable AI system building. My research asks how language, vision, and audio can be fused in ways that remain interpretable, robust, and usable outside benchmark conditions.
+          </p>
+          <p data-i18n="about_body_2">
+            I care about the full stack: model ideas, evaluation utilities, demo interfaces, and product-facing workflows. The goal is not only to publish, but to make research legible to collaborators and useful in practice.
+          </p>
+        </div>
+        <div class="about-panel">
+          <p class="panel-kicker" data-i18n="about_panel_kicker">Working style</p>
+          <ul class="about-list">
+            <li data-i18n="about_list_1">Research questions grounded in real noisy data</li>
+            <li data-i18n="about_list_2">Fast prototype loops from idea to visible demo</li>
+            <li data-i18n="about_list_3">Strong preference for systems that can be inspected and reused</li>
+          </ul>
+        </div>
       </section>
 
       <section id="research" class="section reveal" style="--delay: 30ms">
-        <div class="section-head">
-          <h2 data-i18n="research_title">Research Focus</h2>
-        </div>
-        <div class="list-grid three research-grid">
-          <article class="list-item interactive" style="--delay: 0ms">
-            <p class="item-kicker">Core Research</p>
-            <h3 data-i18n="r1_title">Multimodal Emotion Understanding</h3>
-            <p data-i18n="r1_body">Modeling emotion from speech, vision, and text with depth-aware representations.</p>
-          </article>
-          <article class="list-item interactive" style="--delay: 60ms">
-            <p class="item-kicker">Systems</p>
-            <h3 data-i18n="r2_title">LLM + MoE Systems</h3>
-            <p data-i18n="r2_body">Task-adaptive routing and efficient expert collaboration for better generalization.</p>
-          </article>
-          <article class="list-item interactive" style="--delay: 120ms">
-            <p class="item-kicker">Impact</p>
-            <h3 data-i18n="r3_title">Applied AI Products</h3>
-            <p data-i18n="r3_body">Bridging research and deployment through reliable workflows and automation.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="projects" class="section reveal" style="--delay: 40ms">
         <div class="section-head section-inline">
-          <h2 data-i18n="projects_title">Selected Projects</h2>
-          <p class="section-note" data-i18n="projects_note">Representative directions across research and productization.</p>
+          <h2 data-i18n="research_title">Research Themes</h2>
+          <p class="section-note" data-i18n="research_note">Three directions that currently anchor my work.</p>
         </div>
-        <div class="list-grid two projects-grid">
-          <article class="list-item interactive" style="--delay: 0ms">
-            <p class="item-kicker">Research</p>
-            <h3>HEME</h3>
-            <p data-i18n="p1_body">Hierarchical emotion modeling with adaptive multi-level mixture-of-experts.</p>
+        <div class="theme-grid">
+          <article class="theme-card interactive">
+            <p class="item-kicker" data-i18n="r1_kicker">Affect</p>
+            <h3 data-i18n="r1_title">Multimodal Emotion Understanding</h3>
+            <p data-i18n="r1_body">Learning affective signals from speech, text, and visual cues with depth-aware and discrepancy-aware representations.</p>
           </article>
-          <article class="list-item interactive" style="--delay: 60ms">
-            <p class="item-kicker">Platform</p>
-            <h3>Emotion Agent Stack</h3>
-            <p data-i18n="p2_body">End-to-end pipeline for multimodal emotion analysis and conversational AI.</p>
+          <article class="theme-card interactive">
+            <p class="item-kicker" data-i18n="r2_kicker">Robustness</p>
+            <h3 data-i18n="r2_title">Audio-Visual Speech in the Wild</h3>
+            <p data-i18n="r2_body">Improving representation quality and denoising under cross-modal noise, missing signals, and real-world variability.</p>
           </article>
-          <article class="list-item interactive" style="--delay: 120ms">
-            <p class="item-kicker">Workflow</p>
-            <h3>OpenClaw Workflow Lab</h3>
-            <p data-i18n="p3_body">Personal automation workflows for research, coding, and assistant orchestration.</p>
-          </article>
-          <article class="list-item interactive" style="--delay: 180ms">
-            <p class="item-kicker">Tooling</p>
-            <h3>Paper-to-Product Toolkit</h3>
-            <p data-i18n="p4_body">Templates and scripts to accelerate turning academic ideas into usable demos.</p>
+          <article class="theme-card interactive">
+            <p class="item-kicker" data-i18n="r3_kicker">Systems</p>
+            <h3 data-i18n="r3_title">Agentic Research Interfaces</h3>
+            <p data-i18n="r3_body">Turning papers and experiments into visible demos, reusable tooling, and workflows collaborators can actually interact with.</p>
           </article>
         </div>
       </section>
 
-      <section id="news" class="section reveal" style="--delay: 45ms">
+      <section id="demos" class="section reveal" style="--delay: 36ms">
+        <div class="section-head section-inline">
+          <h2 data-i18n="demos_title">Demos & Interactive Builds</h2>
+          <p class="section-note" data-i18n="demos_note">Interfaces and utilities that show how the research feels in use.</p>
+        </div>
+        <div class="demo-grid">
+          <article class="demo-card interactive">
+            <div class="demo-top">
+              <span class="status-pill live" data-i18n="demo_1_status">Live</span>
+              <span class="demo-kind" data-i18n="demo_1_kind">Personal AI dashboard</span>
+            </div>
+            <h3>SelfOS</h3>
+            <p data-i18n="demo_1_body">A local-first dashboard for research, planning, and session digestion. It turns conversational traces into a usable personal operating panel.</p>
+            <div class="link-row">
+              <a href="SelfOS/" target="_blank" rel="noreferrer" data-i18n="demo_live">Open live demo</a>
+              <a href="https://github.com/zhiishuo/zhiishuo.github.io" target="_blank" rel="noreferrer" data-i18n="demo_code">View code</a>
+            </div>
+          </article>
+
+          <article class="demo-card interactive">
+            <div class="demo-top">
+              <span class="status-pill repo" data-i18n="demo_2_status">Repo</span>
+              <span class="demo-kind" data-i18n="demo_2_kind">Research utilities</span>
+            </div>
+            <h3>Emo-UID</h3>
+            <p data-i18n="demo_2_body">Experimental utilities for evaluation, discrepancy analysis, and visualization around multimodal emotion understanding and reproducibility.</p>
+            <div class="link-row">
+              <a href="https://github.com/zhiishuo/Emo-UID" target="_blank" rel="noreferrer" data-i18n="demo_repo">Open GitHub repo</a>
+            </div>
+          </article>
+
+          <article class="demo-card interactive">
+            <div class="demo-top">
+              <span class="status-pill private" data-i18n="demo_3_status">Private walkthrough</span>
+              <span class="demo-kind" data-i18n="demo_3_kind">Research-to-product prototype</span>
+            </div>
+            <h3 data-i18n="demo_3_title">Emotion Agent Stack</h3>
+            <p data-i18n="demo_3_body">A multimodal affect analysis workflow connected to interaction design, evaluation, and agent-facing product ideas. I can share this by request.</p>
+            <div class="link-row">
+              <a href="mailto:zhiishuo@163.com?subject=Emotion%20Agent%20Stack%20Demo" data-i18n="demo_request">Request a walkthrough</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section reveal" style="--delay: 42ms">
+        <div class="section-head section-inline">
+          <h2 data-i18n="projects_title">Selected Projects & Directions</h2>
+          <p class="section-note" data-i18n="projects_note">A compact map of research outputs, demos, and system tooling.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card interactive">
+            <p class="item-kicker" data-i18n="project_1_kicker">Paper</p>
+            <h3>AV-RISE</h3>
+            <p data-i18n="project_1_body">Hierarchical cross-modal denoising for robust audio-visual speech representation, accepted at ACM MM 2025.</p>
+          </article>
+          <article class="project-card interactive">
+            <p class="item-kicker" data-i18n="project_2_kicker">Paper</p>
+            <h3>AMG-AVSR</h3>
+            <p data-i18n="project_2_body">Adaptive modality guidance for audio-visual speech recognition via progressive feature enhancement, accepted at ACML 2024.</p>
+          </article>
+          <article class="project-card interactive">
+            <p class="item-kicker" data-i18n="project_3_kicker">Utilities</p>
+            <h3>Emo-UID</h3>
+            <p data-i18n="project_3_body">A reproducibility-oriented toolkit for evaluation, discrepancy analysis, and visualization in multimodal emotion research.</p>
+          </article>
+          <article class="project-card interactive">
+            <p class="item-kicker" data-i18n="project_4_kicker">Workflow</p>
+            <h3>OpenClaw Workflow Lab</h3>
+            <p data-i18n="project_4_body">A personal experimentation lane for coding agents, automation, and research orchestration across local workflows.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="news" class="section reveal" style="--delay: 46ms">
         <div class="section-head section-inline">
           <h2 data-i18n="news_title">News</h2>
-          <p class="section-note" data-i18n="news_note">Latest paper and research updates.</p>
+          <p class="section-note" data-i18n="news_note">Paper updates and current momentum.</p>
         </div>
         <ul class="news-list">
-          <li><span class="news-year">2025</span><span data-i18n="news_1">🎉 Our paper "AV-RISE: Hierarchical Cross-Modal Denoising for Learning Robust Audio-Visual Speech Representation" is accepted at ACM MM 2025.</span></li>
-          <li><span class="news-year">2024</span><span data-i18n="news_2">📖 Published "WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting" in ICIC 2025.</span></li>
-          <li><span class="news-year">2024</span><span data-i18n="news_3">🎉 Our paper "AMG-AVSR: Adaptive Modality Guidance for Audio-Visual Speech Recognition via Progressive Feature Enhancement" is accepted at ACML 2024.</span></li>
+          <li><span class="news-year">2025</span><span data-i18n="news_1">AV-RISE was accepted at ACM MM 2025.</span></li>
+          <li><span class="news-year">2025</span><span data-i18n="news_2">WinNet was published in ICIC 2025.</span></li>
+          <li><span class="news-year">2024</span><span data-i18n="news_3">AMG-AVSR was accepted at ACML 2024.</span></li>
         </ul>
       </section>
 
-      <section id="resume" class="section reveal" style="--delay: 46ms">
+      <section id="resume" class="section resume-shell reveal" style="--delay: 48ms">
         <div class="section-head section-inline">
-          <h2 data-i18n="resume_title">Resume</h2>
-          <a class="btn" href="https://github.com/zhiishuo/zhiishuo.github.io" target="_blank" rel="noreferrer" data-i18n="resume_btn">Repository</a>
+          <h2 data-i18n="resume_title">CV</h2>
+          <div class="actions compact">
+            <a class="btn primary" href="assets/zzscv10.pdf" target="_blank" rel="noreferrer" data-i18n="resume_btn_primary">Open CV</a>
+            <a class="btn" href="https://github.com/zhiishuo" target="_blank" rel="noreferrer" data-i18n="resume_btn_secondary">GitHub profile</a>
+          </div>
         </div>
-        <p data-i18n="resume_body">For full CV details, publication list, and timeline, please contact me by email or GitHub. (You can replace this block with your PDF CV link anytime.)</p>
-      </section>
-
-      <section id="blog" class="section reveal" style="--delay: 48ms">
-        <div class="section-head section-inline">
-          <h2 data-i18n="blog_title">Blog</h2>
-        </div>
-        <p data-i18n="blog_body">Blog posts are coming soon. You can use this section for research notes, engineering logs, and project retrospectives.</p>
+        <p class="lead" data-i18n="resume_body">My latest academic CV is available directly on this site. It includes publications, research timeline, education, and project experience.</p>
       </section>
 
       <section id="contact" class="section reveal" style="--delay: 50ms">
@@ -184,7 +260,7 @@
           <h2 data-i18n="contact_title">Contact</h2>
           <span class="contact-chip" data-i18n="contact_chip">Available for collaboration</span>
         </div>
-        <p data-i18n="contact_body">Open to collaboration, research exchange, and product building.</p>
+        <p data-i18n="contact_body">I am open to research collaboration, product-oriented prototypes, invited talks, and demo exchanges around multimodal AI.</p>
 
         <div class="contact-grid">
           <div class="contact-item featured">
@@ -206,7 +282,7 @@
     <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
 
     <footer class="container footer">
-      <p>© <span id="year"></span> Zhishuo. <span data-i18n="footer">Built with clarity and curiosity.</span></p>
+      <p>© <span id="year"></span> Zhishuo. <span data-i18n="footer">Built for clear research signals and usable demos.</span></p>
     </footer>
 
     <script src="script.js"></script>
