@@ -61,20 +61,25 @@ h1 {
   font-size: clamp(2.8rem, 5.4vw, 4.6rem);
   line-height: 0.94;
   letter-spacing: -0.05em;
-  max-width: 14ch;
+  max-width: 13ch;
+  text-wrap: balance;
 }
 
 .intro {
   margin: 22px 0 0;
-  max-width: 64ch;
+  max-width: 58ch;
   color: var(--muted);
   font-size: 1.02rem;
+  line-height: 1.7;
+  text-wrap: pretty;
 }
 
 .page-note {
   margin: 14px 0 0;
-  max-width: 64ch;
+  max-width: 58ch;
   color: #546074;
+  line-height: 1.7;
+  text-wrap: pretty;
 }
 
 .layout {
@@ -151,6 +156,7 @@ h2 {
   color: #2f3a50;
   font-weight: 600;
   max-width: 60ch;
+  text-wrap: pretty;
 }
 
 .post h3 {
@@ -207,6 +213,11 @@ h2 {
 
   h1 {
     font-size: clamp(2.25rem, 12vw, 3.2rem);
+    max-width: none;
+  }
+
+  .intro,
+  .page-note {
     max-width: none;
   }
 }
