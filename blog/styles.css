@@ -32,9 +32,6 @@ body {
 
 header.shell {
   padding: 44px 0 24px;
-  max-width: none;
-  width: min(1080px, 100%);
-  margin-inline: auto;
 }
 
 .back-link {
