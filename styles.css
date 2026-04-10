@@ -217,24 +217,6 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.75);
   display: block;
 }
-.profile-body {
-  margin-top: 14px;
-  padding-inline: 2px;
-}
-.profile-role {
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-}
-.profile-points {
-  margin: 8px 0 0;
-  padding-left: 16px;
-  color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-.profile-points li { margin-bottom: 5px; }
 
 .btn {
   text-decoration: none;
@@ -498,15 +480,6 @@ a { color: #2a3f74; }
 
   .profile-photo {
     border-radius: 20px;
-  }
-
-  .profile-body {
-    margin-top: 10px;
-  }
-
-  .profile-points {
-    margin-top: 6px;
-    text-align: left;
   }
 }
 
