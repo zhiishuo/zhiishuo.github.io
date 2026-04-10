@@ -1,9 +1,12 @@
 :root {
   --bg: #f8f8f6;
+  --surface: #ffffff;
+  --surface-soft: #f4f5f8;
   --text: #17181b;
   --muted: #646977;
   --brand: #1f4fd1;
   --line: #e4e6ea;
+  --line-strong: #d2d6de;
 }
 
 * {
@@ -18,19 +21,20 @@ body {
   margin: 0;
   font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", system-ui, sans-serif;
   color: var(--text);
-  line-height: 1.78;
+  line-height: 1.72;
   background: var(--bg);
 }
 
 .shell {
-  width: min(1120px, calc(100% - 2.6rem));
+  width: min(1180px, calc(100% - 2.6rem));
   margin-inline: auto;
 }
 
 header.shell {
-  padding: 40px 0 24px;
+  padding: 38px 0 22px;
+  text-align: left;
   border-bottom: 1px solid var(--line);
-  margin-bottom: 32px;
+  margin-bottom: 34px;
 }
 
 .back-link {
@@ -44,36 +48,25 @@ header.shell {
 .eyebrow {
   margin: 0;
   color: var(--brand);
-  font-size: clamp(1.55rem, 3vw, 2.2rem);
-  font-weight: 700;
-  letter-spacing: -0.015em;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  line-height: 1.03;
-}
-
-h1,
-h2 {
-  font-family: "Fraunces", Georgia, serif;
-}
-
-.title-row {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  flex-wrap: wrap;
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(2.2rem, 4.2vw, 3.35rem);
-  line-height: 1.03;
+  margin: 14px 0 0;
+  font-size: clamp(2.15rem, 4vw, 3.2rem);
+  line-height: 1.04;
   letter-spacing: -0.025em;
+  max-width: none;
+  font-weight: 700;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  gap: 42px;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px;
   align-items: start;
   padding-bottom: 56px;
 }
@@ -90,15 +83,15 @@ h1 {
   font-size: 0.78rem;
   font-weight: 800;
   color: var(--muted);
-  letter-spacing: 0.08em;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .toc a {
   display: block;
-  padding: 12px 0;
-  color: #2e3745;
   text-decoration: none;
+  color: #2e3745;
+  padding: 12px 0;
   font-weight: 700;
 }
 
@@ -108,22 +101,25 @@ h1 {
 
 .posts {
   display: grid;
-  gap: 34px;
+  gap: 24px;
 }
 
 .post {
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
+  padding: 26px 30px 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .post-meta {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 12px;
 }
 
 .post-meta span {
+  padding: 0;
   font-size: 0.76rem;
   color: var(--muted);
   font-weight: 700;
@@ -132,34 +128,43 @@ h1 {
 }
 
 h2 {
-  margin: 0 0 14px;
-  font-size: clamp(1.7rem, 3vw, 2.15rem);
-  line-height: 1.08;
+  margin: 0 0 12px;
+  font-size: clamp(1.65rem, 2.8vw, 2.05rem);
+  line-height: 1.12;
   letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
 .post p {
-  margin: 0 0 16px;
-  max-width: 72ch;
+  margin: 0 0 14px;
+  max-width: 76ch;
 }
 
 .lede {
+  margin: 0 0 22px;
+  padding: 12px 14px;
   color: #2f3a50;
   font-weight: 600;
+  max-width: 66ch;
+  text-wrap: pretty;
+  border-left: 3px solid rgba(31, 79, 209, 0.28);
+  background: rgba(244, 246, 251, 0.9);
 }
 
 .post h3 {
-  margin: 26px 0 10px;
-  font-size: 1rem;
-  font-weight: 700;
+  margin: 24px 0 10px;
+  font-size: 1.02rem;
+  font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", system-ui, sans-serif;
+  letter-spacing: 0;
   color: #202733;
+  font-weight: 700;
 }
 
 .post ul {
   margin: 0;
   padding-left: 20px;
-  max-width: 72ch;
   color: #2d3440;
+  max-width: 76ch;
 }
 
 .post li {
@@ -169,17 +174,17 @@ h2 {
 @media (max-width: 920px) {
   .layout {
     grid-template-columns: 1fr;
-    gap: 26px;
+    gap: 28px;
   }
 
   .toc {
     position: static;
-    padding: 0 0 12px;
-    border-left: 0;
-    border-bottom: 1px solid var(--line);
     display: flex;
     flex-wrap: wrap;
     gap: 8px 14px;
+    padding: 0 0 10px;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
   }
 
   .toc-title {
@@ -187,27 +192,31 @@ h2 {
     margin-bottom: 4px;
   }
 
-  .toc a,
-  .toc a + a {
-    padding: 0;
-    border-top: 0;
+  .toc a {
+    padding: 4px 0;
+    border-top: 0 !important;
   }
 }
 
 @media (max-width: 560px) {
   .shell {
-    width: min(1120px, calc(100% - 1.4rem));
+    width: min(1180px, calc(100% - 1.4rem));
   }
 
-  .title-row {
-    gap: 8px;
+  header.shell {
+    max-width: none;
+  }
+
+  .post {
+    padding: 18px 18px 20px;
   }
 
   h1 {
-    font-size: clamp(1.9rem, 10vw, 2.6rem);
+    font-size: clamp(2.2rem, 11vw, 3rem);
   }
 
-  .eyebrow {
-    font-size: clamp(1.35rem, 8vw, 1.9rem);
+  .intro,
+  .page-note {
+    max-width: none;
   }
 }
