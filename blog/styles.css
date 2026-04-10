@@ -108,7 +108,13 @@ h1 {
   padding: 18px 0 0;
   border-top: 1px solid var(--line);
   max-width: 78ch;
+  --post-accent: #1f4fd1;
 }
+
+.post-workflow { --post-accent: #1f4fd1; }
+.post-avrise { --post-accent: #a65e2e; }
+.post-agent { --post-accent: #2b7a74; }
+.post-models { --post-accent: #6252b4; }
 
 .post-meta {
   display: flex;
@@ -120,7 +126,7 @@ h1 {
 .post-meta span {
   padding: 0;
   font-size: 0.76rem;
-  color: var(--muted);
+  color: color-mix(in oklab, var(--post-accent) 68%, #5c6371);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -138,10 +144,12 @@ h2 {
 
 .lede {
   margin: 0 0 18px;
-  color: #2f3a50;
+  color: color-mix(in oklab, var(--post-accent) 42%, #1d2430);
   font-weight: 600;
   max-width: 72ch;
   text-wrap: pretty;
+  border-left: 3px solid color-mix(in oklab, var(--post-accent) 40%, white);
+  padding-left: 12px;
 }
 
 .post h3 {
