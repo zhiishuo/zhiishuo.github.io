@@ -137,7 +137,7 @@ h2 {
 
 .post p {
   margin: 0 0 14px;
-  max-width: 76ch;
+  max-width: 72ch;
 }
 
 .lede {
@@ -145,7 +145,7 @@ h2 {
   padding: 12px 14px;
   color: #2f3a50;
   font-weight: 600;
-  max-width: 66ch;
+  max-width: 72ch;
   text-wrap: pretty;
   border-left: 3px solid rgba(31, 79, 209, 0.28);
   background: rgba(244, 246, 251, 0.9);
@@ -164,7 +164,7 @@ h2 {
   margin: 0;
   padding-left: 20px;
   color: #2d3440;
-  max-width: 76ch;
+  max-width: 72ch;
 }
 
 .post li {
