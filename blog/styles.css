@@ -22,19 +22,16 @@ body {
   font-family: Inter, system-ui, sans-serif;
   color: var(--text);
   line-height: 1.78;
-  background:
-    radial-gradient(780px 380px at 100% -10%, rgba(31, 79, 209, 0.08), transparent 58%),
-    radial-gradient(560px 260px at -10% 20%, rgba(31, 79, 209, 0.05), transparent 55%),
-    var(--bg);
+  background: var(--bg);
 }
 
 .shell {
-  width: min(1040px, calc(100% - 2.4rem));
+  width: min(1120px, calc(100% - 2.6rem));
   margin-inline: auto;
 }
 
 header.shell {
-  padding: 42px 0 24px;
+  padding: 44px 0 24px;
 }
 
 .back-link {
@@ -61,32 +58,29 @@ h2 {
 
 h1 {
   margin: 14px 0 0;
-  font-size: clamp(2.6rem, 6vw, 4.3rem);
-  line-height: 0.96;
+  font-size: clamp(2.8rem, 5.4vw, 4.6rem);
+  line-height: 0.94;
   letter-spacing: -0.05em;
-  max-width: 10ch;
+  max-width: 14ch;
 }
 
 .intro {
-  margin: 18px 0 0;
-  max-width: 72ch;
+  margin: 22px 0 0;
+  max-width: 64ch;
   color: var(--muted);
-  font-size: 1.04rem;
+  font-size: 1.02rem;
 }
 
 .page-note {
   margin: 14px 0 0;
-  max-width: 72ch;
-  padding: 12px 14px;
-  border-left: 3px solid var(--brand);
-  background: rgba(255, 255, 255, 0.72);
-  color: #43506a;
+  max-width: 64ch;
+  color: #546074;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 44px;
   align-items: start;
   padding-bottom: 56px;
 }
@@ -94,14 +88,11 @@ h1 {
 .toc {
   position: sticky;
   top: 28px;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
+  padding-top: 8px;
 }
 
 .toc-title {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   font-size: 0.78rem;
   font-weight: 800;
   color: var(--muted);
@@ -112,43 +103,42 @@ h1 {
 .toc a {
   display: block;
   text-decoration: none;
-  color: var(--text);
-  padding: 8px 0;
-  font-weight: 600;
+  color: #2e3745;
+  padding: 10px 0;
+  font-weight: 700;
+  border-top: 1px solid var(--line);
 }
 
 .posts {
   display: grid;
-  gap: 18px;
+  gap: 32px;
 }
 
 .post {
-  padding: 24px 26px;
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.76);
+  padding: 22px 0 0;
+  border-top: 1px solid var(--line);
 }
 
 .post-meta {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .post-meta span {
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  padding: 4px 10px;
+  padding: 0;
   font-size: 0.76rem;
   color: var(--muted);
   font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 h2 {
   margin: 0 0 12px;
-  font-size: clamp(1.5rem, 3.2vw, 2rem);
-  line-height: 1.08;
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  line-height: 1.06;
   letter-spacing: -0.025em;
 }
 
@@ -157,16 +147,18 @@ h2 {
 }
 
 .lede {
-  margin: 0 0 16px;
+  margin: 0 0 20px;
   color: #2f3a50;
   font-weight: 600;
+  max-width: 60ch;
 }
 
 .post h3 {
-  margin: 18px 0 8px;
+  margin: 24px 0 10px;
   font-size: 1rem;
   font-family: Inter, system-ui, sans-serif;
   letter-spacing: 0;
+  color: #202733;
 }
 
 .post ul {
@@ -182,6 +174,7 @@ h2 {
 @media (max-width: 920px) {
   .layout {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .toc {
@@ -189,6 +182,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 8px 14px;
+    padding-top: 0;
   }
 
   .toc-title {
@@ -198,19 +192,21 @@ h2 {
 
   .toc a {
     padding: 4px 0;
+    border-top: 0;
   }
 }
 
 @media (max-width: 560px) {
   .shell {
-    width: min(1040px, calc(100% - 1.4rem));
+    width: min(1120px, calc(100% - 1.4rem));
   }
 
   .post {
-    padding: 18px;
+    padding: 18px 0 0;
   }
 
   h1 {
-    font-size: clamp(2.2rem, 12vw, 3rem);
+    font-size: clamp(2.25rem, 12vw, 3.2rem);
+    max-width: none;
   }
 }
