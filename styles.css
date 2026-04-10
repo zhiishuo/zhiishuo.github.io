@@ -147,11 +147,18 @@ main { padding-block: 54px 30px; }
 }
 .eyebrow {
   margin: 0;
+  display: inline-block;
+  width: fit-content;
+  padding: 0.38rem 0.82rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--brand) 18%, white);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(234,240,255,0.92));
   color: var(--brand);
-  font-size: 0.96rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  box-shadow: 0 8px 20px rgba(31, 79, 209, 0.08);
 }
 h1 {
   margin: 10px 0 0;
