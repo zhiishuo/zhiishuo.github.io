@@ -343,6 +343,8 @@ h2 {
   grid-row: 1 / span 2;
   margin: 0;
   align-self: center;
+  justify-self: center;
+  text-align: center;
 }
 
 .blog-card h3 {
