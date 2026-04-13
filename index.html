@@ -39,9 +39,7 @@
 
         <nav id="primaryNav" class="primary-nav" aria-label="Primary navigation">
           <a href="#about" data-i18n="nav_about">About</a>
-          <a href="#map" data-i18n="nav_map">Map</a>
           <a href="#research" data-i18n="nav_research">Research</a>
-          <a href="#publications" data-i18n="nav_publications">Publications</a>
           <a href="#news" data-i18n="nav_news">News</a>
           <a href="#projects" data-i18n="nav_projects">Projects</a>
           <a href="#resume" data-i18n="nav_resume">Resume</a>
@@ -94,23 +92,6 @@
         </p>
       </section>
 
-      <section id="map" class="section reveal" style="--delay: 24ms">
-        <div class="section-head section-inline">
-          <h2 data-i18n="map_title">Research Map</h2>
-        </div>
-        <figure class="map-figure">
-          <img
-            src="assets/research-map.svg"
-            alt="Research map from multimodal perception to emotion reasoning and agentic action"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption data-i18n="map_caption">
-            A compact view of how my work moves from robust multimodal perception to emotion reasoning, selective repair, and agentic action.
-          </figcaption>
-        </figure>
-      </section>
-
       <section id="research" class="section reveal" style="--delay: 30ms">
         <div class="section-head">
           <h2 data-i18n="research_title">Research Focus</h2>
@@ -134,103 +115,30 @@
         </div>
       </section>
 
-      <section id="publications" class="section reveal" style="--delay: 35ms">
-        <div class="section-head section-inline">
-          <h2 data-i18n="pub_title">Selected Publications</h2>
-          <a
-            class="blog-link"
-            href="https://scholar.google.com/scholar?q=Zhishuo+Zhao"
-            target="_blank"
-            rel="noreferrer"
-            data-i18n="pub_open"
-            >Open Scholar</a
-          >
-        </div>
-        <div class="pub-list">
-          <article class="pub-item">
-            <p class="pub-citation">
-              <strong>Zhao, Z.</strong>, Lin, Y., Guo, D., and Fan, J. (2025). AV-RISE: Hierarchical Cross-Modal Denoising for Learning Robust Audio-Visual Speech Representation. <em>Proceedings of the 33rd ACM International Conference on Multimedia</em>, 2054-2063.
-            </p>
-            <div class="pub-links">
-              <a href="https://doi.org/10.1145/3746027.3755639" target="_blank" rel="noreferrer">Paper</a>
-              <a href="https://scholar.google.com/scholar?q=AV-RISE+Hierarchical+Cross-Modal+Denoising+for+Learning+Robust+Audio-Visual+Speech+Representation" target="_blank" rel="noreferrer">Scholar</a>
-              <span data-i18n="pub_status_1">ACM MM 2025</span>
-            </div>
-          </article>
-
-          <article class="pub-item">
-            <p class="pub-citation">
-              <strong>Zhao, Z.</strong>, Guo, D., Ou, W., Liu, H., and Lin, Y. (2025). AMG-AVSR: Adaptive Modality Guidance for Audio-Visual Speech Recognition via Progressive Feature Enhancement. <em>Proceedings of the 16th Asian Conference on Machine Learning</em>, PMLR 260, 952-967.
-            </p>
-            <div class="pub-links">
-              <a href="https://proceedings.mlr.press/v260/zhao25a.html" target="_blank" rel="noreferrer">Paper</a>
-              <a href="https://raw.githubusercontent.com/mlresearch/v260/main/assets/zhao25a/zhao25a.pdf" target="_blank" rel="noreferrer">PDF</a>
-              <span data-i18n="pub_status_2">ACML 2024 / PMLR 2025</span>
-            </div>
-          </article>
-
-          <article class="pub-item">
-            <p class="pub-citation">
-              Ou, W., <strong>Zhao, Z.</strong>, Guo, D., Zhang, Z., and Lin, Y. (2024). WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting. In <em>Advanced Intelligent Computing Technology and Applications</em>, ICIC 2024, LNCS 14880, 348-359. Springer.
-            </p>
-            <div class="pub-links">
-              <a href="https://arxiv.org/abs/2311.00214" target="_blank" rel="noreferrer">Paper</a>
-              <a href="https://github.com/ouwen18/WinNet" target="_blank" rel="noreferrer">Code</a>
-              <span data-i18n="pub_status_3">ICIC 2024</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
       <section id="projects" class="section reveal" style="--delay: 40ms">
         <div class="section-head section-inline">
           <h2 data-i18n="projects_title">Selected Projects</h2>
         </div>
         <div class="list-grid two projects-grid">
-          <article class="list-item interactive work-item" style="--delay: 0ms">
+          <article class="list-item interactive" style="--delay: 0ms">
             <p class="item-kicker">Research</p>
             <h3>HEME</h3>
             <p data-i18n="p1_body">Hierarchical emotion modeling with adaptive multi-level mixture-of-experts.</p>
-            <div class="work-links">
-              <span data-i18n="work_paper_prep">Paper: in preparation</span>
-              <span data-i18n="work_code_private">Code: private</span>
-              <span data-i18n="work_demo_planned">Demo: planned</span>
-              <span data-i18n="work_status_active">Status: active research</span>
-            </div>
           </article>
-          <article class="list-item interactive work-item" style="--delay: 60ms">
+          <article class="list-item interactive" style="--delay: 60ms">
             <p class="item-kicker">Platform</p>
             <h3>Emotion Agent Stack</h3>
             <p data-i18n="p2_body">End-to-end pipeline for multimodal emotion analysis and conversational AI.</p>
-            <div class="work-links">
-              <span data-i18n="work_note_internal">Paper: concept note</span>
-              <span data-i18n="work_code_private">Code: private</span>
-              <span data-i18n="work_demo_planned">Demo: planned</span>
-              <span data-i18n="work_status_proto">Status: prototype</span>
-            </div>
           </article>
-          <article class="list-item interactive work-item" style="--delay: 120ms">
+          <article class="list-item interactive" style="--delay: 120ms">
             <p class="item-kicker">Workflow</p>
             <h3>AV-RISE</h3>
             <p data-i18n="p3_body">Hierarchical cross-modal denoising for robust audio-visual speech representation under noisy real-world conditions.</p>
-            <div class="work-links">
-              <a href="https://doi.org/10.1145/3746027.3755639" target="_blank" rel="noreferrer">Paper</a>
-              <span data-i18n="work_code_private">Code: private</span>
-              <span data-i18n="work_dataset_benchmark">Dataset: benchmark-based</span>
-              <span data-i18n="work_demo_planned">Demo: planned</span>
-              <span data-i18n="work_status_mm">Venue: ACM MM 2025</span>
-            </div>
           </article>
-          <article class="list-item interactive work-item" style="--delay: 180ms">
+          <article class="list-item interactive" style="--delay: 180ms">
             <p class="item-kicker">Tooling</p>
             <h3>Paper-to-Product Toolkit</h3>
             <p data-i18n="p4_body">Templates and scripts to accelerate turning academic ideas into usable demos.</p>
-            <div class="work-links">
-              <span data-i18n="work_note_internal">Paper: notes</span>
-              <span data-i18n="work_code_private">Code: internal</span>
-              <span data-i18n="work_demo_planned">Demo: evolving</span>
-              <span data-i18n="work_status_toolkit">Status: ongoing toolkit</span>
-            </div>
           </article>
         </div>
       </section>
