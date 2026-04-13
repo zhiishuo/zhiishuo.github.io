@@ -252,6 +252,71 @@ h2 {
   letter-spacing: -0.012em;
 }
 
+.map-figure {
+  margin: 0;
+}
+
+.map-figure img {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+}
+
+.map-figure figcaption {
+  margin-top: 10px;
+  max-width: 70ch;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.pub-list {
+  display: grid;
+  gap: 18px;
+}
+
+.pub-item {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.pub-citation {
+  margin: 0;
+  max-width: 86ch;
+  color: #202733;
+}
+
+.pub-links {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.pub-links a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.work-item {
+  padding-bottom: 6px;
+}
+
+.work-links {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.work-links a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
 .list-grid {
   display: grid;
   gap: 12px;
