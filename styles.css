@@ -105,6 +105,16 @@ body {
   background: var(--surface-soft);
 }
 
+.primary-nav .nav-photo-map {
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+
+.primary-nav .nav-photo-map:hover {
+  color: #173da7;
+  background: #dfe8ff;
+}
+
 .menu-toggle {
   display: none;
   width: 40px;
