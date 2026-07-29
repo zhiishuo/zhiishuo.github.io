@@ -1,6 +1,6 @@
 const i18n = {
   en: {
-    nav_about: 'About', nav_research: 'Research', nav_news: 'News', nav_projects: 'Projects', nav_resume: 'Resume', nav_portfolio: 'Portfolio', nav_blog: 'Blog', nav_photos: 'Photo Map ↗', nav_contact: 'Contact',
+    nav_about: 'About', nav_research: 'Research', nav_news: 'News', nav_projects: 'Projects', nav_resume: 'Resume', nav_portfolio: 'Portfolio', nav_blog: 'Blog', nav_photos: 'Photo Map', nav_contact: 'Contact',
     hero_tag: "Hi, I'm", hero_name: 'Zhishuo', hero_subtitle: 'Ph.D. candidate in Computer Science, focusing on multimodal learning, affective computing, and robust speech understanding.',
     hero_meta_1: 'Multimodal Affective Computing', hero_meta_2: 'Audio-Visual Language Modeling', hero_meta_3: 'Robust Speech Intelligence',
     hero_btn_contact: 'Contact', hero_btn_projects: 'View Research',
@@ -45,7 +45,7 @@ const i18n = {
     footer: 'Built with clarity and curiosity.'
   },
   zh: {
-    nav_about: '关于', nav_research: '研究方向', nav_news: '新闻', nav_projects: '项目', nav_resume: '简历', nav_portfolio: '作品集', nav_blog: '博客', nav_photos: '照片地图 ↗', nav_contact: '联系',
+    nav_about: '关于', nav_research: '研究方向', nav_news: '新闻', nav_projects: '项目', nav_resume: '简历', nav_portfolio: '作品集', nav_blog: '博客', nav_photos: '照片地图', nav_contact: '联系',
     hero_tag: '你好，我是', hero_name: '之硕', hero_subtitle: '四川大学计算机学院博士研究生，研究方向为多模态学习、情感计算与鲁棒语音理解。',
     hero_meta_1: '多模态情感计算', hero_meta_2: '音视频语言建模', hero_meta_3: '鲁棒语音智能',
     hero_btn_contact: '联系我', hero_btn_projects: '查看研究',
