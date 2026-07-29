@@ -509,6 +509,23 @@ button {
   pointer-events: auto;
 }
 
+.home-link {
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 13px;
+  border: 1px solid rgba(33, 75, 66, 0.11);
+  border-radius: 13px;
+  background: rgba(251, 250, 246, 0.8);
+  color: var(--forest);
+  font-size: 11px;
+  font-weight: 650;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(24, 53, 47, 0.08);
+  backdrop-filter: blur(16px);
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -639,12 +656,37 @@ button {
   backdrop-filter: blur(24px) saturate(1.2);
 }
 
-.story-dock > img {
+.story-cover {
+  position: relative;
   width: 128px;
   height: 104px;
   display: block;
+  padding: 0;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: 0;
   border-radius: 14px;
+  background: #dfe5de;
+}
+
+.story-cover img {
+  width: 128px;
+  height: 104px;
+  display: block;
   object-fit: cover;
+}
+
+.story-cover span {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(20, 54, 47, 0.82);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
 }
 
 .story-dock-copy {
@@ -1012,6 +1054,147 @@ button {
   backdrop-filter: blur(16px);
 }
 
+.gallery-backdrop {
+  position: fixed;
+  z-index: 2400;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(10, 26, 22, 0.76);
+  backdrop-filter: blur(16px);
+  animation: fade-in 180ms ease;
+}
+
+.gallery-modal {
+  width: min(980px, 100%);
+  max-height: calc(100dvh - 48px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 26px;
+  background: #f8f6ef;
+  box-shadow: 0 36px 120px rgba(5, 17, 14, 0.55);
+}
+
+.gallery-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 21px 23px 16px;
+}
+
+.gallery-header .intro-kicker {
+  margin-bottom: 5px;
+}
+
+.gallery-header h2 {
+  margin: 0;
+  color: var(--forest-deep);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 23px;
+}
+
+.gallery-header p {
+  margin: 5px 0 0;
+  color: #7b8984;
+  font-size: 11px;
+}
+
+.gallery-header > button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.gallery-stage {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #172722;
+}
+
+.gallery-stage > img {
+  width: 100%;
+  height: min(62dvh, 680px);
+  display: block;
+  object-fit: contain;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(13, 35, 30, 0.72);
+  color: #fff;
+  transform: translateY(-50%);
+  backdrop-filter: blur(12px);
+}
+
+.gallery-arrow.is-left { left: 17px; }
+.gallery-arrow.is-right { right: 17px; }
+
+.gallery-count {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(13, 35, 30, 0.72);
+  color: #fff;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.gallery-strip {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px 14px;
+  overflow-x: auto;
+  background: #f8f6ef;
+}
+
+.gallery-strip button {
+  width: 64px;
+  height: 52px;
+  flex: 0 0 auto;
+  padding: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+}
+
+.gallery-strip button.is-active {
+  border-color: var(--terracotta);
+}
+
+.gallery-strip img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
 @media (max-width: 1100px) {
   .memory-panel {
     width: 340px;
@@ -1086,6 +1269,10 @@ button {
   }
 
   .top-actions .glass-button {
+    display: none;
+  }
+
+  .home-link {
     display: none;
   }
 
@@ -1218,7 +1405,8 @@ button {
     transform: none;
   }
 
-  .story-dock > img {
+  .story-cover,
+  .story-cover img {
     width: 82px;
     height: 82px;
     border-radius: 12px;
@@ -1352,6 +1540,41 @@ button {
     bottom: 84px;
     max-width: calc(100% - 36px);
     white-space: nowrap;
+  }
+
+  .gallery-backdrop {
+    align-items: end;
+    padding: 0;
+  }
+
+  .gallery-modal {
+    width: 100%;
+    max-height: 94dvh;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .gallery-header {
+    padding: 17px 17px 13px;
+  }
+
+  .gallery-header h2 {
+    font-size: 20px;
+  }
+
+  .gallery-stage > img {
+    height: min(60dvh, 560px);
+  }
+
+  .gallery-arrow {
+    width: 39px;
+    height: 39px;
+  }
+
+  .gallery-arrow.is-left { left: 10px; }
+  .gallery-arrow.is-right { right: 10px; }
+
+  .gallery-strip {
+    padding-bottom: max(13px, env(safe-area-inset-bottom));
   }
 }
 

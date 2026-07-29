@@ -2,6 +2,7 @@
 
 import {
   ArrowRight,
+  ArrowUpRight,
   Camera,
   Check,
   ChevronLeft,
@@ -21,6 +22,7 @@ import {
   X,
 } from "lucide-react";
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { albumMemories } from "./albumMemories";
 
 type Memory = {
   id: string;
@@ -28,11 +30,14 @@ type Memory = {
   place: string;
   province: string;
   date: string;
+  dateLabel?: string;
   note: string;
   image: string;
+  images?: string[];
   lat: number;
   lng: number;
   tag: "城市" | "自然" | "人文";
+  mapped?: boolean;
   userCreated?: boolean;
 };
 
@@ -43,7 +48,7 @@ type MapCanvasProps = {
   onSelect: (id: string) => void;
 };
 
-const seedMemories: Memory[] = [
+const demoMemories: Memory[] = [
   {
     id: "hangzhou-spring",
     title: "风经过西湖的时候",
@@ -130,6 +135,8 @@ const seedMemories: Memory[] = [
   },
 ];
 
+const seedMemories: Memory[] = albumMemories.length > 0 ? albumMemories : demoMemories;
+
 const cityPresets = [
   { label: "杭州 · 西湖", province: "浙江", lat: 30.2424, lng: 120.1406 },
   { label: "上海 · 外滩", province: "上海", lat: 31.2407, lng: 121.4905 },
@@ -146,6 +153,10 @@ function formatDate(date: string) {
     month: "long",
     day: "numeric",
   }).format(new Date(`${date}T00:00:00`));
+}
+
+function memoryImages(memory: Memory) {
+  return memory.images?.length ? memory.images : [memory.image];
 }
 
 function MapCanvas({ memories, selectedId, showRoute, onSelect }: MapCanvasProps) {
@@ -278,7 +289,9 @@ function MapCanvas({ memories, selectedId, showRoute, onSelect }: MapCanvasProps
   }, [fitAll, mapReady, memories, onSelect, selectedId, showRoute]);
 
   useEffect(() => {
-    const selected = memories.find((memory) => memory.id === selectedId);
+    const selected = memories.find(
+      (memory) => memory.id === selectedId && memory.mapped !== false,
+    );
     if (selected && mapRef.current) {
       mapRef.current.flyTo([selected.lat, selected.lng], Math.max(mapRef.current.getZoom(), 7), {
         duration: 0.65,
@@ -294,12 +307,14 @@ export function MemoryAtlas() {
   const [selectedId, setSelectedId] = useState<string | null>(seedMemories[0].id);
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState<"全部" | Memory["tag"]>("全部");
-  const [showRoute, setShowRoute] = useState(true);
+  const [showRoute, setShowRoute] = useState(albumMemories.length === 0);
   const [addOpen, setAddOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isTouring, setIsTouring] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState("");
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryIndex, setGalleryIndex] = useState(0);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -355,6 +370,8 @@ export function MemoryAtlas() {
   const selectMemory = useCallback((id: string) => {
     setSelectedId(id);
     setMenuOpen(false);
+    setGalleryOpen(false);
+    setGalleryIndex(0);
   }, []);
 
   const moveSelection = useCallback(
@@ -385,13 +402,24 @@ export function MemoryAtlas() {
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
       if (addOpen) return;
+      if (galleryOpen) {
+        const count = selectedMemory ? memoryImages(selectedMemory).length : 0;
+        if (event.key === "Escape") setGalleryOpen(false);
+        if (event.key === "ArrowRight" && count > 1) {
+          setGalleryIndex((value) => (value + 1) % count);
+        }
+        if (event.key === "ArrowLeft" && count > 1) {
+          setGalleryIndex((value) => (value - 1 + count) % count);
+        }
+        return;
+      }
       if (event.key === "ArrowRight") moveSelection(1);
       if (event.key === "ArrowLeft") moveSelection(-1);
       if (event.key === "Escape") setIsTouring(false);
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [addOpen, moveSelection]);
+  }, [addOpen, galleryOpen, moveSelection, selectedMemory]);
 
   const handleAdd = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -444,13 +472,15 @@ export function MemoryAtlas() {
     setToast("已移除这条回忆");
   };
 
-  const provinceCount = new Set(memories.map((memory) => memory.province)).size;
+  const photoCount = memories.reduce((total, memory) => total + memoryImages(memory).length, 0);
+  const galleryImages = selectedMemory ? memoryImages(selectedMemory) : [];
+  const mappedMemories = filteredMemories.filter((memory) => memory.mapped !== false);
 
   return (
     <main className="atlas-shell">
       <div className="map-stage">
         <MapCanvas
-          memories={filteredMemories}
+          memories={mappedMemories}
           selectedId={selectedMemory?.id ?? null}
           showRoute={showRoute}
           onSelect={selectMemory}
@@ -475,6 +505,15 @@ export function MemoryAtlas() {
             </span>
           </a>
           <div className="top-actions">
+            <a
+              className="home-link"
+              href="https://zhiishuo.github.io/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>个人主页</span>
+              <ArrowUpRight size={15} />
+            </a>
             <button
               type="button"
               className={`glass-button ${showRoute ? "is-active" : ""}`}
@@ -509,7 +548,18 @@ export function MemoryAtlas() {
 
         {selectedMemory && (
           <article className="story-dock" aria-live="polite">
-            <img src={selectedMemory.image} alt={selectedMemory.title} />
+            <button
+              type="button"
+              className="story-cover"
+              onClick={() => {
+                setGalleryIndex(0);
+                setGalleryOpen(true);
+              }}
+              aria-label={`查看${selectedMemory.place}的${galleryImages.length}张照片`}
+            >
+              <img src={selectedMemory.image} alt={selectedMemory.title} />
+              {galleryImages.length > 1 && <span>{galleryImages.length} 张</span>}
+            </button>
             <div className="story-dock-copy">
               <div className="eyebrow">
                 <MapPin size={13} />
@@ -518,7 +568,7 @@ export function MemoryAtlas() {
               <h2>{selectedMemory.title}</h2>
               <p>{selectedMemory.note}</p>
               <div className="story-meta">
-                <span>{formatDate(selectedMemory.date)}</span>
+                <span>{selectedMemory.dateLabel ?? formatDate(selectedMemory.date)}</span>
                 <span className="dot" />
                 <span>{selectedMemory.tag}</span>
               </div>
@@ -579,8 +629,8 @@ export function MemoryAtlas() {
         </div>
 
         <div className="stat-row">
-          <div><strong>{memories.length}</strong><span>段回忆</span></div>
-          <div><strong>{provinceCount}</strong><span>个地方</span></div>
+          <div><strong>{photoCount}</strong><span>张照片</span></div>
+          <div><strong>{memories.filter((memory) => memory.mapped !== false).length}</strong><span>个地点</span></div>
           <div><strong>{new Set(memories.map((memory) => memory.date.slice(0, 4))).size}</strong><span>年光景</span></div>
         </div>
 
@@ -630,7 +680,7 @@ export function MemoryAtlas() {
               <span className="memory-card-copy">
                 <small>{memory.place}</small>
                 <strong>{memory.title}</strong>
-                <span>{memory.date.replaceAll("-", ".")}</span>
+                <span>{memory.dateLabel ?? memory.date.replaceAll("-", ".")}</span>
               </span>
               <span className="card-arrow"><ArrowRight size={16} /></span>
             </button>
@@ -733,6 +783,75 @@ export function MemoryAtlas() {
                 <MapPin size={17} /> 放到地图上
               </button>
             </form>
+          </section>
+        </div>
+      )}
+
+      {galleryOpen && selectedMemory && galleryImages.length > 0 && (
+        <div
+          className="gallery-backdrop"
+          role="presentation"
+          onMouseDown={() => setGalleryOpen(false)}
+        >
+          <section
+            className="gallery-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedMemory.place}照片集`}
+            onMouseDown={(event) => event.stopPropagation()}
+          >
+            <header className="gallery-header">
+              <div>
+                <span className="intro-kicker"><Camera size={13} /> PHOTO STORY</span>
+                <h2>{selectedMemory.place}</h2>
+                <p>{selectedMemory.dateLabel ?? formatDate(selectedMemory.date)} · {galleryImages.length} 张照片</p>
+              </div>
+              <button type="button" onClick={() => setGalleryOpen(false)} aria-label="关闭照片集">
+                <X size={20} />
+              </button>
+            </header>
+            <div className="gallery-stage">
+              <img
+                src={galleryImages[galleryIndex]}
+                alt={`${selectedMemory.place}第 ${galleryIndex + 1} 张照片`}
+              />
+              {galleryImages.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    className="gallery-arrow is-left"
+                    onClick={() => setGalleryIndex((value) => (value - 1 + galleryImages.length) % galleryImages.length)}
+                    aria-label="上一张照片"
+                  >
+                    <ChevronLeft size={23} />
+                  </button>
+                  <button
+                    type="button"
+                    className="gallery-arrow is-right"
+                    onClick={() => setGalleryIndex((value) => (value + 1) % galleryImages.length)}
+                    aria-label="下一张照片"
+                  >
+                    <ChevronRight size={23} />
+                  </button>
+                </>
+              )}
+              <span className="gallery-count">{galleryIndex + 1} / {galleryImages.length}</span>
+            </div>
+            {galleryImages.length > 1 && (
+              <div className="gallery-strip" aria-label="照片缩略图">
+                {galleryImages.map((image, index) => (
+                  <button
+                    type="button"
+                    key={image}
+                    className={index === galleryIndex ? "is-active" : ""}
+                    onClick={() => setGalleryIndex(index)}
+                    aria-label={`查看第 ${index + 1} 张照片`}
+                  >
+                    <img src={image.replace("/full/", "/thumb/")} alt="" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
           </section>
         </div>
       )}

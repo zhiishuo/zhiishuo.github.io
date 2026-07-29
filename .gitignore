@@ -42,3 +42,5 @@ next-env.d.ts
 /output/
 /.playwright-cli/
 /work/
+/source-photos/
+__pycache__/
