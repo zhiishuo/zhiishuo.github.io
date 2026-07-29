@@ -188,65 +188,22 @@ button {
   display: none;
 }
 
-.panel-intro {
+.panel-controls {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-end;
+  min-height: 6px;
+  margin-bottom: 14px;
 }
 
 .intro-kicker {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 13px;
   color: var(--terracotta);
   font-size: 11px;
   font-weight: 760;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-}
-
-.panel-intro h1 {
-  margin: 0;
-  font-family: "Songti SC", "STSong", "Noto Serif SC", serif;
-  color: var(--forest-deep);
-  font-size: clamp(25px, 2vw, 31px);
-  font-weight: 650;
-  line-height: 1.42;
-  letter-spacing: -0.035em;
-}
-
-.stat-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 25px 0 21px;
-  padding: 15px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.stat-row div {
-  display: flex;
-  align-items: baseline;
-  gap: 5px;
-  padding-left: 13px;
-  border-left: 1px solid var(--line);
-}
-
-.stat-row div:first-child {
-  padding-left: 0;
-  border-left: 0;
-}
-
-.stat-row strong {
-  color: var(--forest-deep);
-  font-size: 21px;
-  font-weight: 650;
-}
-
-.stat-row span {
-  color: var(--ink-soft);
-  font-size: 11px;
 }
 
 .search-field {
@@ -498,12 +455,11 @@ button {
   height: 90px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 20px 26px 20px 30px;
   pointer-events: none;
 }
 
-.brand,
 .top-actions,
 .mobile-menu-button {
   pointer-events: auto;
@@ -524,46 +480,6 @@ button {
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(24, 53, 47, 0.08);
   backdrop-filter: blur(16px);
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--forest-deep);
-  text-decoration: none;
-}
-
-.brand-mark {
-  width: 39px;
-  height: 39px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(33, 75, 66, 0.13);
-  border-radius: 50%;
-  background: rgba(251, 250, 246, 0.88);
-  box-shadow: 0 8px 26px rgba(24, 53, 47, 0.1);
-  backdrop-filter: blur(16px);
-}
-
-.brand > span:last-child {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand strong {
-  font-family: "Songti SC", "STSong", serif;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-
-.brand small {
-  margin-top: 1px;
-  color: #72817b;
-  font-size: 7px;
-  font-weight: 750;
-  letter-spacing: 0.22em;
 }
 
 .top-actions {
@@ -1102,16 +1018,33 @@ button {
   font-size: 11px;
 }
 
-.gallery-header > button {
-  width: 38px;
+.gallery-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gallery-header-actions a,
+.gallery-header-actions button {
   height: 38px;
-  display: grid;
-  place-items: center;
-  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 12px;
   cursor: pointer;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: #fff;
+  color: var(--forest);
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gallery-header-actions button {
+  width: 38px;
+  padding: 0;
 }
 
 .gallery-stage {
@@ -1232,25 +1165,7 @@ button {
   .topbar {
     height: 70px;
     padding: 12px 14px;
-  }
-
-  .brand {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .brand-mark {
-    width: 36px;
-    height: 36px;
-  }
-
-  .brand strong {
-    font-size: 15px;
-  }
-
-  .brand small {
-    display: none;
+    justify-content: space-between;
   }
 
   .mobile-menu-button {
@@ -1315,13 +1230,9 @@ button {
     background: rgba(24, 53, 47, 0.16);
   }
 
-  .panel-intro h1 {
-    font-size: 22px;
-    line-height: 1.35;
-  }
-
-  .intro-kicker {
-    margin-bottom: 8px;
+  .panel-controls {
+    min-height: 36px;
+    margin-bottom: 10px;
   }
 
   .mobile-close {
@@ -1334,15 +1245,6 @@ button {
     border: 1px solid var(--line);
     border-radius: 11px;
     background: #fff;
-  }
-
-  .stat-row {
-    margin: 15px 0 13px;
-    padding: 10px 0;
-  }
-
-  .stat-row strong {
-    font-size: 18px;
   }
 
   .search-field {
@@ -1561,6 +1463,15 @@ button {
     font-size: 20px;
   }
 
+  .gallery-header-actions a {
+    width: 38px;
+    padding: 0;
+  }
+
+  .gallery-header-actions a span {
+    display: none;
+  }
+
   .gallery-stage > img {
     height: min(60dvh, 560px);
   }
@@ -1581,15 +1492,6 @@ button {
 @media (max-height: 720px) and (min-width: 761px) {
   .memory-panel {
     padding-top: 24px;
-  }
-
-  .panel-intro h1 {
-    font-size: 24px;
-  }
-
-  .stat-row {
-    margin-block: 15px;
-    padding-block: 10px;
   }
 
   .tag-row {

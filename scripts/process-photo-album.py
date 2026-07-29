@@ -7,6 +7,7 @@ import argparse
 import json
 import math
 import re
+import shutil
 import time
 import urllib.parse
 import urllib.request
@@ -20,6 +21,8 @@ from PIL import ExifTags, Image, ImageOps
 
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".heic", ".tif", ".tiff"}
 EARTH_RADIUS_KM = 6371.0088
+THUMB_IMAGE_MAX_EDGE = 640
+THUMB_IMAGE_QUALITY = 78
 
 
 @dataclass
@@ -254,7 +257,7 @@ def safe_webp(source: Path, destination: Path, max_edge: int, quality: int) -> N
         image.thumbnail((max_edge, max_edge), Image.Resampling.LANCZOS)
         if image.mode not in {"RGB", "RGBA"}:
             image = image.convert("RGB")
-        image.save(destination, "WEBP", quality=quality, method=4)
+        image.save(destination, "WEBP", quality=quality, method=6)
 
 
 def ts_string(value: str) -> str:
@@ -265,6 +268,11 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("source", type=Path)
     parser.add_argument("--project", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument(
+        "--force-assets",
+        action="store_true",
+        help="Regenerate optimized images even when output files already exist.",
+    )
     args = parser.parse_args()
 
     source_files = sorted(
@@ -280,9 +288,9 @@ def main() -> None:
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
     assets_root = args.project / "public" / "atlas-photos"
-    full_root = assets_root / "full"
+    original_root = assets_root / "original"
     thumb_root = assets_root / "thumb"
-    full_root.mkdir(parents=True, exist_ok=True)
+    original_root.mkdir(parents=True, exist_ok=True)
     thumb_root.mkdir(parents=True, exist_ok=True)
 
     memories: list[dict[str, Any]] = []
@@ -295,20 +303,25 @@ def main() -> None:
         image_paths: list[str] = []
         for photo_index, photo in enumerate(cluster_photos_sorted, start=1):
             asset_id = f"p{cluster_index:03d}-{photo_index:03d}"
-            full_path = full_root / f"{asset_id}.webp"
+            original_path = original_root / f"{asset_id}.jpeg"
             thumb_path = thumb_root / f"{asset_id}.webp"
-            if not full_path.exists():
-                safe_webp(photo.source, full_path, 1440, 73)
-            if not thumb_path.exists():
-                safe_webp(photo.source, thumb_path, 420, 66)
-            image_paths.append(f"/atlas-photos/full/{asset_id}.webp")
+            if args.force_assets or not original_path.exists():
+                shutil.copy2(photo.source, original_path)
+            if args.force_assets or not thumb_path.exists():
+                safe_webp(
+                    photo.source,
+                    thumb_path,
+                    THUMB_IMAGE_MAX_EDGE,
+                    THUMB_IMAGE_QUALITY,
+                )
+            image_paths.append(f"/atlas-photos/original/{asset_id}.jpeg")
         date, date_label = approximate_date_label(cluster_photos_sorted)
         cover_index = min(len(image_paths) // 2, len(image_paths) - 1)
-        cover = image_paths[cover_index].replace("/full/", "/thumb/")
+        cover = image_paths[cover_index].replace("/original/", "/thumb/").replace(".jpeg", ".webp")
         memories.append(
             {
                 "id": f"place-{cluster_index:03d}",
-                "title": f"{place}的光景",
+                "title": place,
                 "place": place,
                 "province": province,
                 "date": date,
@@ -325,36 +338,94 @@ def main() -> None:
         cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=2))
 
     mapped_photo_count = sum(len(memory["images"]) for memory in memories)
+    manual_groups: list[dict[str, Any]] = []
+    manual_config_path = args.project / "data" / "manual-location-overrides.json"
+    if manual_config_path.exists():
+        manual_groups = json.loads(manual_config_path.read_text())
+
+    remaining_unlocated_count = len(unlocated)
     if unlocated:
         unlocated_sorted = sorted(unlocated, key=lambda photo: photo.taken_at)
         image_paths = []
         for photo_index, photo in enumerate(unlocated_sorted, start=1):
             asset_id = f"unmapped-{photo_index:03d}"
-            full_path = full_root / f"{asset_id}.webp"
+            original_path = original_root / f"{asset_id}.jpeg"
             thumb_path = thumb_root / f"{asset_id}.webp"
-            if not full_path.exists():
-                safe_webp(photo.source, full_path, 1440, 73)
-            if not thumb_path.exists():
-                safe_webp(photo.source, thumb_path, 420, 66)
-            image_paths.append(f"/atlas-photos/full/{asset_id}.webp")
-        cover_index = min(len(image_paths) // 2, len(image_paths) - 1)
-        memories.append(
-            {
-                "id": "place-unmapped",
-                "title": "等待地点被想起",
-                "place": "待确认地点",
-                "province": "未定位",
-                "date": "2026-01-01",
-                "dateLabel": "时间待确认",
-                "note": f"{len(image_paths)} 张照片没有可靠的 GPS 信息，先完整保存在这里，不为它们编造坐标。",
-                "image": image_paths[cover_index].replace("/full/", "/thumb/"),
-                "images": image_paths,
-                "lat": 0,
-                "lng": 0,
-                "tag": "人文",
-                "mapped": False,
-            }
-        )
+            if args.force_assets or not original_path.exists():
+                shutil.copy2(photo.source, original_path)
+            if args.force_assets or not thumb_path.exists():
+                safe_webp(
+                    photo.source,
+                    thumb_path,
+                    THUMB_IMAGE_MAX_EDGE,
+                    THUMB_IMAGE_QUALITY,
+                )
+            image_paths.append(f"/atlas-photos/original/{asset_id}.jpeg")
+
+        assigned_indexes: set[int] = set()
+        for group in manual_groups:
+            indexes = [int(index) for index in group["indexes"]]
+            invalid_indexes = [
+                index for index in indexes if index < 1 or index > len(image_paths)
+            ]
+            duplicate_indexes = [index for index in indexes if index in assigned_indexes]
+            if invalid_indexes or duplicate_indexes:
+                raise ValueError(
+                    f"invalid manual indexes for {group['id']}: "
+                    f"out_of_range={invalid_indexes}, duplicates={duplicate_indexes}"
+                )
+            assigned_indexes.update(indexes)
+            group_images = [image_paths[index - 1] for index in indexes]
+            cover_index = min(len(group_images) // 2, len(group_images) - 1)
+            memories.append(
+                {
+                    "id": group["id"],
+                    "title": group["place"],
+                    "place": group["place"],
+                    "province": group["province"],
+                    "date": group["date"],
+                    "dateLabel": group["dateLabel"],
+                    "note": group["note"],
+                    "image": group_images[cover_index]
+                    .replace("/original/", "/thumb/")
+                    .replace(".jpeg", ".webp"),
+                    "images": group_images,
+                    "lat": group["lat"],
+                    "lng": group["lng"],
+                    "tag": group["tag"],
+                }
+            )
+
+        remaining_indexes = [
+            index
+            for index in range(1, len(image_paths) + 1)
+            if index not in assigned_indexes
+        ]
+        remaining_unlocated_count = len(remaining_indexes)
+        if remaining_indexes:
+            remaining_images = [image_paths[index - 1] for index in remaining_indexes]
+            cover_index = min(len(remaining_images) // 2, len(remaining_images) - 1)
+            memories.append(
+                {
+                    "id": "place-unmapped",
+                    "title": "待确认地点",
+                    "place": "待确认地点",
+                    "province": "未定位",
+                    "date": "2026-01-01",
+                    "dateLabel": "时间待确认",
+                    "note": f"{len(remaining_images)} 张照片没有可靠的 GPS 信息，先完整保存在这里，不为它们编造坐标。",
+                    "image": remaining_images[cover_index]
+                    .replace("/original/", "/thumb/")
+                    .replace(".jpeg", ".webp"),
+                    "images": remaining_images,
+                    "lat": 0,
+                    "lng": 0,
+                    "tag": "人文",
+                    "mapped": False,
+                }
+            )
+
+        mapped_photo_count += len(assigned_indexes)
 
     output_lines = [
         "export type AlbumMemory = {",
@@ -381,12 +452,17 @@ def main() -> None:
     report = {
         "exported_files": len(source_files),
         "read_photos": len(photos),
-        "mapped_places": len(clusters),
-        "unlocated_collections": 1 if unlocated else 0,
+        "mapped_places": len(clusters) + len(manual_groups),
+        "unlocated_collections": 1 if remaining_unlocated_count else 0,
         "mapped_photos": mapped_photo_count,
         "published_photos": sum(len(memory["images"]) for memory in memories),
-        "unlocated_photos": len(unlocated),
-        "unlocated_files": [photo.source.name for photo in unlocated],
+        "unlocated_photos": remaining_unlocated_count,
+        "unlocated_files": [
+            photo.source.name
+            for index, photo in enumerate(sorted(unlocated, key=lambda item: item.taken_at), start=1)
+            if not any(index in group["indexes"] for group in manual_groups)
+        ],
+        "manual_location_groups": len(manual_groups),
     }
     (args.project / "data" / "album-import-report.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2)

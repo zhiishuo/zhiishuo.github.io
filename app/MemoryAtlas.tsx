@@ -7,7 +7,7 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  Compass,
+  Download,
   LocateFixed,
   Map as MapIcon,
   MapPin,
@@ -17,7 +17,6 @@ import {
   Plus,
   Route,
   Search,
-  Sparkles,
   Trash2,
   X,
 } from "lucide-react";
@@ -157,6 +156,12 @@ function formatDate(date: string) {
 
 function memoryImages(memory: Memory) {
   return memory.images?.length ? memory.images : [memory.image];
+}
+
+function thumbnailForImage(image: string) {
+  return image.includes("/atlas-photos/original/")
+    ? image.replace("/original/", "/thumb/").replace(/\.jpeg$/i, ".webp")
+    : image;
 }
 
 function MapCanvas({ memories, selectedId, showRoute, onSelect }: MapCanvasProps) {
@@ -472,7 +477,6 @@ export function MemoryAtlas() {
     setToast("已移除这条回忆");
   };
 
-  const photoCount = memories.reduce((total, memory) => total + memoryImages(memory).length, 0);
   const galleryImages = selectedMemory ? memoryImages(selectedMemory) : [];
   const mappedMemories = filteredMemories.filter((memory) => memory.mapped !== false);
 
@@ -497,13 +501,6 @@ export function MemoryAtlas() {
           >
             <Menu size={20} />
           </button>
-          <a className="brand" href="#" aria-label="拾光地图首页">
-            <span className="brand-mark"><Compass size={19} strokeWidth={1.8} /></span>
-            <span>
-              <strong>拾光地图</strong>
-              <small>MEMORY ATLAS</small>
-            </span>
-          </a>
           <div className="top-actions">
             <a
               className="home-link"
@@ -613,11 +610,7 @@ export function MemoryAtlas() {
 
       <aside className={`memory-panel ${menuOpen ? "is-open" : ""}`}>
         <div className="panel-handle" aria-hidden="true" />
-        <div className="panel-intro">
-          <div>
-            <span className="intro-kicker"><Sparkles size={13} /> 私人时光档案</span>
-            <h1>把走过的地方，<br />收进一张会呼吸的地图。</h1>
-          </div>
+        <div className="panel-controls">
           <button
             className="mobile-close"
             type="button"
@@ -626,12 +619,6 @@ export function MemoryAtlas() {
           >
             <X size={19} />
           </button>
-        </div>
-
-        <div className="stat-row">
-          <div><strong>{photoCount}</strong><span>张照片</span></div>
-          <div><strong>{memories.filter((memory) => memory.mapped !== false).length}</strong><span>个地点</span></div>
-          <div><strong>{new Set(memories.map((memory) => memory.date.slice(0, 4))).size}</strong><span>年光景</span></div>
         </div>
 
         <label className="search-field">
@@ -806,9 +793,19 @@ export function MemoryAtlas() {
                 <h2>{selectedMemory.place}</h2>
                 <p>{selectedMemory.dateLabel ?? formatDate(selectedMemory.date)} · {galleryImages.length} 张照片</p>
               </div>
-              <button type="button" onClick={() => setGalleryOpen(false)} aria-label="关闭照片集">
-                <X size={20} />
-              </button>
+              <div className="gallery-header-actions">
+                <a
+                  href={galleryImages[galleryIndex]}
+                  download={`${selectedMemory.place}-${galleryIndex + 1}.jpeg`}
+                  aria-label={`下载第 ${galleryIndex + 1} 张原图`}
+                >
+                  <Download size={17} />
+                  <span>下载原图</span>
+                </a>
+                <button type="button" onClick={() => setGalleryOpen(false)} aria-label="关闭照片集">
+                  <X size={20} />
+                </button>
+              </div>
             </header>
             <div className="gallery-stage">
               <img
@@ -847,7 +844,7 @@ export function MemoryAtlas() {
                     onClick={() => setGalleryIndex(index)}
                     aria-label={`查看第 ${index + 1} 张照片`}
                   >
-                    <img src={image.replace("/full/", "/thumb/")} alt="" loading="lazy" />
+                    <img src={thumbnailForImage(image)} alt="" loading="lazy" />
                   </button>
                 ))}
               </div>

@@ -17,8 +17,8 @@ test("renders the memory atlas shell", async () => {
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>拾光地图｜把回忆放回发生的地方<\/title>/);
-  assert.match(html, /把走过的地方/);
+  assert.match(html, /<title>照片地图<\/title>/);
+  assert.doesNotMatch(html, /拾光地图|把走过的地方|私人时光档案|年光景/);
   assert.match(html, /回忆胶卷/);
   assert.doesNotMatch(html, /codex-preview/);
   assert.doesNotMatch(html, /react-loading-skeleton/);

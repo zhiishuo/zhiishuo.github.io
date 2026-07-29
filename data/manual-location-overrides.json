@@ -1,0 +1,98 @@
+[
+  {
+    "id": "place-manual-united-kingdom",
+    "place": "英国",
+    "province": "英国",
+    "date": "2019-02-01",
+    "dateLabel": "时间待确认",
+    "note": "10 张照片已确认拍摄于英国，具体城市与月份暂不强行推断。",
+    "lat": 54.5,
+    "lng": -3.4,
+    "tag": "城市",
+    "indexes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "id": "place-manual-yulong",
+    "place": "云杉坪 · 玉龙雪山",
+    "province": "云南",
+    "date": "2024-01-01",
+    "dateLabel": "约 2024年1月",
+    "note": "第 11 张已确认是云杉坪；相邻雪山照片依据同组画面暂归玉龙雪山。",
+    "lat": 27.1019,
+    "lng": 100.1764,
+    "tag": "自然",
+    "indexes": [11, 12]
+  },
+  {
+    "id": "place-manual-tianfu-greenway",
+    "place": "成都 · 天府绿道",
+    "province": "四川",
+    "date": "2024-11-01",
+    "dateLabel": "约 2024年11月",
+    "note": "地点由本人确认。",
+    "lat": 30.561,
+    "lng": 104.066,
+    "tag": "城市",
+    "indexes": [13]
+  },
+  {
+    "id": "place-manual-luxetown",
+    "place": "成都 · 麓镇",
+    "province": "四川",
+    "date": "2024-12-01",
+    "dateLabel": "约 2024年12月",
+    "note": "依据麓镇圣诞嘉年华、欧式街区及 PLAYMOBIL 装置综合判断。",
+    "lat": 30.432,
+    "lng": 104.104,
+    "tag": "城市",
+    "indexes": [14]
+  },
+  {
+    "id": "place-manual-bailu",
+    "place": "四川 · 白鹿小镇",
+    "province": "四川",
+    "date": "2024-12-01",
+    "dateLabel": "约 2024年12月",
+    "note": "地点由本人确认。",
+    "lat": 31.198,
+    "lng": 103.929,
+    "tag": "人文",
+    "indexes": [15]
+  },
+  {
+    "id": "place-manual-qingdao",
+    "place": "青岛",
+    "province": "山东",
+    "date": "2025-09-01",
+    "dateLabel": "约 2025年9–10月",
+    "note": "第 16–32 张已确认拍摄于青岛。",
+    "lat": 36.0671,
+    "lng": 120.3826,
+    "tag": "城市",
+    "indexes": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+  },
+  {
+    "id": "place-manual-scu-wangjiang",
+    "place": "成都 · 四川大学望江校区",
+    "province": "四川",
+    "date": "2026-06-01",
+    "dateLabel": "约 2026年6月",
+    "note": "第 33 张由本人确认。",
+    "lat": 30.6318,
+    "lng": 104.0836,
+    "tag": "人文",
+    "indexes": [33]
+  },
+  {
+    "id": "place-manual-wenshu",
+    "place": "成都 · 文殊院",
+    "province": "四川",
+    "date": "2026-06-01",
+    "dateLabel": "约 2026年6月",
+    "note": "第 34 张由本人确认。",
+    "lat": 30.6801,
+    "lng": 104.0731,
+    "tag": "人文",
+    "indexes": [34]
+  }
+]

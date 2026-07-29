@@ -14,8 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = incomingHeaders.get("x-forwarded-host") ?? incomingHeaders.get("host");
   const protocol = incomingHeaders.get("x-forwarded-proto") ?? (host?.includes("localhost") ? "http" : "https");
   const origin = host ? `${protocol}://${host}` : "https://memory-atlas.example";
-  const title = "拾光地图｜把回忆放回发生的地方";
-  const description = "一张收藏旅行、照片与故事的私人回忆地图。";
+  const title = "照片地图";
+  const description = "按地点浏览旅行与生活照片。";
 
   return {
     metadataBase: new URL(origin),
@@ -29,13 +29,11 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: "website",
-      images: [{ url: `${origin}/og.png`, width: 1731, height: 909, alt: "拾光地图" }],
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title,
       description,
-      images: [`${origin}/og.png`],
     },
   };
 }
