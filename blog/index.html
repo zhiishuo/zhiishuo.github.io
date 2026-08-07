@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,18 +21,18 @@
       <a class="back-link" href="../">← Back to homepage</a>
       <h1 class="page-title">
         <span class="title-prefix">Zhishuo Blog</span>
-        <span class="title-sep">：</span>
-        <span class="title-main">笔记与备忘</span>
+        <span class="title-sep">:</span>
+        <span class="title-main">Research Notes</span>
       </h1>
     </header>
 
     <main class="shell layout">
       <aside class="toc">
-        <p class="toc-title">目录</p>
-        <a href="#workflow">科研流程范式</a>
+        <p class="toc-title">Contents</p>
+        <a href="#workflow">Research workflow</a>
         <a href="#av-rise">AV-RISE</a>
-        <a href="#emotion-agent">情感 Agent</a>
-        <a href="#emotion-llm">情感大模型</a>
+        <a href="#emotion-agent">Emotion Agent</a>
+        <a href="#emotion-llm">Emotion Models</a>
       </aside>
 
       <div class="posts">
@@ -41,31 +41,31 @@
             <span>2026-04</span>
             <span>Workflow</span>
           </div>
-          <h2>一个可执行的科研流程范式</h2>
+          <h2>An executable research workflow paradigm</h2>
           <p class="lede">
-            我后来慢慢意识到，真正拖住研究的通常不是想法不够多，而是问题定义、证据组织和执行节奏没有被放进同一个系统里。对我来说，好的流程不是附属品，而是研究质量本身的一部分。
+            The bottleneck in research is often not a lack of ideas, but the absence of one shared system that holds problem definition, evidence organization, and execution rhythm together. For me, workflow is part of research quality, not an accessory.
           </p>
-          <h3>我为什么越来越在意流程</h3>
+          <h3>Why workflow now matters more</h3>
           <p>
-            这些年我逐渐不再相信“多读论文，灵感总会自己出现”这种科研叙事。对我更有效的方式，是把研究当成一个被持续维护的系统：问题定义、文献地图、实验执行、写作结构和失败复盘，最好都能落到稳定的外部对象上，而不是只存在脑子里。
-          </p>
-          <p>
-            我更认可的路径是：先从<strong>现象</strong>而不是方法出发，确认哪一种失败模式值得研究；再做一张克制的文献地图，说明已有方法为什么不够；接着把要证明的内容写成主张与证据矩阵；最后再进入实现和实验。这样做的好处是，研究不容易在中途漂移成另一个问题。
-          </p>
-          <h3>我如何把它落到具体对象上</h3>
-          <p>
-            在我的习惯里，source of truth 文档负责定义当前版本的工作内容，review note 记录哪些假设已经被推翻，execution plan 把任务拆成可执行步骤，dashboard 类工具则把长期目标和短期动作连接起来。像 SelfOS 这种本地工具，对我来说不是“生产力玩具”，而是给研究流程增加外部记忆和可见反馈。
+            I no longer rely on the idea that insight will appear simply by reading more papers. A more effective approach is to treat research as a maintained system where problem framing, literature mapping, experiment execution, writing structure, and failure retrospectives are persisted outside memory.
           </p>
           <p>
-            这套流程不是抽象口号，它通常会直接改变项目走向。像 AV-RISE、HEME 这类线索，如果没有把失败样本、论文主张和执行拆分写清楚，很容易在“方法很好看”和“问题其实没定义准”之间来回摇摆。流程的作用，不是让研究更机械，而是让判断更可回看。
+            My preferred sequence is: start from observed phenomena, identify which failure modes are worth studying, build a focused literature map that shows why prior methods are insufficient, write claims and evidence into a matrix, and then move to implementation and experiments.
           </p>
-          <h3>我现在保留的几条原则</h3>
+          <h3>How this is made operational</h3>
+          <p>
+            I keep a source-of-truth note for active tasks, a review note for rejected assumptions, and an execution plan with concrete steps. Dashboard-style tools connect long-term targets and short-term actions; they provide external memory and visibility for decision-making.
+          </p>
+          <p>
+            This workflow is practical, not symbolic. Without clear structure around failures, claims, and execution, work can oscillate between “the method is elegant” and “the problem was never precisely defined.”
+          </p>
+          <h3>Core principles I keep</h3>
           <ul>
-            <li>问题先行，不被方法名词牵着走。</li>
-            <li>文献服务于论证，不服务于堆砌。</li>
-            <li>实验服务于主张，不服务于表格数量。</li>
-            <li>写作尽早开始，让结构反过来约束实现。</li>
-            <li>所有关键决定都尽量留下可回看的痕迹。</li>
+            <li>Problem first, not method vocabulary.</li>
+            <li>Literature serves argument quality, not volume.</li>
+            <li>Experiments validate claims, not just populate tables.</li>
+            <li>Start writing early so structure guides implementation.</li>
+            <li>Keep reviewable traces for key decisions.</li>
           </ul>
         </article>
 
@@ -74,29 +74,29 @@
             <span>2025-09</span>
             <span>Paper</span>
           </div>
-          <h2>AV-RISE：我为什么重新理解鲁棒音视频语音表征</h2>
+          <h2>Why AV-RISE changed how I think about robust audiovisual speech</h2>
           <p class="lede">
-            在鲁棒音视频语音识别这条线上，AV-RISE 对我最重要的启发不是“又做了一个多模态模型”，而是把跨模态去噪提升成了表征学习本身的问题。模型难的不是接入两个模态，而是在它们不一致时仍然知道该如何组织证据。
+            AV-RISE was not only another multimodal model. It reframed robustness as a representation-learning problem when modalities are inconsistent or partly missing.
           </p>
-          <h3>我真正关心的问题</h3>
+          <h3>The core question</h3>
           <p>
-            这条线对我很重要，因为它把一个常被低估的问题摆到了台面上：真实场景里的音视频语音理解，难点并不只是把两个模态拼接起来，而是在它们不可靠、不同步、受污染甚至彼此误导时，模型究竟该相信什么。
-          </p>
-          <p>
-            很多系统把多模态融合理解成天然增益，好像只要视觉和音频都接进来，结果就会更稳。但在真实环境里，噪声、遮挡、姿态变化、口型模糊和模态间微小但关键的不一致，都会让“融合”本身变成额外负担。对 AVSR 来说，问题从来不只是模态够不够多，而是跨模态证据会不会互相污染。真正让我在意的，是那些复杂噪声、模态不一致和弱信号修复场景，因为系统一旦在这里判断失真，后面再强的融合也补不回来。
-          </p>
-          <h3>AV-RISE 这篇工作给了我什么判断</h3>
-          <p>
-            对我而言，AV-RISE 的价值不只是一个方法结果，而是一种看问题的方式：去噪不该被看成简单前处理，而应被视为表征学习本身的一部分。所谓层级式跨模态去噪，本质上是在不同层级重新组织音视频之间的互补关系，让模型不仅看到共同信息，还能从不一致中分辨哪些是噪声，哪些反而是补充线索。这种“先重组证据，再做判断”的思路，比单纯堆更强的融合层更重要。
+            In real-world audiovisual speech understanding, the challenge is not just adding modalities. It is deciding what to trust when audio or video is unreliable, unsynchronized, corrupted, or mutually contradictory.
           </p>
           <p>
-            后来我做多模态情感任务时，先问的就不再是“能不能融合”，而是这条样本里每个模态到底提供了什么证据。因为情感场景同样存在模态冲突、信号退化和细粒度证据缺失的问题。鲁棒语音表征和鲁棒情感理解，在我这里并不是完全独立的两条线，而是同一类证据重组问题在不同任务上的展开。
+            Many systems assume fusion is always a gain if both signals are present. In realistic environments, noise, occlusion, pose variation, and subtle mismatches can make fusion a liability instead of a benefit.
           </p>
-          <h3>它对我后续工作的影响</h3>
+          <h3>What AV-RISE taught me</h3>
+          <p>
+            AV-RISE taught me that denoising is not a pre-processing afterthought; it is part of representation learning itself. A hierarchical view on modality reconciliation allows models to separate signal, noise, and helpful complementary cues before final decisions.
+          </p>
+          <p>
+            In later emotion tasks, my question became less “can we fuse more?” and more “what evidence does each modality provide for this sample?”
+          </p>
+          <h3>How it changed later work</h3>
           <ul>
-            <li>我更少把“更强融合”当成默认答案。</li>
-            <li>我会更主动追问：模型在证据不完整时是否还能做出稳健判断。</li>
-            <li>后面不管做情感理解还是 Agent，我都更在意证据退化时的修复机制。</li>
+            <li>I treat “stronger fusion” as a testable hypothesis, not an always-default choice.</li>
+            <li>I check whether a model remains robust when evidence is incomplete.</li>
+            <li>Whether for emotion understanding or agents, I care more about recovery under degraded evidence.</li>
           </ul>
         </article>
 
@@ -105,29 +105,29 @@
             <span>2026-03</span>
             <span>Agent</span>
           </div>
-          <h2>一个好的情感 Agent，应该具备什么能力</h2>
+          <h2>What a stronger emotion agent should have</h2>
           <p class="lede">
-            我想做的情感 Agent，不是会说漂亮安慰话的聊天人格，而是一个能感知用户状态、会校准自己、敢在不确定时先澄清、也知道边界在哪里的系统。这更接近一种可学习的 affective skill，而不是一个“陪聊人格壳”。
+            I am not building a polished chat-style companion. I am building a system that tracks user state, calibrates uncertainty, clarifies before replying, and respects boundary constraints.
           </p>
-          <h3>我为什么对“情感 Agent”这个词保持克制</h3>
+          <h3>Why I keep the term precise</h3>
           <p>
-            我对“情感 Agent”一直比较警惕，因为它很容易被理解成一个会说安慰话、会模仿共情语气的对话系统。如果只是这样，它并不值得单独成为研究对象。对我来说，更值得研究的是：当系统面对不确定、模糊和长期互动时，它能否形成稳定的情感判断与介入策略。
-          </p>
-          <p>
-            所以我更倾向于把它理解为一组可评估、可拆解的能力，而不是一个完整的人格设定。像 CARES 这类方法框架给我的最大启发也是这一点：情感支持的核心不是把回复表面写得更像人，而是把它建模成一个长期的 intervention policy，也就是在部分观测状态下决定“下一步该如何介入”。
-          </p>
-          <h3>我目前认为它至少需要四层能力</h3>
-          <p>
-            如果只说最重要的几件事，我更在意它能不能先看出状态变化，能不能知道自己不确定，以及能不能在开口之前先确认。换成更具体的研究结构，我现在会把它拆成 belief tracker、clarification gate、multi-act stance planner，以及 versioned skill evolution 这四层。前者负责估计 emotion、need、preference、memory、risk、conflict 和 uncertainty，后者决定是 reflect、clarify、validate、reframe、suggest，还是 boundary / abstain。
+            “Emotion Agent” can easily become a copy of supportive language. That is not enough. The useful problem is whether the system can maintain stable affective judgments and intervention policy under uncertainty and long interactions.
           </p>
           <p>
-            很多系统的问题不是不会共情，而是太快进入了错误理解，然后在错误前提上越聊越深。相比之下，一个更成熟的 Agent 应该在不确定时先确认，再决定是否介入以及介入到什么程度。这种 clarifying behavior 不只是安全策略，也是一种质量策略。比如当用户表达模糊情绪时，先问一句确认问题，往往比直接安慰更有价值。
+            So I view it as a set of measurable capabilities rather than a personality style. The core is intervention logic over time: whether to reflect, clarify, validate, reframe, suggest, or abstain.
           </p>
-          <h3>我暂时不想把它做成什么</h3>
+          <h3>The minimum four-layer stack</h3>
+          <p>
+            I currently split this into belief tracking, clarification gating, multi-act stance planning, and versioned skill evolution. The first layer estimates emotion, need, preference, memory, risk, conflict, and uncertainty. The second controls next actions from reflect/clarify/validate to suggest/abstain.
+          </p>
+          <p>
+            Many systems fail because they enter a wrong interpretation too early and then keep reinforcing it. A mature agent should verify before committing, especially when user intent is ambiguous.
+          </p>
+          <h3>What I am not building</h3>
           <ul>
-            <li>不是泛化很宽的陪伴型外壳。</li>
-            <li>不是临床心理支持系统，也不应越过高风险边界。</li>
-            <li>当前更关注感知、校准、澄清与干预链路，而不是开放式人格陪伴。</li>
+            <li>Not a broad companion shell.</li>
+            <li>Not a clinical support system beyond safe boundaries.</li>
+            <li>Not open-ended personality simulation; I focus on calibrated perception and intervention.</li>
           </ul>
         </article>
 
@@ -136,29 +136,29 @@
             <span>2026-04</span>
             <span>Models</span>
           </div>
-          <h2>情感模型之后：我更关心冲突、不确定与修复</h2>
+          <h2>Beyond emotion models: conflict, uncertainty, and repair</h2>
           <p class="lede">
-            如果只看近两年这条线的发展，Emotion-LLaMA、AffectGPT、Emotion-LLaMAv2 / MMEVerse 已经把“更强的通用基线”和“更完整的 benchmark”往前推了很多。我现在更关心的，不是继续把模型做大，而是它在遇到冲突和不确定时，能不能知道自己该停、该修，以及该怎么修。
+            Emotion models and large benchmarks have improved a lot. The next step I care about is not only larger models, but better mechanisms for uncertainty and error correction.
           </p>
-          <h3>为什么我不再只盯着“更大”</h3>
+          <h3>Why “bigger” is not the only target</h3>
           <p>
-            在多模态情感理解里，随着 AffectGPT 这类工作出现，一个明显变化是：我们已经拥有了相当强的通用基线。也就是说，问题不再只是“怎么把模型做大、把融合做强、把训练数据做多”。平均性能继续提升当然有价值，但它并不能完全解释那些最关键、最顽固的失败样本。
-          </p>
-          <p>
-            按我目前的观察，很多错误并不是因为模型完全看不见证据，而是它太早形成了一个看似合理的默认答案，之后缺少足够强的机制去识别：这个样本其实还存在未解决的冲突、模糊或缺失信息。EMOE、CA-MER / MoSEAR 这类工作已经在提醒我们，冲突和不确定并不是边角问题，而是决定系统上限的结构性问题。比如文本看起来平静，但语气、表情或局部视觉线索明显往另一个方向拉，这类样本往往最能暴露系统的短板。
-          </p>
-          <h3>我现在更关心的瓶颈</h3>
-          <p>
-            所以我更在意的，不是简单追求一个更大的统一模型，而是是否存在显式的<strong>仲裁与修复机制</strong>。如果系统始终沿着单一路径完成推理，那么在高冲突样本上，它依然可能给出流畅但并不可靠的判断。对我来说，HEME / selective repair 这条思路有吸引力，正是因为它把“什么时候不该继续相信默认答案”抬成了一等问题。
+            We already have strong universal baselines. Average gains are useful, but they do not explain hard failures in the same way conflict-aware evaluation does.
           </p>
           <p>
-            这也是我后来思考 HEME 这类后续问题时一直在追问的点：一个强通用路径什么时候已经足够，什么时候应该引入额外修复；修复单元应该围绕模态、任务，还是围绕更细粒度的证据效用来组织。从研究上看，这比“再做一个更大的融合模型”更值得继续往下挖。真正需要回答的，不只是平均分会不会涨，而是默认答案何时不可靠、只在 hard cases 干预会不会更稳，以及 late corrective re-entry 是否真的优于只改 output head。
+            Many failures are not due to missing evidence but due to a premature default answer before unresolved conflict and ambiguity are recognized.
           </p>
-          <h3>下一步更值得回答的问题</h3>
+          <h3>Current bottleneck</h3>
+          <p>
+            I care more about explicit arbitration and corrective mechanisms than one-shot monolithic inference. On difficult samples, fluent output can still be unreliable without structured repair.
+          </p>
+          <p>
+            This is the main thread behind ongoing work: when is the general path enough, and when should selective repair trigger? The value is in deciding this explicitly, not only growing model capacity.
+          </p>
+          <h3>Questions to pursue</h3>
           <ul>
-            <li>如何检测默认路径已经不可靠，而不是事后解释。</li>
-            <li>如何只在 hard cases 上做干预，而不破坏 easy cases。</li>
-            <li>如何把冲突、不确定和修复变成可评估的对象，而不是主观描述。</li>
+            <li>How to detect early that a default reasoning path is unreliable.</li>
+            <li>How to repair only on hard cases without harming easy cases.</li>
+            <li>How to measure conflict, uncertainty, and repair as explicit outcomes.</li>
           </ul>
         </article>
       </div>
