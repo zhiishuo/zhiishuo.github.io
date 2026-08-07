@@ -534,8 +534,9 @@ a { color: #2a3f74; }
 }
 
 @media (max-width: 860px) {
-  .nav-wrap { grid-template-columns: auto auto auto; }
-  .menu-toggle { display: inline-block; }
+  .nav-wrap { grid-template-columns: 1fr auto auto; }
+  .lang-btn { order: 1; justify-self: end; }
+  .menu-toggle { order: 2; display: inline-block; justify-self: end; }
 
   .primary-nav {
     position: absolute;

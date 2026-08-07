@@ -46,7 +46,7 @@ const i18n = {
   },
   zh: {
     nav_about: '关于', nav_research: '研究方向', nav_news: '新闻', nav_projects: '项目', nav_resume: '简历', nav_portfolio: '作品集', nav_blog: '博客', nav_photos: '照片地图', nav_contact: '联系',
-    hero_tag: '你好，我是', hero_name: '之硕', hero_subtitle: '四川大学计算机学院博士研究生，研究方向为多模态学习、情感计算与鲁棒语音理解。',
+    hero_tag: '你好，我是', hero_name: '之硕', hero_subtitle: '四川大学计算机专业博士研究生，研究方向为多模态学习、情感计算与鲁棒语音理解。',
     hero_meta_1: '多模态情感计算', hero_meta_2: '音视频语言建模', hero_meta_3: '鲁棒语音智能',
     hero_btn_contact: '联系我', hero_btn_projects: '查看研究',
     hero_role: '四川大学 · 香港理工大学 · 博士研究生',
@@ -54,7 +54,7 @@ const i18n = {
     hero_point_2: '方法方向：跨模态对齐与鲁棒表示学习',
     hero_point_3: '欢迎学术合作与研究成果转化交流',
     about_title: '关于我',
-    about_body: '我目前在四川大学计算机学院和香港理工大学联合培养攻读博士学位。研究聚焦于<strong>多模态学习</strong>、<strong>情感计算</strong>、<strong>Agent系统</strong>、<strong>大模型</strong>与真实场景下的<strong>鲁棒语音理解</strong>。主要工作包括<strong>多模态情感分析</strong>、<strong>跨模态对比学习</strong>、<strong>噪声鲁棒语音识别</strong>与<strong>情感感知Agent工作流</strong>，强调可解释性与泛化能力。',
+    about_body: '我目前在四川大学计算机专业和香港理工大学联合培养攻读博士学位。研究聚焦于<strong>多模态学习</strong>、<strong>情感计算</strong>、<strong>Agent系统</strong>、<strong>大模型</strong>与真实场景下的<strong>鲁棒语音理解</strong>。主要工作包括<strong>多模态情感分析</strong>、<strong>跨模态对比学习</strong>、<strong>噪声鲁棒语音识别</strong>与<strong>情感感知Agent工作流</strong>，强调可解释性与泛化能力。',
     research_title: '研究重点',
     r1_title: '多模态情感理解', r1_body: '用深度分层表示建模语音、视觉与文本中的情感信息。',
     r2_title: 'LLM + MoE 系统', r2_body: '通过任务自适应路由和专家协同提升模型泛化能力。',
