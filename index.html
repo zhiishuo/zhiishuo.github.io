@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/assets/css/fab-settings.css" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -92,7 +93,7 @@
           <h2 data-i18n="about_title">About</h2>
         </div>
         <p data-i18n="about_body">
-          I am a Ph.D. candidate at the School of Computer Science, Sichuan University and PolyU (dual PhD Program). My research centers on <strong>multimodal learning</strong>, <strong>affective computing</strong>, <strong>agent systems</strong>, <strong>large models</strong>, and <strong>robust speech understanding</strong> under real-world conditions. I work on multimodal sentiment analysis, cross-modal contrastive optimization, noise-resilient speech recognition, and emotion-aware agent workflows, with an emphasis on <strong>interpretability</strong> and <strong>generalization</strong>.
+          I am a Ph.D. candidate at the School of Computer Science, Sichuan University and PolyU (dual PhD Program). My research centers on <strong>multimodal learning</strong>, <strong>affective [...]
         </p>
       </section>
 
@@ -152,9 +153,9 @@
           <h2 data-i18n="news_title">News</h2>
         </div>
         <ul class="news-list">
-          <li><span class="news-year">2025</span><span data-i18n="news_1">🎉 Our paper "AV-RISE: Hierarchical Cross-Modal Denoising for Learning Robust Audio-Visual Speech Representation" is accepted at ACM MM 2025.</span></li>
-          <li><span class="news-year">2024</span><span data-i18n="news_2">📖 Published "WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting" in ICIC 2025.</span></li>
-          <li><span class="news-year">2024</span><span data-i18n="news_3">🎉 Our paper "AMG-AVSR: Adaptive Modality Guidance for Audio-Visual Speech Recognition via Progressive Feature Enhancement" is accepted at ACML 2024.</span></li>
+          <li><span class="news-year">2025</span><span data-i18n="news_1">🎉 Our paper "AV-RISE: Hierarchical Cross-Modal Denoising for Learning Robust Audio-Visual Speech Representation" is ac[...]
+          <li><span class="news-year">2024</span><span data-i18n="news_2">📖 Published "WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting" in ICIC 2025.</span></li[...]
+          <li><span class="news-year">2024</span><span data-i18n="news_3">🎉 Our paper "AMG-AVSR: Adaptive Modality Guidance for Audio-Visual Speech Recognition via Progressive Feature Enhancem[...]
         </ul>
       </section>
 
@@ -179,17 +180,17 @@
           <a class="blog-card interactive" href="blog/#av-rise">
             <p class="item-kicker" data-i18n="blog_2_kicker">Paper</p>
             <h3 data-i18n="blog_2_title">AV-RISE and robust AV speech</h3>
-            <p data-i18n="blog_2_body">Why cross-modal denoising became central to how I think about noisy real-world speech representation.</p>
+            <p class="blog_2_body">Why cross-modal denoising became central to how I think about noisy real-world speech representation.</p>
           </a>
           <a class="blog-card interactive" href="blog/#emotion-agent">
             <p class="item-kicker" data-i18n="blog_3_kicker">Agent</p>
             <h3 data-i18n="blog_3_title">What an emotion agent should optimize for</h3>
-            <p data-i18n="blog_3_body">Not just empathy on the surface, but perception, calibration, clarification, and safe intervention.</p>
+            <p class="blog_3_body">Not just empathy on the surface, but perception, calibration, clarification, and safe intervention.</p>
           </a>
           <a class="blog-card interactive" href="blog/#emotion-llm">
             <p class="item-kicker" data-i18n="blog_4_kicker">Models</p>
             <h3 data-i18n="blog_4_title">Beyond emotion models: conflict, uncertainty, and repair</h3>
-            <p data-i18n="blog_4_body">Why I think the next step is not simply a bigger model, but better handling of conflict, uncertainty, and repair.</p>
+            <p class="blog_4_body">Why I think the next step is not simply a bigger model, but better handling of conflict, uncertainty, and repair.</p>
           </a>
         </div>
       </section>
@@ -214,5 +215,28 @@
     </footer>
 
     <script src="script.js"></script>
+
+<!-- FAB settings: inserted by Copilot -->
+<div class="settings-container">
+  <button id="settingsBtn" class="settings-btn" aria-label="打开设置" aria-haspopup="true" aria-expanded="false">
+    ⚙️
+  </button>
+
+  <div id="settingsSheet" class="settings-sheet" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="sheet-backdrop" id="sheetBackdrop" tabindex="-1"></div>
+
+    <div class="sheet-panel" role="document" tabindex="-1">
+      <button class="close-sheet" id="closeSheet" aria-label="关闭设置">✕</button>
+      <h2>设置</h2>
+      <ul>
+        <li><label><input type="checkbox" id="darkModeToggle"> 深色模式</label></li>
+        <li><label><input type="checkbox" id="notifToggle"> 通知</label></li>
+        <li><a href="/profile">个人资料</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/fab-settings.js" defer></script>
   </body>
 </html>
