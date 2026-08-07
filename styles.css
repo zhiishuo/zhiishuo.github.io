@@ -148,7 +148,7 @@ main { padding-block: 54px 30px; }
 .eyebrow {
   margin: 0;
   color: var(--brand);
-  font-size: 1.15rem;
+  font-size: clamp(1.3rem, 3.2vw, 1.8rem);
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: none;
@@ -194,18 +194,75 @@ h1 {
 }
 .photo-frame {
   position: relative;
-  padding: 9px;
+  padding: 11px;
+  border-radius: 32px;
+  background: linear-gradient(160deg, #f7f8fb, #f2f3f6);
+  box-shadow:
+    0 16px 34px rgba(34, 42, 58, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -10px 22px rgba(130, 140, 156, 0.14);
+  isolation: isolate;
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1), box-shadow 0.45s cubic-bezier(.2,.8,.2,1);
+}
+
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
   border-radius: 26px;
-  background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(241,245,255,0.9));
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(2px);
+}
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
 .profile-photo {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 18px;
+  border-radius: 22px;
   object-fit: cover;
-  object-position: center;
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  object-position: center 40%;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  filter: saturate(1.05) contrast(1.02);
   display: block;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), filter 0.35s ease;
+}
+
+.hero-aside:hover .photo-frame,
+.hero-aside:focus-within .photo-frame {
+  transform: translateY(-2px);
+  box-shadow:
+    0 22px 38px rgba(34, 42, 58, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -10px 22px rgba(130, 140, 156, 0.18);
+}
+
+.hero-aside:hover .profile-photo,
+.hero-aside:focus-within .profile-photo {
+  transform: scale(1.02);
+  filter: saturate(1.08) contrast(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-frame,
+  .profile-photo,
+  .hero-aside:hover .photo-frame,
+  .hero-aside:focus-within .photo-frame,
+  .hero-aside:hover .profile-photo,
+  .hero-aside:focus-within .profile-photo {
+    transition: none;
+    transform: none;
+    filter: none;
+  }
 }
 
 .btn {
