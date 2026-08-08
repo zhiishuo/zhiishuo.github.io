@@ -1,6 +1,6 @@
 const i18n = {
   en: {
-    nav_about: 'About', nav_research: 'Research', nav_news: 'News', nav_projects: 'Projects', nav_resume: 'Resume', nav_portfolio: 'Portfolio', nav_blog: 'Blog', nav_photos: 'Photo Map', nav_contact: 'Contact',
+    nav_about: 'About', nav_research: 'Research', nav_news: 'News', nav_projects: 'Projects', nav_resume: 'Resume', nav_portfolio: 'Portfolio', nav_blog: 'Blog', nav_photos: 'Photo Map', nav_contac[...] 
     hero_tag: "Hi, I'm", hero_name: 'Zhishuo', hero_subtitle: 'Ph.D. candidate in Computer Science, focusing on multimodal learning, affective computing, and robust speech understanding.',
     hero_meta_1: 'Multimodal Affective Computing', hero_meta_2: 'Audio-Visual Language Modeling', hero_meta_3: 'Robust Speech Intelligence',
     hero_btn_contact: 'Contact', hero_btn_projects: 'View Research',
@@ -9,7 +9,7 @@ const i18n = {
     hero_point_2: 'Methods: cross-modal alignment, robust representation learning',
     hero_point_3: 'Open to academic collaboration and applied research transfer',
     about_title: 'About',
-    about_body: 'I am a Ph.D. candidate at the School of Computer Science, Sichuan University and PolyU (dual PhD). My research centers on <strong>multimodal learning</strong>, <strong>affective computing</strong>, <strong>agent systems</strong>, <strong>large models</strong>, and <strong>robust speech understanding</strong> under real-world conditions. I work on <strong>multimodal sentiment analysis</strong>, <strong>cross-modal contrastive optimization</strong>, <strong>noise-resilient speech recognition</strong>, and <strong>emotion-aware agent workflows</strong>, with an emphasis on interpretability and generalization.',
+    about_body: 'I am a Ph.D. candidate at the School of Computer Science, Sichuan University and PolyU (dual PhD). My research centers on <strong>multimodal learning</strong>, <strong>affective c[...]
     research_title: 'Research Focus',
     r1_title: 'Multimodal Emotion Understanding', r1_body: 'Modeling emotion from speech, vision, and text with depth-aware representations.',
     r2_title: 'LLM + MoE Systems', r2_body: 'Task-adaptive routing and efficient expert collaboration for better generalization.',
@@ -45,8 +45,8 @@ const i18n = {
     footer: 'Built with clarity and curiosity.'
   },
   zh: {
-    nav_about: '关于', nav_research: '研究方向', nav_news: '新闻', nav_projects: '项目', nav_resume: '简历', nav_portfolio: '作品集', nav_blog: 'Blog', nav_photos: '照片地图', nav_contact: '联系',
-    hero_tag: '你好，我是', hero_name: '之硕', hero_subtitle: '四川大学计算机专业博士研究生，研究方向为多模态学习、情感计算与鲁棒语音理解。',
+    nav_about: '关于', nav_research: '研究方向', nav_news: '新闻', nav_projects: '项目', nav_resume: '简历', nav_portfolio: '作品集', nav_blog: 'Blog', nav_photos: '照片地图', n[...]
+    hero_tag: '你好，我是', hero_name: '之硕', hero_subtitle: '计算机专业博士研究生，研究方向为多模态学习、情感计算与鲁棒语音理解。',
     hero_meta_1: '多模态情感计算', hero_meta_2: '音视频语言建模', hero_meta_3: '鲁棒语音智能',
     hero_btn_contact: '联系我', hero_btn_projects: '查看研究',
     hero_role: '四川大学 · 香港理工大学 · 博士研究生',
@@ -54,7 +54,7 @@ const i18n = {
     hero_point_2: '方法方向：跨模态对齐与鲁棒表示学习',
     hero_point_3: '欢迎学术合作与研究成果转化交流',
     about_title: '关于我',
-    about_body: '我目前在四川大学计算机专业和香港理工大学联合培养攻读博士学位。研究聚焦于<strong>多模态学习</strong>、<strong>情感计算</strong>、<strong>Agent系统</strong>、<strong>大模型</strong>与真实场景下的<strong>鲁棒语音理解</strong>。主要工作包括<strong>多模态情感分析</strong>、<strong>跨模态对比学习</strong>、<strong>噪声鲁棒语音识别</strong>与<strong>情感感知Agent工作流</strong>，强调可解释性与泛化能力。',
+    about_body: '我目前在四川大学计算机专业和香港理工大学联合培养攻读博士学位。研究聚焦于<strong>多模态学习</strong>、<strong>情感计算</strong>、<str[...]
     research_title: '研究重点',
     r1_title: '多模态情感理解', r1_body: '用深度分层表示建模语音、视觉与文本中的情感信息。',
     r2_title: 'LLM + MoE 系统', r2_body: '通过任务自适应路由和专家协同提升模型泛化能力。',
