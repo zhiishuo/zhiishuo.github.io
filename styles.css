@@ -195,7 +195,7 @@ h1 {
 .photo-frame {
   position: relative;
   padding: 11px;
-  border-radius: 32px;
+  border-radius: 36px;
   background: linear-gradient(160deg, #f7f8fb, #f2f3f6);
   box-shadow:
     0 16px 34px rgba(34, 42, 58, 0.14),
@@ -209,7 +209,7 @@ h1 {
   content: "";
   position: absolute;
   inset: 6px;
-  border-radius: 26px;
+  border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.64);
   pointer-events: none;
   z-index: -1;
@@ -228,7 +228,7 @@ h1 {
 .profile-photo {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 22px;
+  border-radius: 28px;
   object-fit: cover;
   object-position: center 40%;
   border: 1px solid rgba(255, 255, 255, 0.68);
@@ -534,30 +534,52 @@ a { color: #2a3f74; }
 }
 
 @media (max-width: 860px) {
-  .nav-wrap { grid-template-columns: 1fr auto auto; }
+  .site-header {
+    position: relative;
+  }
+
+  .nav-wrap {
+    position: relative;
+    grid-template-columns: 1fr auto auto;
+  }
+
   .lang-btn { order: 1; justify-self: end; }
   .menu-toggle { order: 2; display: inline-block; justify-self: end; }
 
   .primary-nav {
+    width: max-content;
+    min-width: 150px;
+    max-width: calc(100vw - 2rem);
     position: absolute;
-    left: 1.1rem;
-    right: 1.1rem;
-    top: 70px;
-    display: grid;
+    right: 0;
+    top: calc(100% + 8px);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 6px;
     padding: 10px;
     background: var(--surface);
     border: 1px solid var(--line-strong);
-    border-radius: 12px;
+    border-radius: 14px;
     opacity: 0;
-    transform: translateY(-4px);
+    transform-origin: top right;
+    transform: scaleY(0.98) translateY(-4px);
     visibility: hidden;
     pointer-events: none;
     transition: opacity .18s ease, transform .18s ease, visibility .18s;
+    box-shadow: 0 12px 30px color-mix(in oklab, var(--text) 12%, transparent);
+    z-index: 40;
   }
+
+  .primary-nav a {
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+  }
+
   .primary-nav.open {
     opacity: 1;
-    transform: translateY(0);
+    transform: scaleY(1) translateY(0);
     visibility: visible;
     pointer-events: auto;
   }
