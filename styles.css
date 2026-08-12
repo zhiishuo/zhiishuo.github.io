@@ -68,7 +68,7 @@ body {
 .nav-wrap {
   min-height: 74px;
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 12px;
 }
@@ -130,16 +130,6 @@ body {
   height: 2px;
   margin: 4px 0;
   background: var(--text);
-}
-
-.lang-btn {
-  border: 1px solid var(--line-strong);
-  color: var(--text);
-  background: var(--surface);
-  border-radius: 999px;
-  padding: 8px 12px;
-  font-weight: 600;
-  cursor: pointer;
 }
 
 main { padding-block: 54px 30px; }
@@ -314,7 +304,6 @@ h1 {
   background: #303235;
 }
 .btn:focus-visible,
-.lang-btn:focus-visible,
 .primary-nav a:focus-visible,
 .project-row:focus-within,
 .resume-card:focus-visible,
@@ -741,11 +730,10 @@ strong { font-weight: 600; }
 
   .nav-wrap {
     position: relative;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
   }
 
-  .lang-btn { order: 1; justify-self: end; }
-  .menu-toggle { order: 2; display: inline-block; justify-self: end; }
+  .menu-toggle { display: inline-block; justify-self: end; }
 
   .primary-nav {
     width: max-content;
