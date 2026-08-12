@@ -142,7 +142,8 @@ main { padding-block: 54px 30px; }
   margin-bottom: 1.8rem;
 }
 .hero-copy {
-  max-width: 640px;
+  max-width: none;
+  min-width: 0;
 }
 .eyebrow {
   position: relative;
@@ -186,7 +187,7 @@ h1 {
 }
 .subtitle {
   margin: 20px 0 0;
-  max-width: 62ch;
+  max-width: none;
   color: var(--muted);
   font-size: clamp(1rem, 1.15vw, 1.1rem);
 }
@@ -403,10 +404,7 @@ h2 {
   border-bottom: 1px solid var(--line);
 }
 .project-row {
-  display: grid;
-  grid-template-columns: 96px minmax(180px, 0.9fr) minmax(0, 1.45fr);
-  gap: 16px;
-  align-items: baseline;
+  display: block;
   padding: 18px 0;
   border-top: 1px solid var(--line);
   transition: border-color .2s ease, color .2s ease;
@@ -414,17 +412,24 @@ h2 {
 .project-row:first-child {
   border-top: 0;
 }
-.project-row .item-kicker {
-  margin: 0;
-}
-.project-row h3 {
+.project-line {
   margin: 0;
   font-size: 1rem;
   letter-spacing: -0.01em;
 }
-.project-row p:last-child {
-  margin: 0;
+.project-kind {
+  color: #7a8191;
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.project-intro {
   color: var(--muted);
+  margin-left: 0.45em;
+}
+.project-intro::before {
+  content: "—";
+  margin-right: 0.45em;
 }
 .project-row:hover {
   border-top-color: var(--text);
