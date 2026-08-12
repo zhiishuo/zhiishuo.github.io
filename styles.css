@@ -440,6 +440,13 @@ h2 {
   color: #4c5260;
   font-weight: 600;
 }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+}
+
 .contact-panel {
   margin-top: 14px;
   max-width: 520px;
@@ -586,7 +593,8 @@ a { color: #2a3f74; }
 
   .list-grid.two,
   .list-grid.three,
-  .photo-row {
+  .photo-row,
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 
