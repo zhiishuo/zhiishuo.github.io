@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Zhishuo Hand";
+  src: url("assets/fonts/Caveat-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #f8f8f6;
   --surface: #ffffff;
@@ -10,7 +18,7 @@
   --line-strong: #d2d6de;
   --focus: #5e6366;
   --radius: 16px;
-  --font-hand: "Caveat", "Kaiti SC", "STKaiti", cursive;
+  --font-hand: "Zhishuo Hand", "Caveat", "Bradley Hand", "Segoe Print", "Kaiti SC", "STKaiti", cursive;
 }
 
 * { box-sizing: border-box; }
@@ -147,18 +155,44 @@ main { padding-block: 54px 30px; }
   max-width: 640px;
 }
 .eyebrow {
+  position: relative;
+  display: inline-block;
   margin: 0;
-  color: var(--brand);
-  font-size: clamp(1.3rem, 3.2vw, 1.8rem);
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  color: #1f4fd1;
+  font-family: var(--font-hand);
+  font-size: clamp(2.05rem, 4.2vw, 3rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: 0.015em;
   text-transform: none;
+  transform: rotate(-2deg);
+}
+.eyebrow::after {
+  content: "";
+  display: block;
+  width: calc(100% + 0.18em);
+  height: 6px;
+  margin-top: 2px;
+  border-bottom: 2px solid color-mix(in oklab, #1f4fd1 58%, transparent);
+  border-radius: 50%;
+  opacity: 0.72;
+  transform: rotate(-1.5deg) scaleX(0.94);
+  transform-origin: left;
 }
 h1 {
   margin: 10px 0 0;
   font-size: clamp(2.5rem, 8vw, 5rem);
   line-height: 0.98;
   letter-spacing: -0.045em;
+}
+.hero h1 {
+  margin-top: 15px;
+  font-family: var(--font-hand);
+  font-size: clamp(3.25rem, 9vw, 5.8rem);
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  transform: rotate(-0.8deg);
 }
 .subtitle {
   margin: 20px 0 0;
@@ -191,20 +225,6 @@ h1 {
   margin: 0 7px 1px 0;
   border-radius: 50%;
   background: var(--text);
-}
-.hero-meta {
-  margin-top: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-.hero-meta span {
-  border: 1px solid color-mix(in oklab, var(--line) 82%, transparent);
-  background: color-mix(in oklab, var(--surface) 86%, transparent);
-  border-radius: 999px;
-  padding: 5px 10px;
-  font-size: 0.78rem;
-  color: #404757;
 }
 .actions {
   margin-top: 24px;
@@ -856,19 +876,13 @@ strong { font-weight: 600; }
     font-size: clamp(2.25rem, 15vw, 3rem);
   }
 
+  .hero h1 {
+    font-size: clamp(3.1rem, 16vw, 4.3rem);
+  }
+
   .subtitle {
     margin-top: 16px;
     font-size: 0.98rem;
-  }
-
-  .hero-meta {
-    margin-top: 14px;
-    gap: 6px;
-  }
-
-  .hero-meta span {
-    font-size: 0.74rem;
-    padding: 4px 9px;
   }
 
   .hero-aside {
