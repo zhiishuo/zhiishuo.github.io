@@ -20,7 +20,7 @@ const i18n = {
     p3_body: 'Hierarchical cross-modal denoising for robust audio-visual speech representation under noisy real-world conditions.',
     p4_body: 'Toolchain for transforming research prototypes into reproducible demos.',
     news_title: 'News',
-    news_0: '🌉 A new chapter begins this September: I’ll be training jointly at PolyU and Sichuan University—taking my research between Hong Kong and Chengdu.',
+    news_0: '🌉 In September 2026, I’ll begin joint Ph.D. training at PolyU and Sichuan University—taking my research between Hong Kong and Chengdu.',
     news_1: '🎉 Our paper "AV-RISE: Hierarchical Cross-Modal Denoising for Learning Robust Audio-Visual Speech Representation" is accepted at ACM MM 2025.',
     news_2: '📖 Published "WinNet: Make Only One Convolutional Layer Effective for Time Series Forecasting" in ICIC 2025.',
     news_3: '🎉 Our paper "AMG-AVSR: Adaptive Modality Guidance for Audio-Visual Speech Recognition via Progressive Feature Enhancement" is accepted at ACML 2024.',
