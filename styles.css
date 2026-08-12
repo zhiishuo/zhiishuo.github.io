@@ -239,27 +239,6 @@ h1 {
   width: 100%;
   max-width: 248px;
 }
-.hero-note {
-  position: absolute;
-  right: -0.4rem;
-  bottom: -1.18rem;
-  z-index: 1;
-  margin: 0;
-  color: color-mix(in oklab, var(--text) 62%, transparent);
-  font-size: clamp(1.05rem, 1.7vw, 1.34rem);
-  transform: rotate(-5deg);
-}
-
-.hero-note::before {
-  content: "↘";
-  position: absolute;
-  left: -1.16rem;
-  top: -0.08em;
-  font-family: Inter, system-ui, sans-serif;
-  font-size: 0.95em;
-  font-weight: 400;
-  transform: rotate(15deg);
-}
 .photo-frame {
   position: relative;
   padding: 8px;
