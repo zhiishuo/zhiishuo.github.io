@@ -188,23 +188,26 @@
 
       <section id="contact" class="section reveal contact-resume-section" style="--delay: 50ms">
         <div class="contact-grid">
-          <div>
-        <div class="section-head section-inline">
-          <h2 data-i18n="contact_title">Contact</h2>
-          <span class="contact-chip" data-i18n="contact_chip">Available for collaboration</span>
-        </div>
-        <div class="contact-panel">
-          <p class="label" data-i18n="contact_email_label">Email</p>
-          <a class="contact-email" href="mailto:zhiishuo@163.com">zhiishuo@163.com</a>
-          <p class="contact-note" data-i18n="contact_response_value">Usually within 24–48 hours.</p>
-        </div>
-          </div>
-          <div id="resume" class="resume-panel">
+          <article class="contact-block">
+            <div class="section-head section-inline">
+              <h2 data-i18n="contact_title">Contact</h2>
+            </div>
+            <a class="contact-panel contact-card" href="mailto:zhiishuo%40163.com">
+              <p class="label" data-i18n="contact_email_label">Email</p>
+              <span class="contact-email">zhiishuo&#64;163.com</span>
+              <p class="contact-note" data-i18n="contact_response_value">Usually within 24–48 hours.</p>
+            </a>
+          </article>
+          <article id="resume" class="contact-block resume-panel">
             <div class="section-head section-inline">
               <h2 data-i18n="resume_title">Resume</h2>
-              <a class="btn" href="assets/zzscv10.pdf" target="_blank" rel="noreferrer" data-i18n="resume_btn">Open CV</a>
             </div>
-          </div>
+            <a class="resume-card" href="assets/zzscv10.pdf" target="_blank" rel="noreferrer">
+              <p class="label" data-i18n="resume_label">Curriculum Vitae</p>
+              <span class="resume-link"><span data-i18n="resume_btn">Open CV</span><span aria-hidden="true">↗</span></span>
+              <p class="resume-note" data-i18n="resume_note">Academic background and selected work.</p>
+            </a>
+          </article>
         </div>
       </section>
     </main>
