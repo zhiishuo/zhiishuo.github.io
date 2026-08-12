@@ -425,28 +425,28 @@ h2 {
 }
 .project-line {
   display: grid;
-  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.55fr);
-  gap: clamp(2rem, 4.5vw, 5rem);
+  grid-template-columns: 100px minmax(220px, 0.48fr) minmax(0, 1.52fr);
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
   align-items: baseline;
 }
-.project-heading {
-  display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
+.project-line > * {
+  min-width: 0;
+}
+.project-name {
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -0.01em;
+  color: var(--text);
 }
 .project-kind {
   color: #7a8191;
-  align-self: baseline;
   font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.5;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-.project-name {
-  color: var(--text);
 }
 .project-intro {
   margin: 0;
@@ -836,12 +836,11 @@ strong { font-weight: 600; }
 
   .project-line {
     grid-template-columns: 1fr;
-    gap: 5px;
+    row-gap: 5px;
   }
 
-  .project-heading {
-    display: flex;
-    gap: 0.35rem;
+  .project-kind {
+    margin-bottom: -2px;
   }
 
   .blog-gateway {
