@@ -1,0 +1,16 @@
+{
+  "updatedAt": "2026-09-11T20:36:00+08:00",
+  "method": "Matched map images to the Photos album, then used direct or tightly clustered same-session original-camera GPS anchors.",
+  "confidencePolicy": "Published only high-confidence candidates with anchor spread at or below 0.25 km and a meaningful coordinate change.",
+  "updatedPlaceIds": [
+    "place-001",
+    "place-002",
+    "place-004",
+    "place-011",
+    "place-012",
+    "place-027",
+    "place-028",
+    "place-029"
+  ],
+  "notAutoUpdated": "Medium-confidence and geographically dispersed groups remain unchanged for later review."
+}
